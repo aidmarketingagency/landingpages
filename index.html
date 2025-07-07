@@ -310,7 +310,7 @@
         <div class="container">
             <p>&copy; 2024 Aid Marketing Agency LLC. All rights reserved.</p>
         </div>
-        <!-- Enhanced HVAC Chatbot Widget with Integrated Full-Screen Toggle -->
+       <!-- Enhanced HVAC Chatbot Widget with Integrated Full-Screen Toggle -->
 <style>
   @keyframes float {
     0%, 100% { transform: translateY(0px); }
@@ -569,7 +569,7 @@
   <span id="custom-popup-text">Beat the Heat! Get FREE HVAC Guide 🌡️</span>
 </div>
 
-<script src="https://app.chatgptbuilder.io/webchat/plugin.js?v=6"></script>
+<script src="https://app.chatgptbuilder.io/webchat/plugin.js?v=5"></script>
 <script>
 (function() {
   // Initialize the chatbot with HVAC theme
@@ -584,7 +584,6 @@
   // Elements
   const popup = document.getElementById('custom-popup');
   const popupTextEl = document.getElementById('custom-popup-text');
-  const closePopupBtn = document.getElementById('custom-popup-close');
   
   let chatTimer = null;
   let popupTimer = null;
@@ -695,17 +694,17 @@
     popupTimer = setTimeout(showPopup, 5000);
     
     // Auto-open chat after 15 seconds (only if not opened manually)
-    const ktt10Btn = document.querySelector('.ktt10-btn');
-    if (ktt10Btn) {
-      chatTimer = setTimeout(() => {
-        if (!chatOpenedManually) {
+    chatTimer = setTimeout(() => {
+      if (!chatOpenedManually) {
+        const ktt10Btn = document.querySelector('.ktt10-btn');
+        if (ktt10Btn) {
           ktt10Btn.click();
           hidePopup();
           // Create expand controls after chat opens
           setTimeout(createExpandControls, 500);
         }
-      }, 15000);
-    }
+      }
+    }, 15000);
   }
 
   // Event Listeners
