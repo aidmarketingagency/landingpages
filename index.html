@@ -310,74 +310,164 @@
         <div class="container">
             <p>&copy; 2024 Aid Marketing Agency LLC. All rights reserved.</p>
         </div>
-       <!-- Chatbot Builder AI Floating Bubble Setup -->
+     <!-- ENHANCED Chatbot Builder AI Floating Bubble Setup -->
 <style>
-
-.ktt10-btn {
-    width: 70px !important;
-    height: 70px !important;
-    background: linear-gradient(45deg, #283168, #bf4b0d) !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    overflow: hidden !important;
-}
-
-.ktt10-btn img {
-    width: 100% !important;
-    height: 60% !important;
-    object-fit: cover !important;
-    transform: translate(0px, 0px) !important;
-}
-
-
-#custom-popup {
-    position: fixed;
-    display: none;
-    align-items: center;
-    justify-content: space-between;
-    gap: 10px;
-    padding: 8px 12px;
-    border-radius: 6px;
-    background: #ffffff;
-    border: 1px solid #000000;
-    color: #15156a;
-    bottom: 110px;
-    right: 20px;
-    font-size: 16px;
-    font-family: Tahoma;
-    font-weight: bold;
-    font-style: normal;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
-    z-index: 9999;
-    min-width: 200px;
-    max-width: 300px;
-}
-#custom-popup-text {
-    cursor: pointer;
-    flex-grow: 1;
-}
-#custom-popup-close {
-    background: none;
-    border: none;
-    font-size: 20px;
-    color: #8e8e93;
-    cursor: pointer;
-    padding: 0;
-    line-height: 1;
-}
+    /* 🔥 PRESERVED: Original widget button styling */
+    .ktt10-btn {
+        width: 70px !important;
+        height: 70px !important;
+        background: linear-gradient(45deg, #283168, #bf4b0d) !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        overflow: hidden !important;
+        /* 🆕 ENHANCEMENT: Added floating animation */
+        animation: float 3s ease-in-out infinite !important;
+        transition: all 0.3s ease !important;
+        box-shadow: 0 8px 25px rgba(40, 49, 104, 0.3) !important;
+    }
+    
+    .ktt10-btn img {
+        width: 100% !important;
+        height: 60% !important;
+        object-fit: cover !important;
+        transform: translate(0px, 0px) !important;
+    }
+    
+    /* 🆕 ENHANCEMENT: Floating animation for chat button */
+    @keyframes float {
+        0%, 100% { transform: translateY(0px) scale(1); }
+        50% { transform: translateY(-10px) scale(1.05); }
+    }
+    
+    /* 🆕 ENHANCEMENT: Hover effect for chat button */
+    .ktt10-btn:hover {
+        animation-play-state: paused !important;
+        transform: translateY(-5px) scale(1.1) !important;
+        box-shadow: 0 12px 35px rgba(40, 49, 104, 0.4) !important;
+    }
+    
+    /* 🔥 PRESERVED: Original popup styling with enhancements */
+    #custom-popup {
+        position: fixed;
+        display: none;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        padding: 12px 16px;
+        border-radius: 12px;
+        /* 🆕 ENHANCEMENT: Enhanced background with gradient */
+        background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+        border: 2px solid #283168;
+        color: #15156a;
+        bottom: 110px;
+        right: 20px;
+        font-size: 16px;
+        font-family: Tahoma;
+        font-weight: bold;
+        font-style: normal;
+        /* 🆕 ENHANCEMENT: Enhanced shadow */
+        box-shadow: 0 10px 30px rgba(0,0,0,0.15), 0 3px 10px rgba(0,0,0,0.1);
+        z-index: 9999;
+        min-width: 200px;
+        max-width: 300px;
+        /* 🆕 ENHANCEMENT: Added animation */
+        animation: slideInUp 0.5s ease-out;
+        transform-origin: bottom right;
+    }
+    
+    /* 🆕 ENHANCEMENT: Popup animations */
+    @keyframes slideInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px) scale(0.8);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+    }
+    
+    /* 🔥 PRESERVED: Original popup text styling */
+    #custom-popup-text {
+        cursor: pointer;
+        flex-grow: 1;
+        /* 🆕 ENHANCEMENT: Added transition */
+        transition: color 0.3s ease;
+    }
+    
+    #custom-popup-text:hover {
+        color: #bf4b0d;
+    }
+    
+    /* 🔥 PRESERVED: Original close button styling */
+    #custom-popup-close {
+        background: none;
+        border: none;
+        font-size: 20px;
+        color: #8e8e93;
+        cursor: pointer;
+        padding: 0;
+        line-height: 1;
+        /* 🆕 ENHANCEMENT: Added transition and hover effect */
+        transition: all 0.3s ease;
+        border-radius: 50%;
+        width: 24px;
+        height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    #custom-popup-close:hover {
+        background: #f0f0f0;
+        color: #bf4b0d;
+        transform: scale(1.1);
+    }
+    
+    /* 🆕 ENHANCEMENT: Mobile responsive design */
+    @media (max-width: 768px) {
+        .ktt10-btn {
+            width: 60px !important;
+            height: 60px !important;
+        }
+        
+        #custom-popup {
+            right: 15px;
+            bottom: 90px;
+            max-width: 280px;
+            font-size: 14px;
+            padding: 10px 14px;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        .ktt10-btn {
+            width: 55px !important;
+            height: 55px !important;
+        }
+        
+        #custom-popup {
+            right: 10px;
+            bottom: 80px;
+            max-width: 260px;
+            font-size: 13px;
+            padding: 8px 12px;
+        }
+    }
 </style>
 
-
+<!-- 🔥 PRESERVED: Original popup HTML structure -->
 <div id="custom-popup">
     <span id="custom-popup-text" style="font-family: Tahoma; font-weight: bold; font-style: normal;">Get our FREE Summer Guide 🥵</span>
     <button id="custom-popup-close">&times;</button>
 </div>
 
-
+<!-- 🔥 PRESERVED: Original widget script -->
 <script src="https://app.chatgptbuilder.io/webchat/plugin.js?v=5"></script>
 <script>
 (function() {
+    // 🔥 PRESERVED: Original ktt10.setup() configuration - NEVER MODIFY
     ktt10.setup({
         accountId: "1070084",
         id: "iCmFYLtqZnaO",
@@ -385,32 +475,53 @@
         icon: "https://github.com/aidmarketingagency/CBB-Hosting-Images/blob/main/Patterson%20White.jpeg?raw=true",
         type: "floating"
     });
-
     
+    // 🔥 PRESERVED: Original DOM elements
     const popup = document.getElementById('custom-popup');
     const popupTextEl = document.getElementById('custom-popup-text');
     const closePopupBtn = document.getElementById('custom-popup-close');
+    
+    // 🔥 PRESERVED: Original timer variables
     let chatTimer = null;
     let popupTimer = null;
-
+    
+    // 🆕 ENHANCEMENT: Multiple popup messages array
+    const popupMessages = [
+        "Get our FREE Summer Guide 🥵",
+        "Need HVAC Help? Chat Now! ❄️",
+        "Emergency AC Repair? We're Here! 🚨",
+        "Save on Energy Bills! Ask How 💰",
+        "24/7 HVAC Support Available 🕒",
+        "Free Estimate in 5 Minutes! ⏱️",
+        "Beat the Heat! Chat With Us 🌡️"
+    ];
+    
+    // 🆕 ENHANCEMENT: Select ONE random message per session
+    const randomMessage = popupMessages[Math.floor(Math.random() * popupMessages.length)];
+    
+    // 🆕 ENHANCEMENT: Set the random message immediately
+    popupTextEl.textContent = randomMessage;
+    
+    // 🔥 PRESERVED: Original popup functions
     function showPopup() {
         popup.style.display = 'flex';
     }
-
+    
     function hidePopup() {
         popup.style.display = 'none';
     }
-
+    
+    // 🔥 PRESERVED: Original timer initialization function
     function initializeTimers() {
         if (chatTimer) clearTimeout(chatTimer);
         if (popupTimer) clearTimeout(popupTimer);
-
+        
         if (5 > 0) {
             popupTimer = setTimeout(showPopup, 5 * 1000);
         } else {
             showPopup();
         }
-
+        
         const ktt10Btn = document.querySelector('.ktt10-btn');
         if (10 > 0 && ktt10Btn) {
             chatTimer = setTimeout(() => {
@@ -419,24 +530,48 @@
             }, 10 * 1000);
         }
     }
-
+    
+    // 🔥 PRESERVED: Original popup click handler
     popupTextEl.addEventListener('click', () => {
         const ktt10Btn = document.querySelector('.ktt10-btn');
         if (ktt10Btn) ktt10Btn.click();
         hidePopup();
     });
-
+    
+    // 🔥 PRESERVED: Original close button handler
     closePopupBtn.addEventListener('click', (e) => {
         e.stopPropagation();
         hidePopup();
     });
-
+    
+    // 🔥 PRESERVED: Original initialization logic
     if (document.readyState === 'complete') {
         initializeTimers();
     } else {
         window.addEventListener('load', initializeTimers);
     }
-
+    
+    // 🆕 ENHANCEMENT: Enhanced button effects after widget loads
+    function enhanceButtonWhenReady() {
+        const ktt10Btn = document.querySelector('.ktt10-btn');
+        if (ktt10Btn) {
+            // Add enhanced hover effects
+            ktt10Btn.addEventListener('mouseenter', () => {
+                ktt10Btn.style.animationPlayState = 'paused';
+            });
+            
+            ktt10Btn.addEventListener('mouseleave', () => {
+                ktt10Btn.style.animationPlayState = 'running';
+            });
+        } else {
+            // Wait for widget to load
+            setTimeout(enhanceButtonWhenReady, 100);
+        }
+    }
+    
+    // Start enhancement after a brief delay
+    setTimeout(enhanceButtonWhenReady, 500);
+    
 })();
 </script>
     </footer>
