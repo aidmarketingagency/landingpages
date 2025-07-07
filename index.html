@@ -310,433 +310,133 @@
         <div class="container">
             <p>&copy; 2024 Aid Marketing Agency LLC. All rights reserved.</p>
         </div>
-       <!-- Enhanced HVAC Chatbot Widget with Integrated Full-Screen Toggle -->
+       <!-- Chatbot Builder AI Floating Bubble Setup -->
 <style>
-  @keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-8px); }
-  }
-  
-  @keyframes glow {
-    0%, 100% { box-shadow: 0 0 20px rgba(230, 126, 34, 0.3); }
-    50% { box-shadow: 0 0 30px rgba(230, 126, 34, 0.6); }
-  }
-  
-  @keyframes bounce {
-    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-    40% { transform: translateY(-10px); }
-    60% { transform: translateY(-5px); }
-  }
-  
-  @keyframes fadeInUp {
-    from { 
-      opacity: 0; 
-      transform: translateY(30px); 
-    }
-    to { 
-      opacity: 1; 
-      transform: translateY(0); 
-    }
-  }
 
-  .ktt10-btn {
+.ktt10-btn {
     width: 70px !important;
     height: 70px !important;
-    background: linear-gradient(135deg, #1b365d 0%, #e67e22 100%) !important;
+    background: linear-gradient(45deg, #283168, #bf4b0d) !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
     overflow: hidden !important;
-    border-radius: 50% !important;
-    border: 3px solid rgba(255, 255, 255, 0.2) !important;
-    animation: float 3s ease-in-out infinite !important;
-    transition: all 0.3s ease !important;
-    position: relative !important;
-    z-index: 1000 !important;
-  }
-  
-  .ktt10-btn:hover {
-    animation: float 3s ease-in-out infinite, glow 2s ease-in-out infinite !important;
-    transform: scale(1.1) !important;
-  }
-  
-  .ktt10-btn:active {
-    transform: scale(0.95) !important;
-  }
-  
-  .ktt10-btn img {
-    width: 60% !important;
+}
+
+.ktt10-btn img {
+    width: 100% !important;
     height: 60% !important;
     object-fit: cover !important;
-    border-radius: 50% !important;
     transform: translate(0px, 0px) !important;
-  }
-  
-  .ktt10-btn::after {
-    content: '';
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
-    background: linear-gradient(135deg, #1b365d, #e67e22, #1b365d);
-    border-radius: 50%;
-    z-index: -1;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-  
-  .ktt10-btn:hover::after {
-    opacity: 0.7;
-  }
-  
-  /* Custom Popup with HVAC Theme */
-  #custom-popup {
+}
+
+
+#custom-popup {
     position: fixed;
     display: none;
     align-items: center;
-    justify-content: center;
-    gap: 12px;
-    padding: 12px 16px;
-    border-radius: 12px;
-    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
-    border: 2px solid;
-    border-image: linear-gradient(135deg, #1b365d, #e67e22) 1;
-    color: #1b365d;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 8px 12px;
+    border-radius: 6px;
+    background: #ffffff;
+    border: 1px solid #000000;
+    color: #15156a;
     bottom: 110px;
     right: 20px;
     font-size: 16px;
-    font-family: 'Ubuntu', sans-serif;
+    font-family: Tahoma;
     font-weight: bold;
-    box-shadow: 0 8px 25px rgba(27, 54, 93, 0.15);
+    font-style: normal;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
     z-index: 9999;
     min-width: 200px;
     max-width: 300px;
-    animation: bounce 0.6s ease;
-  }
-  
-  #custom-popup::before {
-    content: '🏠';
-    font-size: 20px;
-    margin-right: 8px;
-  }
-  
-  #custom-popup-text {
+}
+#custom-popup-text {
     cursor: pointer;
-    background: linear-gradient(135deg, #1b365d, #e67e22);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-  
-  #custom-popup-text:hover {
-    transform: scale(1.02);
-    transition: transform 0.2s ease;
-  }
-  
-  #custom-popup-close {
-    display: none;
-  }
-  
-  /* Integrated Chat Widget Expand Controls */
-  .chat-expand-btn {
-    position: absolute !important;
-    bottom: 80px !important;
-    right: 15px !important;
-    width: 32px !important;
-    height: 32px !important;
-    background: linear-gradient(135deg, #1b365d 0%, #e67e22 100%) !important;
-    border: none !important;
-    border-radius: 8px !important;
-    cursor: pointer !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
-    transition: all 0.3s ease !important;
-    z-index: 999999 !important;
-    color: white !important;
-    font-size: 16px !important;
-    font-weight: bold !important;
-    opacity: 0.9 !important;
-  }
-  
-  .chat-expand-btn:hover {
-    transform: scale(1.1) !important;
-    box-shadow: 0 6px 20px rgba(230, 126, 34, 0.4) !important;
-    opacity: 1 !important;
-  }
-  
-  .chat-minimize-btn {
-    position: absolute !important;
-    top: 15px !important;
-    left: 15px !important;
-    width: 32px !important;
-    height: 32px !important;
-    background: linear-gradient(135deg, #e67e22 0%, #1b365d 100%) !important;
-    border: none !important;
-    border-radius: 8px !important;
-    cursor: pointer !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
-    transition: all 0.3s ease !important;
-    z-index: 999999 !important;
-    color: white !important;
-    font-size: 14px !important;
-    font-weight: bold !important;
-    opacity: 0.9 !important;
-  }
-  
-  .chat-minimize-btn:hover {
-    transform: scale(1.1) !important;
-    box-shadow: 0 6px 20px rgba(27, 54, 93, 0.4) !important;
-    opacity: 1 !important;
-  }
-  
-  /* Fullscreen Chat Styles */
-  .chat-widget-fullscreen {
-    position: fixed !important;
-    top: 20px !important;
-    left: 20px !important;
-    width: calc(100vw - 40px) !important;
-    height: calc(100vh - 40px) !important;
-    max-width: none !important;
-    max-height: none !important;
-    z-index: 10000 !important;
-    border-radius: 20px !important;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3) !important;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
-  }
-  
-  .chat-widget-fullscreen .chat-header {
-    height: 70px !important;
-    padding: 0 60px 0 20px !important;
-    border-radius: 20px 20px 0 0 !important;
-  }
-  
-  .chat-widget-fullscreen .chat-area {
-    height: calc(100% - 140px) !important;
-    top: 70px !important;
-  }
-  
-  .chat-widget-fullscreen .chat-input {
-    height: 70px !important;
-    padding: 15px 60px 15px 20px !important;
-    border-radius: 0 0 20px 20px !important;
-  }
-  
-  /* Mobile Responsive */
-  @media (max-width: 768px) {
-    .chat-widget-fullscreen {
-      top: 10px !important;
-      left: 10px !important;
-      width: calc(100vw - 20px) !important;
-      height: calc(100vh - 20px) !important;
-      border-radius: 15px !important;
-    }
-    
-    .ktt10-btn {
-      width: 60px !important;
-      height: 60px !important;
-    }
-    
-    .chat-expand-btn,
-    .chat-minimize-btn {
-      width: 28px !important;
-      height: 28px !important;
-      font-size: 14px !important;
-    }
-    
-    .chat-expand-btn {
-      bottom: 70px !important;
-    }
-  }
-  
-  /* Hide default elements when in fullscreen */
-  .chat-widget-fullscreen .ktt10-btn {
-    display: none !important;
-  }
-  
-  /* Smooth transitions for chat widget */
-  .ktt10-webchat {
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
-  }
+    flex-grow: 1;
+}
+#custom-popup-close {
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: #8e8e93;
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+}
 </style>
 
+
 <div id="custom-popup">
-  <span id="custom-popup-text">Beat the Heat! Get FREE HVAC Guide 🌡️</span>
+    <span id="custom-popup-text" style="font-family: Tahoma; font-weight: bold; font-style: normal;">Get our FREE Summer Guide 🥵</span>
+    <button id="custom-popup-close">&times;</button>
 </div>
+
 
 <script src="https://app.chatgptbuilder.io/webchat/plugin.js?v=5"></script>
 <script>
 (function() {
-  // Initialize the chatbot with HVAC theme
-  ktt10.setup({
-    accountId: "1070084",
-    id: "iCmFYLtqZnaO",
-    color: "#1b365d",
-    icon: "https://github.com/aidmarketingagency/CBB-Hosting-Images/blob/main/Patterson%20White.jpeg?raw=true",
-    type: "floating"
-  });
-
-  // Elements
-  const popup = document.getElementById('custom-popup');
-  const popupTextEl = document.getElementById('custom-popup-text');
-  
-  let chatTimer = null;
-  let popupTimer = null;
-  let isFullscreen = false;
-  let chatWidget = null;
-  let expandBtn = null;
-  let minimizeBtn = null;
-  let chatOpenedManually = false;
-
-  // HVAC-themed popup messages
-  const hvacMessages = [
-    "Beat the Heat! Get FREE HVAC Guide 🌡️",
-    "Stay Cool! Free AC Maintenance Tips ❄️",
-    "Heating Up? We've Got You Covered! 🔥",
-    "Save on Energy Bills! Get Expert Tips 💡"
-  ];
-
-  function showPopup() {
-    // Random HVAC message
-    const randomMessage = hvacMessages[Math.floor(Math.random() * hvacMessages.length)];
-    popupTextEl.textContent = randomMessage;
-    popup.style.display = 'flex';
-  }
-
-  function hidePopup() {
-    popup.style.display = 'none';
-  }
-
-  function createExpandControls() {
-    // Wait for chat widget to be available
-    const checkForWidget = setInterval(() => {
-      chatWidget = document.querySelector('.ktt10-webchat');
-      if (chatWidget) {
-        clearInterval(checkForWidget);
-        
-        // Create expand button (bottom-right of chat widget)
-        expandBtn = document.createElement('button');
-        expandBtn.className = 'chat-expand-btn';
-        expandBtn.innerHTML = '⛶';
-        expandBtn.title = 'Expand Chat';
-        expandBtn.addEventListener('click', expandChat);
-        
-        // Create minimize button (top-left of chat widget when fullscreen)
-        minimizeBtn = document.createElement('button');
-        minimizeBtn.className = 'chat-minimize-btn';
-        minimizeBtn.innerHTML = '⇱';
-        minimizeBtn.title = 'Minimize Chat';
-        minimizeBtn.addEventListener('click', minimizeChat);
-        minimizeBtn.style.display = 'none';
-        
-        // Add buttons to chat widget
-        chatWidget.appendChild(expandBtn);
-        chatWidget.appendChild(minimizeBtn);
-        
-        // Add keyboard support
-        document.addEventListener('keydown', (e) => {
-          if (e.key === 'Escape' && isFullscreen) {
-            minimizeChat();
-          }
-        });
-      }
-    }, 100);
-  }
-
-  function expandChat() {
-    if (isFullscreen || !chatWidget) return;
-    
-    isFullscreen = true;
-    
-    // Add fullscreen class
-    chatWidget.classList.add('chat-widget-fullscreen');
-    
-    // Show minimize button, hide expand button
-    expandBtn.style.display = 'none';
-    minimizeBtn.style.display = 'flex';
-    
-    // Hide the floating chat button
-    const ktt10Btn = document.querySelector('.ktt10-btn');
-    if (ktt10Btn) {
-      ktt10Btn.style.display = 'none';
-    }
-  }
-
-  function minimizeChat() {
-    if (!isFullscreen || !chatWidget) return;
-    
-    isFullscreen = false;
-    
-    // Remove fullscreen class
-    chatWidget.classList.remove('chat-widget-fullscreen');
-    
-    // Show expand button, hide minimize button
-    expandBtn.style.display = 'flex';
-    minimizeBtn.style.display = 'none';
-    
-    // Show the floating chat button
-    const ktt10Btn = document.querySelector('.ktt10-btn');
-    if (ktt10Btn) {
-      ktt10Btn.style.display = 'flex';
-    }
-  }
-
-  function initializeTimers() {
-    if (chatTimer) clearTimeout(chatTimer);
-    if (popupTimer) clearTimeout(popupTimer);
-    
-    // Show popup after 5 seconds
-    popupTimer = setTimeout(showPopup, 5000);
-    
-    // Auto-open chat after 15 seconds (only if not opened manually)
-    chatTimer = setTimeout(() => {
-      if (!chatOpenedManually) {
-        const ktt10Btn = document.querySelector('.ktt10-btn');
-        if (ktt10Btn) {
-          ktt10Btn.click();
-          hidePopup();
-          // Create expand controls after chat opens
-          setTimeout(createExpandControls, 500);
-        }
-      }
-    }, 15000);
-  }
-
-  // Event Listeners
-  popupTextEl.addEventListener('click', () => {
-    const ktt10Btn = document.querySelector('.ktt10-btn');
-    if (ktt10Btn) {
-      ktt10Btn.click();
-      // Create expand controls after chat opens
-      setTimeout(createExpandControls, 500);
-    }
-    hidePopup();
-  });
-
-  // Also create expand controls when chat is manually opened
-  document.addEventListener('click', (e) => {
-    if (e.target.closest('.ktt10-btn') && !expandBtn) {
-      chatOpenedManually = true;
-      hidePopup();
-      // Clear the auto-open timer since user opened manually
-      if (chatTimer) clearTimeout(chatTimer);
-      setTimeout(createExpandControls, 500);
-    }
-  });
-
-  // Initialize when page loads
-  if (document.readyState === 'complete') {
-    setTimeout(initializeTimers, 1000);
-  } else {
-    window.addEventListener('load', () => {
-      setTimeout(initializeTimers, 1000);
+    ktt10.setup({
+        accountId: "1070084",
+        id: "iCmFYLtqZnaO",
+        color: "#283168",
+        icon: "https://github.com/aidmarketingagency/CBB-Hosting-Images/blob/main/Patterson%20White.jpeg?raw=true",
+        type: "floating"
     });
-  }
+
+    
+    const popup = document.getElementById('custom-popup');
+    const popupTextEl = document.getElementById('custom-popup-text');
+    const closePopupBtn = document.getElementById('custom-popup-close');
+    let chatTimer = null;
+    let popupTimer = null;
+
+    function showPopup() {
+        popup.style.display = 'flex';
+    }
+
+    function hidePopup() {
+        popup.style.display = 'none';
+    }
+
+    function initializeTimers() {
+        if (chatTimer) clearTimeout(chatTimer);
+        if (popupTimer) clearTimeout(popupTimer);
+
+        if (5 > 0) {
+            popupTimer = setTimeout(showPopup, 5 * 1000);
+        } else {
+            showPopup();
+        }
+
+        const ktt10Btn = document.querySelector('.ktt10-btn');
+        if (10 > 0 && ktt10Btn) {
+            chatTimer = setTimeout(() => {
+                ktt10Btn.click();
+                hidePopup();
+            }, 10 * 1000);
+        }
+    }
+
+    popupTextEl.addEventListener('click', () => {
+        const ktt10Btn = document.querySelector('.ktt10-btn');
+        if (ktt10Btn) ktt10Btn.click();
+        hidePopup();
+    });
+
+    closePopupBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        hidePopup();
+    });
+
+    if (document.readyState === 'complete') {
+        initializeTimers();
+    } else {
+        window.addEventListener('load', initializeTimers);
+    }
+
 })();
 </script>
     </footer>
