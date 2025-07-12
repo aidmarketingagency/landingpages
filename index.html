@@ -3,577 +3,398 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aid Marketing Agency LLC - Digital Marketing & Automation Services</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        header {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 1rem 0;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
-        }
-        
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: #667eea;
-        }
-        
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-        
-        .nav-links a {
-            text-decoration: none;
-            color: #333;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-        
-        .nav-links a:hover {
-            color: #667eea;
-        }
-        
-        main {
-            margin-top: 80px;
-        }
-        
-        .hero {
-            text-align: center;
-            padding: 4rem 0;
-            color: white;
-        }
-        
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            font-weight: 700;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-        
-        .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .cta-button {
-            display: inline-block;
-            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
-            color: white;
-            padding: 1rem 2rem;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        }
-        
-        .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
-        }
-        
-        .services {
-            background: white;
-            padding: 4rem 0;
-        }
-        
-        .services h2 {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            color: #333;
-        }
-        
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-        
-        .service-card {
-            background: #f8f9fa;
-            padding: 2rem;
-            border-radius: 15px;
-            text-align: center;
-            transition: transform 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        
-        .service-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .service-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-        
-        .service-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: #333;
-        }
-        
-        .service-card p {
-            color: #666;
-            line-height: 1.8;
-        }
-        
-        .about {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            color: white;
-            padding: 4rem 0;
-            text-align: center;
-        }
-        
-        .about h2 {
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
-        }
-        
-        .about p {
-            font-size: 1.2rem;
-            max-width: 800px;
-            margin: 0 auto;
-            opacity: 0.9;
-            line-height: 1.8;
-        }
-        
-        .contact {
-            background: white;
-            padding: 4rem 0;
-            text-align: center;
-        }
-        
-        .contact h2 {
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
-            color: #333;
-        }
-        
-        .contact-info {
-            display: flex;
-            justify-content: center;
-            gap: 3rem;
-            flex-wrap: wrap;
-        }
-        
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-        
-        .contact-item i {
-            font-size: 1.5rem;
-            color: #667eea;
-        }
-        
-        footer {
-            background: #333;
-            color: white;
-            text-align: center;
-            padding: 2rem 0;
-        }
-        
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            
-            .hero p {
-                font-size: 1.1rem;
-            }
-            
-            .nav-links {
-                display: none;
-            }
-            
-            .contact-info {
-                flex-direction: column;
-                gap: 1rem;
-            }
-        }
-    </style>
+    <title>AID Marketing Agency | Automate. Integrate. Dominate.</title>
+    <meta name="description" content="Transform your business with AI-powered marketing automation, lead generation, and business systems. AID Marketing Agency helps small businesses dominate their markets.">
+    <meta name="keywords" content="AI marketing, automation, lead generation, small business systems, marketing agency">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <nav class="container">
-            <div class="logo">Aid Marketing Agency</div>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
+    <!-- Header/Navigation -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <img src="logo.png" alt="AID Marketing Agency Logo" class="logo-img">
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="#home" class="nav-link">Home</a></li>
+                    <li><a href="#services" class="nav-link">Services</a></li>
+                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#testimonials" class="nav-link">Testimonials</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
         </nav>
     </header>
 
-    <main>
-        <section id="home" class="hero">
-            <div class="container">
-                <h1>Digital Marketing & Automation</h1>
-                <p>We help businesses streamline their operations and grow their online presence through intelligent automation and strategic digital marketing solutions.</p>
-                <a href="#contact" class="cta-button">Get Started Today</a>
-            </div>
-        </section>
-
-        <section id="services" class="services">
-            <div class="container">
-                <h2>Our Services</h2>
-                <div class="services-grid">
-                    <div class="service-card">
-                        <div class="service-icon">🚀</div>
-                        <h3>Marketing Automation</h3>
-                        <p>Streamline your marketing workflows with intelligent automation that saves time and increases efficiency across all your campaigns.</p>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title">
+                        Transform Your Business with 
+                        <span class="highlight">AI-Powered Marketing</span>
+                    </h1>
+                    <p class="hero-subtitle">
+                        Stop losing leads and start dominating your market. Our AI-driven automation systems generate qualified leads, nurture prospects, and scale your business while you sleep.
+                    </p>
+                    <div class="hero-tagline">
+                        <span class="tagline-text">AUTOMATE. INTEGRATE. DOMINATE.</span>
                     </div>
-                    <div class="service-card">
-                        <div class="service-icon">📊</div>
-                        <h3>Business Profile Management</h3>
-                        <p>Manage your Google Business Profile and online presence across multiple platforms with automated updates and monitoring.</p>
+                    <div class="hero-buttons">
+                        <a href="#contact" class="btn btn-primary">Get Your Free Strategy Session</a>
+                        <a href="#services" class="btn btn-secondary">Explore Our Services</a>
                     </div>
-                    <div class="service-card">
-                        <div class="service-icon">⚡</div>
-                        <h3>Process Automation</h3>
-                        <p>Automate repetitive business processes to focus on what matters most - growing your business and serving your customers.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="about" class="about">
-            <div class="container">
-                <h2>About Aid Marketing Agency</h2>
-                <p>We specialize in helping businesses leverage the power of automation and digital marketing to scale their operations efficiently. Our team combines technical expertise with marketing strategy to deliver solutions that drive real results for our clients.</p>
-            </div>
-        </section>
-
-        <section id="contact" class="contact">
-            <div class="container">
-                <h2>Contact Us</h2>
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <i>📧</i>
-                        <span>aidmarketingagencyllc@gmail.com</span>
-                    </div>
-                    <div class="contact-item">
-                        <i>🌐</i>
-                        <span>Professional Digital Marketing Services</span>
-                    </div>
-                    <div class="contact-item">
-                        <i>⚙️</i>
-                        <span>Automation & Integration Specialists</span>
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <span class="stat-number">500+</span>
+                            <span class="stat-label">Leads Generated</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">95%</span>
+                            <span class="stat-label">Client Retention</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">24/7</span>
+                            <span class="stat-label">Automation</span>
+                        </div>
                     </div>
                 </div>
+                <div class="hero-image">
+                    <img src="hero-image.jpg" alt="AI Marketing Automation" class="hero-img">
+                </div>
             </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 Aid Marketing Agency LLC. All rights reserved.</p>
         </div>
-     <!-- ENHANCED Chatbot Builder AI Floating Bubble Setup -->
-<style>
-    /* 🔥 PRESERVED: Original widget button styling */
-    .ktt10-btn {
-        width: 70px !important;
-        height: 70px !important;
-        background: linear-gradient(45deg, #283168, #bf4b0d) !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        overflow: hidden !important;
-        /* 🆕 ENHANCEMENT: Added floating animation */
-        animation: float 3s ease-in-out infinite !important;
-        transition: all 0.3s ease !important;
-        box-shadow: 0 8px 25px rgba(40, 49, 104, 0.3) !important;
-    }
-    
-    .ktt10-btn img {
-        width: 100% !important;
-        height: 60% !important;
-        object-fit: cover !important;
-        transform: translate(0px, 0px) !important;
-    }
-    
-    /* 🆕 ENHANCEMENT: Floating animation for chat button */
-    @keyframes float {
-        0%, 100% { transform: translateY(0px) scale(1); }
-        50% { transform: translateY(-10px) scale(1.05); }
-    }
-    
-    /* 🆕 ENHANCEMENT: Hover effect for chat button */
-    .ktt10-btn:hover {
-        animation-play-state: paused !important;
-        transform: translateY(-5px) scale(1.1) !important;
-        box-shadow: 0 12px 35px rgba(40, 49, 104, 0.4) !important;
-    }
-    
-    /* 🔥 PRESERVED: Original popup styling with enhancements */
-    #custom-popup {
-        position: fixed;
-        display: none;
-        align-items: center;
-        justify-content: space-between;
-        gap: 10px;
-        padding: 12px 16px;
-        border-radius: 12px;
-        /* 🆕 ENHANCEMENT: Enhanced background with gradient */
-        background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
-        border: 2px solid #283168;
-        color: #15156a;
-        bottom: 110px;
-        right: 20px;
-        font-size: 16px;
-        font-family: Tahoma;
-        font-weight: bold;
-        font-style: normal;
-        /* 🆕 ENHANCEMENT: Enhanced shadow */
-        box-shadow: 0 10px 30px rgba(0,0,0,0.15), 0 3px 10px rgba(0,0,0,0.1);
-        z-index: 9999;
-        min-width: 200px;
-        max-width: 300px;
-        /* 🆕 ENHANCEMENT: Added animation */
-        animation: slideInUp 0.5s ease-out;
-        transform-origin: bottom right;
-    }
-    
-    /* 🆕 ENHANCEMENT: Popup animations */
-    @keyframes slideInUp {
-        from {
-            opacity: 0;
-            transform: translateY(30px) scale(0.8);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0) scale(1);
-        }
-    }
-    
-    /* 🔥 PRESERVED: Original popup text styling */
-    #custom-popup-text {
-        cursor: pointer;
-        flex-grow: 1;
-        /* 🆕 ENHANCEMENT: Added transition */
-        transition: color 0.3s ease;
-    }
-    
-    #custom-popup-text:hover {
-        color: #bf4b0d;
-    }
-    
-    /* 🔥 PRESERVED: Original close button styling */
-    #custom-popup-close {
-        background: none;
-        border: none;
-        font-size: 20px;
-        color: #8e8e93;
-        cursor: pointer;
-        padding: 0;
-        line-height: 1;
-        /* 🆕 ENHANCEMENT: Added transition and hover effect */
-        transition: all 0.3s ease;
-        border-radius: 50%;
-        width: 24px;
-        height: 24px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    
-    #custom-popup-close:hover {
-        background: #f0f0f0;
-        color: #bf4b0d;
-        transform: scale(1.1);
-    }
-    
-    /* 🆕 ENHANCEMENT: Mobile responsive design */
-    @media (max-width: 768px) {
-        .ktt10-btn {
-            width: 60px !important;
-            height: 60px !important;
-        }
-        
-        #custom-popup {
-            right: 15px;
-            bottom: 90px;
-            max-width: 280px;
-            font-size: 14px;
-            padding: 10px 14px;
-        }
-    }
-    
-    @media (max-width: 480px) {
-        .ktt10-btn {
-            width: 55px !important;
-            height: 55px !important;
-        }
-        
-        #custom-popup {
-            right: 10px;
-            bottom: 80px;
-            max-width: 260px;
-            font-size: 13px;
-            padding: 8px 12px;
-        }
-    }
-</style>
+    </section>
 
-<!-- 🔥 PRESERVED: Original popup HTML structure -->
-<div id="custom-popup">
-    <span id="custom-popup-text" style="font-family: Tahoma; font-weight: bold; font-style: normal;">Get our FREE Summer Guide 🥵</span>
-    <button id="custom-popup-close">&times;</button>
-</div>
-
-<!-- 🔥 PRESERVED: Original widget script -->
-<script src="https://app.chatgptbuilder.io/webchat/plugin.js?v=5"></script>
-<script>
-(function() {
-    // 🔥 PRESERVED: Original ktt10.setup() configuration - NEVER MODIFY
-    ktt10.setup({
-        accountId: "1070084",
-        id: "iCmFYLtqZnaO",
-        color: "#283168",
-        icon: "https://github.com/aidmarketingagency/CBB-Hosting-Images/blob/main/Patterson%20White.jpeg?raw=true",
-        type: "floating"
-    });
-    
-    // 🔥 PRESERVED: Original DOM elements
-    const popup = document.getElementById('custom-popup');
-    const popupTextEl = document.getElementById('custom-popup-text');
-    const closePopupBtn = document.getElementById('custom-popup-close');
-    
-    // 🔥 PRESERVED: Original timer variables
-    let chatTimer = null;
-    let popupTimer = null;
-    
-    // 🆕 ENHANCEMENT: Multiple popup messages array
-    const popupMessages = [
-        "Get our FREE Summer Guide 🥵",
-        "Need HVAC Help? Chat Now! ❄️",
-        "Emergency AC Repair? We're Here! 🚨",
-        "Save on Energy Bills! Ask How 💰",
-        "24/7 HVAC Support Available 🕒",
-        "Free Estimate in 5 Minutes! ⏱️",
-        "Beat the Heat! Chat With Us 🌡️"
-    ];
-    
-    // 🆕 ENHANCEMENT: Select ONE random message per session
-    const randomMessage = popupMessages[Math.floor(Math.random() * popupMessages.length)];
-    
-    // 🆕 ENHANCEMENT: Set the random message immediately
-    popupTextEl.textContent = randomMessage;
-    
-    // 🔥 PRESERVED: Original popup functions
-    function showPopup() {
-        popup.style.display = 'flex';
-    }
-    
-    function hidePopup() {
-        popup.style.display = 'none';
-    }
-    
-    // 🔥 PRESERVED: Original timer initialization function
-    function initializeTimers() {
-        if (chatTimer) clearTimeout(chatTimer);
-        if (popupTimer) clearTimeout(popupTimer);
-        
-        if (5 > 0) {
-            popupTimer = setTimeout(showPopup, 5 * 1000);
-        } else {
-            showPopup();
-        }
-        
-        const ktt10Btn = document.querySelector('.ktt10-btn');
-        if (10 > 0 && ktt10Btn) {
-            chatTimer = setTimeout(() => {
-                ktt10Btn.click();
-                hidePopup();
-            }, 10 * 1000);
-        }
-    }
-    
-    // 🔥 PRESERVED: Original popup click handler
-    popupTextEl.addEventListener('click', () => {
-        const ktt10Btn = document.querySelector('.ktt10-btn');
-        if (ktt10Btn) ktt10Btn.click();
-        hidePopup();
-    });
-    
-    // 🔥 PRESERVED: Original close button handler
-    closePopupBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        hidePopup();
-    });
-    
-    // 🔥 PRESERVED: Original initialization logic
-    if (document.readyState === 'complete') {
-        initializeTimers();
-    } else {
-        window.addEventListener('load', initializeTimers);
-    }
-    
-    // 🆕 ENHANCEMENT: Enhanced button effects after widget loads
-    function enhanceButtonWhenReady() {
-        const ktt10Btn = document.querySelector('.ktt10-btn');
-        if (ktt10Btn) {
-            // Add enhanced hover effects
-            ktt10Btn.addEventListener('mouseenter', () => {
-                ktt10Btn.style.animationPlayState = 'paused';
-            });
+    <!-- AI Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">AI-Powered Marketing Solutions</h2>
+                <p class="section-subtitle">
+                    Cutting-edge technology meets proven marketing strategies to deliver results that matter.
+                </p>
+            </div>
             
-            ktt10Btn.addEventListener('mouseleave', () => {
-                ktt10Btn.style.animationPlayState = 'running';
-            });
-        } else {
-            // Wait for widget to load
-            setTimeout(enhanceButtonWhenReady, 100);
-        }
-    }
-    
-    // Start enhancement after a brief delay
-    setTimeout(enhanceButtonWhenReady, 500);
-    
-})();
-</script>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <div class="icon-placeholder">🤖</div>
+                    </div>
+                    <h3 class="service-title">AI Lead Generation</h3>
+                    <p class="service-description">
+                        Intelligent lead qualification and capture systems that work 24/7 to identify and engage your ideal prospects.
+                    </p>
+                    <ul class="service-features">
+                        <li>Smart lead scoring</li>
+                        <li>Automated follow-up sequences</li>
+                        <li>Multi-channel campaigns</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <div class="icon-placeholder">⚡</div>
+                    </div>
+                    <h3 class="service-title">Marketing Automation</h3>
+                    <p class="service-description">
+                        Streamline your marketing processes with intelligent automation that nurtures leads and drives conversions.
+                    </p>
+                    <ul class="service-features">
+                        <li>Email marketing automation</li>
+                        <li>Customer journey mapping</li>
+                        <li>Behavioral triggers</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <div class="icon-placeholder">🎯</div>
+                    </div>
+                    <h3 class="service-title">Business Systems Integration</h3>
+                    <p class="service-description">
+                        Connect all your business tools and platforms for seamless data flow and optimized performance.
+                    </p>
+                    <ul class="service-features">
+                        <li>CRM integration</li>
+                        <li>Analytics & reporting</li>
+                        <li>Workflow optimization</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <div class="icon-placeholder">📊</div>
+                    </div>
+                    <h3 class="service-title">Performance Analytics</h3>
+                    <p class="service-description">
+                        Data-driven insights that help you make smarter marketing decisions and maximize ROI.
+                    </p>
+                    <ul class="service-features">
+                        <li>Real-time dashboards</li>
+                        <li>Conversion tracking</li>
+                        <li>Predictive analytics</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2 class="section-title">Why Choose AID Marketing Agency?</h2>
+                    <p class="about-description">
+                        We're not just another marketing agency. We're your AI-powered growth partner, dedicated to transforming how small businesses attract, engage, and convert customers.
+                    </p>
+                    <div class="about-points">
+                        <div class="point">
+                            <div class="point-icon">✓</div>
+                            <div class="point-text">
+                                <h4>Proven Results</h4>
+                                <p>Our AI systems have generated over 500 qualified leads for our clients.</p>
+                            </div>
+                        </div>
+                        <div class="point">
+                            <div class="point-icon">✓</div>
+                            <div class="point-text">
+                                <h4>24/7 Automation</h4>
+                                <p>Your marketing works around the clock, even when you're sleeping.</p>
+                            </div>
+                        </div>
+                        <div class="point">
+                            <div class="point-icon">✓</div>
+                            <div class="point-text">
+                                <h4>Transparent Reporting</h4>
+                                <p>Real-time analytics and insights to track your success.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="about-image.jpg" alt="AID Marketing Team" class="about-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">What Our Clients Say</h2>
+                <p class="section-subtitle">Real results from real businesses</p>
+            </div>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <div class="stars">⭐⭐⭐⭐⭐</div>
+                        <p class="testimonial-text">
+                            "Ryan completely transformed our email marketing strategy with AI-driven campaigns and consulting approach that helped us understand complex DNS concepts with intuitive tools. The website optimization work has been a game-changer for Never Work the 40 - our engagement rates have never been higher!"
+                        </p>
+                        <div class="testimonial-author">
+                            <img src="jeremy-funderburk.jpg" alt="Jeremy Funderburk Photo" class="author-img">
+                            <div class="author-info">
+                                <h4 class="author-name">Jeremy Funderburk</h4>
+                                <p class="author-title">Founder, Never Work the 40</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <div class="stars">⭐⭐⭐⭐⭐</div>
+                        <p class="testimonial-text">
+                            "The lead generation automation Ryan set up for Business Leaders Unleashed has been incredible. Our CRM now automatically creates contacts from lead forms and follows up with personalized email campaigns. Plus, the AI-driven link hub he created centralizes all our resources and contact information in one convenient place for our clients. It's like having a full-time marketing team working 24/7!"
+                        </p>
+                        <div class="testimonial-author">
+                            <img src="bob-gors.jpg" alt="Bob Gors Photo" class="author-img">
+                            <div class="author-info">
+                                <h4 class="author-name">Bob Gors</h4>
+                                <p class="author-title">Founder & President, Business Leaders Unleashed (BLU)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <div class="stars">⭐⭐⭐⭐⭐</div>
+                        <p class="testimonial-text">
+                            "Ryan's automation for our social media management has been phenomenal. Our Facebook and Instagram responses are now handled seamlessly, and the automated lead magnet distribution with AI-driven email campaigns has significantly boosted our home inspection leads for the McNally Team. The intelligent link hub Ryan developed has been a game-changer - it organizes all our client resources and contact points into one streamlined location."
+                        </p>
+                        <div class="testimonial-author">
+                            <img src="gina-davila.jpg" alt="Gina Davila Photo" class="author-img">
+                            <div class="author-info">
+                                <h4 class="author-name">Gina Davila</h4>
+                                <p class="author-title">Social Media & Marketing Director, Pillar To Post - McNally Team</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title">Ready to Dominate Your Market?</h2>
+                <p class="cta-subtitle">
+                    Get a free strategy session and discover how AI can transform your business.
+                </p>
+                <a href="#contact" class="btn btn-primary btn-large">Get Your Free Strategy Session</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h2 class="section-title">Let's Start Your Transformation</h2>
+                    <p class="contact-description">
+                        Ready to automate, integrate, and dominate your market? Get in touch with our team today.
+                    </p>
+                    <div class="contact-methods">
+                        <div class="contact-method">
+                            <div class="method-icon">📧</div>
+                            <div class="method-info">
+                                <h4>Email</h4>
+                                <p>ryan@aidmarketingagency.com</p>
+                            </div>
+                        </div>
+                        <div class="contact-method">
+                            <div class="method-icon">📱</div>
+                            <div class="method-info">
+                                <h4>Phone</h4>
+                                <p>(856) 340-8990</p>
+                            </div>
+                        </div>
+                        <div class="contact-method">
+                            <div class="method-icon">💬</div>
+                            <div class="method-info">
+                                <h4>Chat</h4>
+                                <p>Use our AI chatbot below</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <div class="contact-cta">
+                        <h3>Ready to Get Started?</h3>
+                        <p>Use our AI chatbot below to discuss your marketing goals and get instant insights on how we can help your business grow.</p>
+                        <div class="chatbot-arrow">↓</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <img src="logo.png" alt="AID Marketing Agency Logo" class="footer-logo-img">
+                    </div>
+                    <p class="footer-description">
+                        AI-powered marketing solutions that help small businesses automate, integrate, and dominate their markets.
+                    </p>
+                    <div class="footer-tagline">
+                        <span>AUTOMATE. INTEGRATE. DOMINATE.</span>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="#services">AI Lead Generation</a></li>
+                        <li><a href="#services">Marketing Automation</a></li>
+                        <li><a href="#services">Business Systems Integration</a></li>
+                        <li><a href="#services">Performance Analytics</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Company</h4>
+                    <ul class="footer-links">
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#testimonials">Testimonials</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Connect</h4>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/aidmarketingagency" class="social-link">Facebook</a>
+                        <a href="https://www.linkedin.com/in/ryan-mcnally-7930421bb" class="social-link">LinkedIn</a>
+                        <a href="https://www.instagram.com/ryan_is_ridiculous/?hl=en" class="social-link">Instagram</a>
+                    </div>
+                    <div class="footer-contact">
+                        <p>ryan@aidmarketingagency.com</p>
+                        <p>(856) 340-8990</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 AID Marketing Agency. All rights reserved.</p>
+            </div>
+        </div>
     </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile menu toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+
+        if (hamburger && navMenu) {
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                navMenu.classList.toggle('active');
+            });
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                if (hamburger && navMenu) {
+                    hamburger.classList.remove('active');
+                    navMenu.classList.remove('active');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
