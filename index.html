@@ -4,30 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AID Marketing Agency | Automate. Integrate. Dominate.</title>
-    
-    <!-- Meta Tags for SEO -->
     <meta name="description" content="Transform your business with AI-powered marketing automation, lead generation, and business systems. AID Marketing Agency helps small businesses dominate their markets.">
     <meta name="keywords" content="AI marketing, automation, lead generation, small business systems, marketing agency">
-
-    <!-- Google Fonts (Single, Optimized Import) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    
-    <!-- Your Stylesheet (Single Link) -->
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-    <!-- ==========================================================================
-       Navigation Section - CORRECTED
-       - Renamed hamburger to 'nav-toggle' to match CSS.
-       - Simplified logo structure.
-       ========================================================================== -->
     <nav class="navbar" id="home">
         <div class="nav-container container">
-            <a href="#" class="logo"><img src="images/optimized/logo.png" alt="AID Marketing Logo" style="height: 40px;"></a>
+            <a href="#" class="logo">
+                <img src="images/optimized/logo.png" alt="AID Logo">
+                <span>AID Marketing</span>
+            </a>
             <ul class="nav-menu">
                 <li><a href="#home" class="nav-link">Home</a></li>
                 <li><a href="#services" class="nav-link">Services</a></li>
@@ -36,16 +27,10 @@
                 <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
             <button class="nav-toggle" aria-label="Toggle navigation">
-                <!-- Spans for the hamburger icon will be styled by CSS -->
             </button>
         </div>
     </nav>
 
-    <!-- ==========================================================================
-       Hero Section - CORRECTED
-       - Simplified to a single 'hero-content' div as the CSS expects.
-       - Used correct class names like 'hero-subtitle' and 'hero-description'.
-       ========================================================================== -->
     <section class="hero">
         <div class="container hero-content">
             <p class="hero-subtitle">AUTOMATE. INTEGRATE. DOMINATE.</p>
@@ -60,76 +45,47 @@
         </div>
     </section>
 
-    <!-- ==========================================================================
-   Services Section - UPDATED to a 3x2 Grid
-   - Now features six services for a perfectly balanced layout.
-   ========================================================================== -->
-<section id="services" class="section services">
-    <div class="container">
-        <h2 class="section-title">AI-Powered Marketing Solutions</h2>
-        <p class="text-center" style="max-width: 600px; margin: 0 auto 3rem auto;">
-            Cutting-edge technology meets proven marketing strategies to deliver results that matter.
-        </p>
-        
-        <div class="services-grid">
-            <!-- Row 1 -->
-            <div class="service-card">
-                <div class="service-icon">🤖</div>
-                <h3 class="service-title">AI Lead Generation</h3>
-                <p class="service-description">
-                    Smart, 24/7 lead capture systems that qualify and engage your ideal prospects — so you're only talking to buyers, not browsers.
-                </p>
-            </div>
-
-            <div class="service-card">
-                <div class="service-icon">⚡</div>
-                <h3 class="service-title">Marketing Automation</h3>
-                <p class="service-description">
-                    Automate your follow-up, lead nurturing, and outreach — and watch conversions grow without manual effort.
-                </p>
-            </div>
-
-            <div class="service-card">
-                <div class="service-icon">🎯</div>
-                <h3 class="service-title">Business Systems Integration</h3>
-                <p class="service-description">
-                    Connect all your platforms — CRM, ads, scheduling, and email — for seamless data flow and bulletproof operations.
-                </p>
-            </div>
-
-            <!-- Row 2 -->
-            <div class="service-card">
-                <div class="service-icon">📊</div>
-                <h3 class="service-title">Performance Analytics</h3>
-                <p class="service-description">
-                    Get actionable insights that show what’s working, what’s not, and how to maximize ROI across every campaign.
-                </p>
-            </div>
-
-            <div class="service-card">
-                <div class="service-icon">💬</div>
-                <h3 class="service-title">AI Chatbot Deployment</h3>
-                <p class="service-description">
-                    Install 24/7 AI agents on your site and socials — book calls, answer FAQs, and capture leads even while you sleep.
-                </p>
-            </div>
-
-            <div class="service-card">
-                <div class="service-icon">🔁</div>
-                <h3 class="service-title">Client Nurturing Systems</h3>
-                <p class="service-description">
-                    Automated sequences (email, text, DM) that keep leads warm, educate prospects, and close more deals over time.
-                </p>
+    <section id="services" class="section services">
+        <div class="container">
+            <h2 class="section-title">AI-Powered Marketing Solutions</h2>
+            <p class="text-center" style="max-width: 600px; margin: 0 auto 3rem auto;">
+                Cutting-edge technology meets proven marketing strategies to deliver results that matter.
+            </p>
+             <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🤖</div>
+                    <h3>AI Lead Generation</h3>
+                    <p>Smart, 24/7 lead capture systems that qualify and engage your ideal prospects — so you're only talking to buyers, not browsers.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">⚡</div>
+                    <h3>Marketing Automation</h3>
+                    <p>Automate your follow-up, lead nurturing, and outreach — and watch conversions grow without manual effort.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🎯</div>
+                    <h3>Business Systems Integration</h3>
+                    <p>Connect all your platforms — CRM, ads, scheduling, and email — for seamless data flow and bulletproof operations.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📊</div>
+                    <h3>Performance Analytics</h3>
+                    <p>Get actionable insights that show what’s working, what’s not, and how to maximize ROI across every campaign.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">💬</div>
+                    <h3>AI Chatbot Deployment</h3>
+                    <p>Install 24/7 AI agents on your site and socials — book calls, answer FAQs, and capture leads even while you sleep.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🔁</div>
+                    <h3>Client Nurturing Systems</h3>
+                    <p>Automated sequences (email, text, DM) that keep leads warm, educate prospects, and close more deals over time.</p>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-    <!-- ==========================================================================
-       About Section - CORRECTED
-       - Completely restructured to match the two-column layout the CSS expects.
-       - Added 'about-stats' grid for the key numbers.
-       ========================================================================== -->
     <section id="about" class="section about">
         <div class="container">
             <div class="about-content">
@@ -156,24 +112,14 @@
         </div>
     </section>
 
-    <!-- ==========================================================================
-       Testimonials Section - CORRECTED
-       - Renamed author image class to 'author-avatar' to match CSS.
-       - Structured the star ratings as the CSS expects.
-       ========================================================================== -->
     <section id="testimonials" class="section testimonials">
         <div class="container">
             <h2 class="section-title">What Our Clients Say</h2>
             <p class="text-center" style="max-width: 600px; margin: 0 auto 3rem auto;">Real results from real businesses</p>
-            
             <div class="testimonials-grid">
-                <div class="testimonial-card">
-                    <div class="testimonial-rating">
-                        <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
-                    </div>
-                    <p class="testimonial-text">
-                        "Ryan completely transformed our email marketing strategy... The website optimization work has been a game-changer for Never Work the 40 - our engagement rates have never been higher!"
-                    </p>
+                 <div class="testimonial-card">
+                    <div class="testimonial-rating">★★★★★</div>
+                    <p class="testimonial-text">"Ryan completely transformed our email marketing strategy... The website optimization work has been a game-changer for Never Work the 40 - our engagement rates have never been higher!"</p>
                     <div class="testimonial-author">
                         <img src="images/optimized/jeremy-funderburk.jpg" alt="Jeremy Funderburk Photo" class="author-avatar">
                         <div class="author-info">
@@ -182,14 +128,9 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="testimonial-card">
-                    <div class="testimonial-rating">
-                        <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
-                    </div>
-                    <p class="testimonial-text">
-                        "The lead generation automation Ryan set up...has been incredible. It's like having a full-time marketing team working 24/7!"
-                    </p>
+                    <div class="testimonial-rating">★★★★★</div>
+                    <p class="testimonial-text">"The lead generation automation Ryan set up...has been incredible. It's like having a full-time marketing team working 24/7!"</p>
                     <div class="testimonial-author">
                         <img src="images/optimized/bob-gors.jpg" alt="Bob Gors Photo" class="author-avatar">
                         <div class="author-info">
@@ -198,14 +139,9 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="testimonial-card">
-                    <div class="testimonial-rating">
-                        <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
-                    </div>
-                    <p class="testimonial-text">
-                        "Ryan's automation for our social media management has been phenomenal... The intelligent link hub Ryan developed has been a game-changer."
-                    </p>
+                    <div class="testimonial-rating">★★★★★</div>
+                    <p class="testimonial-text">"Ryan's automation for our social media management has been phenomenal... The intelligent link hub Ryan developed has been a game-changer."</p>
                     <div class="testimonial-author">
                         <img src="images/optimized/gina-davila.jpg" alt="Gina Davila Photo" class="author-avatar">
                         <div class="author-info">
@@ -218,46 +154,29 @@
         </div>
     </section>
     
-    <!-- ==========================================================================
-   Contact Section - UPDATED
-   - Replaced the form with a dedicated image placeholder.
-   ========================================================================== -->
-<section id="contact" class="section contact">
-    <div class="container">
-        <h2 class="section-title">Ready to Dominate Your Market?</h2>
-        
-        <div class="contact-content">
-            <div class="contact-info">
+    <section id="contact" class="section contact">
+        <div class="container">
+            <h2 class="section-title">Ready to Dominate Your Market?</h2>
+            <div class="contact-cards-container">
                 <div class="contact-item">
                     <div class="contact-icon">📧</div>
                     <div class="contact-text">
                         <h4>Email Us</h4>
-                        <p>ryan@aidmarketingagency.com</p>
+                        <a href="mailto:ryan@aidmarketingagency.com">ryan@aidmarketingagency.com</a>
                     </div>
                 </div>
                  <div class="contact-item">
                     <div class="contact-icon">📱</div>
                     <div class="contact-text">
                         <h4>Call Us</h4>
-                        <p>(856) 340-8990</p>
+                        <a href="tel:1-856-340-8990">(856) 340-8990</a>
                     </div>
                 </div>
             </div>
-
-            <!-- The form is now replaced with this image placeholder -->
-            <div class="contact-image">
-                <img src="images/optimized/contact-image.png" alt="AI Marketing Contact Image">
-            </div>
-            
+            <hr class="section-divider">
         </div>
-    </div>
-</section>
+    </section>
 
-    <!-- ==========================================================================
-       Footer Section - CORRECTED
-       - Used h3 for titles to match CSS.
-       - Corrected social links structure. You still need to add image/icon tags.
-       ========================================================================== -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
@@ -277,9 +196,9 @@
                 <div class="footer-section">
                     <h3>Connect</h3>
                     <div class="social-links">
-                        <a href="https://www.facebook.com/aidmarketingagency" class="social-link" aria-label="Facebook">FB</a>
-                        <a href="https://www.linkedin.com/in/ryan-mcnally-7930421bb" class="social-link" aria-label="LinkedIn">LI</a>
-                        <a href="https://www.instagram.com/ryan_is_ridiculous/?hl=en" class="social-link" aria-label="Instagram">IG</a>
+                        <a href="https://www.facebook.com/aidmarketingagency" class="social-link" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M14 13.5h2.5l1-4H14v-2c0-1.03 0-2 2-2h1.5V2.14c-.326-.043-1.557-.14-2.857-.14C11.928 2 10 3.657 10 6.7v2.8H7v4h3V22h4v-8.5z"/></svg></a>
+                        <a href="https://www.linkedin.com/in/ryan-mcnally-7930421bb" class="social-link" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M6.5 21.5h-5v-13h5v13zM4 6.5C2.5 6.5 1.5 5.5 1.5 4s1-2.5 2.5-2.5c1.6 0 2.5 1 2.5 2.5S5.6 6.5 4 6.5zM21.5 21.5h-5v-6.6c0-1.7-.6-2.8-2.1-2.8-1.2 0-1.8.8-2.1 1.6-.1.3-.1.6-.1 1v6.8h-5v-13h5v2.2c.6-1 1.6-2.2 4.5-2.2 3.3 0 5.6 2.1 5.6 6.6v6.4z"/></svg></a>
+                        <a href="https://www.instagram.com/ryan_is_ridiculous/?hl=en" class="social-link" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.011 3.584-.069 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.584-.012-4.85-.07c-3.252-.148-4.771-1.691-4.919-4.919-.058-1.265-.069-1.645-.069-4.85s.011-3.584.069-4.85c.149-3.225 1.664-4.771 4.919 4.919 1.266-.057 1.644-.069 4.85-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98 1.281.059 1.689.073 4.948.073s3.667-.014 4.947-.072c4.358-.2 6.78-2.618 6.98-6.98.059-1.281.073-1.689-.073-4.948s-.014-3.667-.072-4.947c-.2-4.358-2.618-6.78-6.98-6.98-1.281-.059-1.689-.073-4.948-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.79 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.441 1.441 1.441 1.441-.645 1.441-1.441-.645-1.44-1.441-1.44z"/></svg></a>
                     </div>
                 </div>
             </div>
@@ -289,37 +208,16 @@
         </div>
     </footer>
 
-    <!-- ==========================================================================
-       JavaScript - CORRECTED
-       - Changed '.hamburger' to '.nav-toggle' to match the new HTML/CSS.
-       ========================================================================== -->
     <script>
+        // Your original, working script
         const navToggle = document.querySelector('.nav-toggle');
         const navMenu = document.querySelector('.nav-menu');
-
         if (navToggle && navMenu) {
             navToggle.addEventListener('click', () => {
                 navMenu.classList.toggle('active');
-            });
-
-            // Add this to make the toggle button itself animate (the X)
-            navToggle.addEventListener('click', () => {
                 navToggle.classList.toggle('active');
             });
         }
-
-        // Close mobile menu when a link is clicked
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', () => {
-                if (navMenu.classList.contains('active')) {
-                    navToggle.classList.remove('active');
-                    navMenu.classList.remove('active');
-                }
-            });
-        });
-
-        // Smooth scrolling for navigation links
-        // No changes needed here, it should work fine.
     </script>
 </body>
 </html>
