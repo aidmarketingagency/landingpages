@@ -1,223 +1,572 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AID Marketing Agency | Automate. Integrate. Dominate.</title>
-    <meta name="description" content="Transform your business with AI-powered marketing automation, lead generation, and business systems. AID Marketing Agency helps small businesses dominate their markets.">
-    <meta name="keywords" content="AI marketing, automation, lead generation, small business systems, marketing agency">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AIDHQ — More Jobs. Same Crew.</title>
+  <meta name="description" content="Contractors lose jobs to slow follow-up. AIDHQ fixes that with AI-powered lead response, automation, and systems built for trades businesses.">
+  <meta name="keywords" content="AI receptionist contractors, HVAC lead generation, roofing automation, speed to lead, AI marketing trades">
+  <meta property="og:title" content="AIDHQ — More Jobs. Same Crew.">
+  <meta property="og:description" content="Stop losing jobs to slow follow-up. AI lead response, 24/7 automation, built for roofers and HVAC.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://aidmarketingagency.com">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <nav class="navbar" id="home">
-        <div class="nav-container container">
-            <a href="#" class="logo">
-                <img src="images/optimized/logo.png" alt="AID Logo">
-                <span>AID Marketing</span>
-            </a>
-            <ul class="nav-menu">
-                <li><a href="#home" class="nav-link">Home</a></li>
-                <li><a href="#services" class="nav-link">Services</a></li>
-                <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#testimonials" class="nav-link">Testimonials</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
-            </ul>
-            <button class="nav-toggle" aria-label="Toggle navigation">
+  <!-- NAVBAR -->
+  <nav class="navbar" id="home">
+    <div class="nav-inner">
+      <a href="#home" class="nav-logo">
+        <img src="images/optimized/logo.png" alt="AIDHQ Logo"
+             onerror="this.style.display='none'; document.getElementById('logo-fallback').style.display='flex'">
+        <span id="logo-fallback" class="logo-fallback">
+          <svg width="22" height="22" viewBox="0 0 100 100" fill="none">
+            <polygon points="50,4 96,50 50,96 4,50" fill="none" stroke="#C9A84C" stroke-width="9"/>
+            <polygon points="50,19 81,50 50,81 19,50" fill="none" stroke="#C9A84C" stroke-width="6"/>
+            <rect x="12" y="45" width="76" height="10" fill="#C9A84C"/>
+          </svg>
+          AIDHQ
+        </span>
+      </a>
+
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#products">Products</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#testimonials">Results</a></li>
+        <li><a href="#contact" class="btn btn-nav nav-cta-link">Book a Call</a></li>
+      </ul>
+
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg-grid"></div>
+    <div class="hero-glow"></div>
+    <div class="container">
+      <div class="hero-inner">
+        <p class="hero-eyebrow">// AI · Automation · Speed-to-Lead</p>
+        <h1 class="hero-title">
+          More Jobs.<br>
+          <span class="text-brass">Same Crew.</span>
+        </h1>
+        <p class="hero-sub">
+          Contractors lose jobs to slow follow-up. AIDHQ fixes that —
+          AI answers the phone, qualifies the lead, and books the job
+          before your competitor even calls back.
+        </p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-primary">
+            Get Your Free Strategy Session
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="#products" class="btn btn-ghost">See What We Build</a>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <span class="hero-stat-num">500+</span>
+            <span class="hero-stat-label">Leads Generated</span>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-stat-num">24/7</span>
+            <span class="hero-stat-label">AI Coverage</span>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-stat-num">&lt;90s</span>
+            <span class="hero-stat-label">Response Time</span>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-stat-num">3×</span>
+            <span class="hero-stat-label">Conversion Lift</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOOK STRIP -->
+  <div class="hook-strip">
+    <div class="container">
+      <div class="hook-inner">
+        <div class="hook-item">
+          <span class="hook-icon">📞</span>
+          <span class="hook-text">AI answers every call instantly</span>
+        </div>
+        <div class="hook-divider"></div>
+        <div class="hook-item">
+          <span class="hook-icon">⚡</span>
+          <span class="hook-text">Follow-up in under 90 seconds</span>
+        </div>
+        <div class="hook-divider"></div>
+        <div class="hook-item">
+          <span class="hook-icon">🎯</span>
+          <span class="hook-text">Only talk to qualified buyers</span>
+        </div>
+        <div class="hook-divider"></div>
+        <div class="hook-item">
+          <span class="hook-icon">📈</span>
+          <span class="hook-text">Same team. More revenue.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <section class="section" id="services">
+    <div class="container">
+      <div class="section-header fade-up">
+        <span class="section-label">What We Do</span>
+        <h2>AI Systems Built for the Trades</h2>
+        <p>Everything you need to capture more leads, close more jobs, and stop losing revenue to slow response time.</p>
+      </div>
+
+      <div class="services-grid">
+        <div class="glass-card service-card fade-up">
+          <div class="service-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 015.19 12.7 19.79 19.79 0 012.12 4.03 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          </div>
+          <h3>AI Receptionist</h3>
+          <p>Your phone answers itself — 24/7, holidays included. AI qualifies the lead, books the appointment, and notifies your crew. You only talk to buyers.</p>
+        </div>
+
+        <div class="glass-card service-card fade-up">
+          <div class="service-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <h3>Speed-to-Lead Automation</h3>
+          <p>The first business to respond wins 78% of jobs. Our automation replies in under 90 seconds — text, email, DM — before your competitor returns the call.</p>
+        </div>
+
+        <div class="glass-card service-card fade-up">
+          <div class="service-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+          </div>
+          <h3>Lead Nurturing Sequences</h3>
+          <p>Automated follow-up campaigns (SMS, email, DM) keep your pipeline warm for 30, 60, and 90 days — converting leads on their timeline, not yours.</p>
+        </div>
+
+        <div class="glass-card service-card fade-up">
+          <div class="service-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          </div>
+          <h3>CRM &amp; Systems Integration</h3>
+          <p>Connect your scheduling, estimates, invoicing, and marketing tools into one clean system. No more double-entry. No more missed hand-offs.</p>
+        </div>
+
+        <div class="glass-card service-card fade-up">
+          <div class="service-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+          </div>
+          <h3>AI Chatbot Deployment</h3>
+          <p>A 24/7 AI agent on your website and Google Business Profile. Books calls, answers FAQs, qualifies leads — even at 11 PM when you're with your family.</p>
+        </div>
+
+        <div class="glass-card service-card fade-up">
+          <div class="service-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+          </div>
+          <h3>Performance Analytics</h3>
+          <p>See which channels generate jobs, what your cost-per-lead is, and where revenue is leaking. Monthly reports in plain English — no dashboard PhD required.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCTS -->
+  <section class="section section-alt" id="products">
+    <div class="container">
+      <div class="section-header center fade-up">
+        <span class="section-label">Products</span>
+        <h2>Built for the Field</h2>
+        <p>Purpose-built tools for contractors and property managers — not generic SaaS duct-taped together.</p>
+      </div>
+
+      <div class="products-grid">
+        <div class="glass-card product-card fade-up">
+          <span class="product-badge">Live ✓</span>
+          <h3>AI Receptionist</h3>
+          <p>Every missed call is a missed job. Our AI Receptionist answers every inbound call, qualifies the lead with smart questions, and books the estimate — 24/7, zero overtime.</p>
+          <a href="#contact" class="product-cta">
+            Get Set Up
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+
+        <div class="glass-card product-card fade-up">
+          <span class="product-badge">Live ✓</span>
+          <h3>Condition Docs AI</h3>
+          <p>Turn 45-minute move-out inspections into 90-second AI-generated reports using phone photos. NC deposit dispute standards (NCGS 42) built in. For property managers running 50–200 units.</p>
+          <a href="https://condition-docs-ai.netlify.app" target="_blank" rel="noopener" class="product-cta">
+            Free Trial — No Card Required
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+
+        <div class="glass-card product-card fade-up">
+          <span class="product-badge">In Development</span>
+          <h3>MOV Dashboard</h3>
+          <p>Move-out vacancy tracking for property management teams. Know which units are vacant, staged, or revenue-ready at a glance. Eliminate the "call and check" loop forever.</p>
+          <a href="#contact" class="product-cta">
+            Join the Waitlist
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-image-wrap fade-up">
+          <img src="images/optimized/about-image.jpg" alt="Ryan McNally — AIDHQ Founder" loading="lazy">
+          <div class="about-badge glass-card">
+            <div class="about-badge-num">500+</div>
+            <div class="about-badge-desc">Leads generated for clients</div>
+          </div>
+        </div>
+
+        <div class="about-text fade-up">
+          <span class="section-label">About</span>
+          <h2>Ryan McNally</h2>
+          <p>
+            I built AIDHQ because I kept watching great contractors lose jobs — not from lack of skill,
+            but from slow follow-up. The homeowner calls three roofers. The first one to respond wins.
+          </p>
+          <p>
+            I fix that. AI answers your phone, follows up in seconds, and qualifies the lead before
+            you even know someone called. Your crew stays the same size. Your revenue doesn't.
+          </p>
+          <ul class="about-bullets">
+            <li>AI systems running 24/7 — never a missed lead</li>
+            <li>Purpose-built for contractors, HVAC, and property managers</li>
+            <li>No generic SaaS stacks — everything configured for your business</li>
+            <li>Based in NC. Real clients. Real jobs won.</li>
+          </ul>
+          <a href="#contact" class="btn btn-primary">Let's Talk Strategy</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="section section-alt" id="testimonials">
+    <div class="container">
+      <div class="section-header center fade-up">
+        <span class="section-label">Results</span>
+        <h2>What Clients Say</h2>
+        <p>Real businesses. Real results.</p>
+      </div>
+
+      <div class="testimonials-grid">
+        <div class="glass-card testimonial-card fade-up">
+          <div class="stars">★★★★★</div>
+          <p class="testimonial-text">Ryan completely transformed our email marketing strategy. The website optimization work has been a game-changer for Never Work the 40 — our engagement rates have never been higher!</p>
+          <div class="testimonial-author">
+            <img src="images/optimized/jeremy-funderburk.jpg" alt="Jeremy Funderburk" class="author-avatar" loading="lazy">
+            <div>
+              <div class="author-name">Jeremy Funderburk</div>
+              <div class="author-title">Founder, Never Work the 40</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="glass-card testimonial-card fade-up">
+          <div class="stars">★★★★★</div>
+          <p class="testimonial-text">The lead generation automation Ryan set up has been incredible. It's like having a full-time marketing team working 24/7!</p>
+          <div class="testimonial-author">
+            <img src="images/optimized/bob-gors.jpg" alt="Bob Gors" class="author-avatar" loading="lazy">
+            <div>
+              <div class="author-name">Bob Gors</div>
+              <div class="author-title">Founder &amp; President, Business Leaders Unleashed</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="glass-card testimonial-card fade-up">
+          <div class="stars">★★★★★</div>
+          <p class="testimonial-text">Ryan's automation for our social media management has been phenomenal. The intelligent link hub he developed has been a game-changer.</p>
+          <div class="testimonial-author">
+            <img src="images/optimized/gina-davila.jpg" alt="Gina Davila" class="author-avatar" loading="lazy">
+            <div>
+              <div class="author-name">Gina Davila</div>
+              <div class="author-title">Marketing Director, Pillar To Post — McNally Team</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section" id="contact">
+    <div class="container">
+      <div class="section-header fade-up">
+        <span class="section-label">Get Started</span>
+        <h2>Ready to Stop Losing Jobs?</h2>
+        <p>Free 30-minute strategy call. We'll identify exactly where your revenue is leaking and what to fix first.</p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-info fade-up">
+          <h3>Talk to Ryan</h3>
+          <p>No pitch. No pressure. Just an honest look at your lead flow and what AI can do for your business today.</p>
+          <div class="contact-items">
+            <div class="contact-item">
+              <div class="contact-item-icon">📧</div>
+              <div>
+                <div class="contact-item-label">Email</div>
+                <div class="contact-item-value">
+                  <a href="mailto:ryan@aidmarketingagency.com">ryan@aidmarketingagency.com</a>
+                </div>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-item-icon">📞</div>
+              <div>
+                <div class="contact-item-label">Phone</div>
+                <div class="contact-item-value">
+                  <a href="tel:+18563408990">(856) 340-8990</a>
+                </div>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-item-icon">📍</div>
+              <div>
+                <div class="contact-item-label">Location</div>
+                <div class="contact-item-value">North Carolina, USA</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="glass-card contact-form-wrap fade-up">
+          <form id="contact-form" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="fname">Name</label>
+                <input type="text" id="fname" name="name" placeholder="Your name" required autocomplete="name">
+              </div>
+              <div class="form-group">
+                <label for="femail">Email</label>
+                <input type="email" id="femail" name="email" placeholder="you@company.com" required autocomplete="email">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="fphone">Phone</label>
+                <input type="tel" id="fphone" name="phone" placeholder="(555) 000-0000" autocomplete="tel">
+              </div>
+              <div class="form-group">
+                <label for="fbiz">Business Type</label>
+                <select id="fbiz" name="business_type">
+                  <option value="">Select one...</option>
+                  <option value="roofing">Roofing</option>
+                  <option value="hvac">HVAC</option>
+                  <option value="plumbing">Plumbing</option>
+                  <option value="general_contractor">General Contractor</option>
+                  <option value="property_management">Property Management</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="fmsg">What's your biggest lead problem?</label>
+              <textarea id="fmsg" name="message" placeholder="e.g. We miss calls after hours. Leads go cold. We don't know which ads are working..." required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-full" id="submit-btn">
+              Send Message
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13M22 2L15 22 11 13 2 9l20-7z"/></svg>
             </button>
+            <div class="form-status" id="form-status" role="alert" aria-live="polite"></div>
+          </form>
         </div>
-    </nav>
+      </div>
+    </div>
+  </section>
 
-    <section class="hero">
-        <div class="container hero-content">
-            <p class="hero-subtitle">AUTOMATE. INTEGRATE. DOMINATE.</p>
-            <h1 class="hero-title">Transform Your Business with AI-Powered Marketing</h1>
-            <p class="hero-description">
-                Stop losing leads and start dominating your market. Our AI-driven automation systems generate qualified leads, nurture prospects, and scale your business while you sleep.
-            </p>
-            <div class="hero-buttons">
-                <a href="#contact" class="btn btn-primary">Get Your Free Strategy Session</a>
-                <a href="#services" class="btn btn-secondary">Explore Our Services</a>
-            </div>
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="images/optimized/logo.png" alt="AIDHQ" loading="lazy"
+               onerror="this.style.display='none'">
+          <p>AI systems for contractors and property managers. More jobs. Same crew.</p>
+          <div class="social-row">
+            <a href="https://www.linkedin.com/in/ryan-mcnally-7930421bb" class="social-btn" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.5 21.5h-5v-13h5v13zM4 6.5C2.5 6.5 1.5 5.5 1.5 4s1-2.5 2.5-2.5c1.6 0 2.5 1 2.5 2.5S5.6 6.5 4 6.5zM21.5 21.5h-5v-6.6c0-1.7-.6-2.8-2.1-2.8-1.2 0-1.8.8-2.1 1.6-.1.3-.1.6-.1 1v6.8h-5v-13h5v2.2c.6-1 1.6-2.2 4.5-2.2 3.3 0 5.6 2.1 5.6 6.6v6.4z"/></svg>
+            </a>
+            <a href="https://www.facebook.com/aidmarketingagency" class="social-btn" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 13.5h2.5l1-4H14v-2c0-1.03 0-2 2-2h1.5V2.14C17.175 2.07 16.125 2 15 2c-2.75 0-4.5 1.7-4.5 4.5V9.5H8v4h2.5V22H14v-8.5z"/></svg>
+            </a>
+            <a href="https://www.instagram.com/ryan_is_ridiculous/?hl=en" class="social-btn" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+          </div>
         </div>
-    </section>
 
-    <section id="services" class="section services">
-        <div class="container">
-            <h2 class="section-title">AI-Powered Marketing Solutions</h2>
-            <p class="text-center" style="max-width: 600px; margin: 0 auto 3rem auto;">
-                Cutting-edge technology meets proven marketing strategies to deliver results that matter.
-            </p>
-             <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">🤖</div>
-                    <h3>AI Lead Generation</h3>
-                    <p>Smart, 24/7 lead capture systems that qualify and engage your ideal prospects — so you're only talking to buyers, not browsers.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">⚡</div>
-                    <h3>Marketing Automation</h3>
-                    <p>Automate your follow-up, lead nurturing, and outreach — and watch conversions grow without manual effort.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">🎯</div>
-                    <h3>Business Systems Integration</h3>
-                    <p>Connect all your platforms — CRM, ads, scheduling, and email — for seamless data flow and bulletproof operations.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">📊</div>
-                    <h3>Performance Analytics</h3>
-                    <p>Get actionable insights that show what’s working, what’s not, and how to maximize ROI across every campaign.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">💬</div>
-                    <h3>AI Chatbot Deployment</h3>
-                    <p>Install 24/7 AI agents on your site and socials — book calls, answer FAQs, and capture leads even while you sleep.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">🔁</div>
-                    <h3>Client Nurturing Systems</h3>
-                    <p>Automated sequences (email, text, DM) that keep leads warm, educate prospects, and close more deals over time.</p>
-                </div>
-            </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="#services">AI Receptionist</a></li>
+            <li><a href="#services">Speed-to-Lead</a></li>
+            <li><a href="#services">Lead Nurturing</a></li>
+            <li><a href="#services">CRM Integration</a></li>
+            <li><a href="#services">Analytics</a></li>
+          </ul>
         </div>
-    </section>
 
-    <section id="about" class="section about">
-        <div class="container">
-            <div class="about-content">
-                <div class="about-text">
-                    <h2>Why Choose AID Marketing Agency?</h2>
-                    <p>
-                        We're not just another marketing agency. We're your AI-powered growth partner, dedicated to transforming how small businesses attract, engage, and convert customers. Your marketing works around the clock, even when you're sleeping, with real-time analytics and insights to track your success.
-                    </p>
-                    <div class="about-stats">
-                        <div class="stat-item">
-                            <span class="stat-number">500+</span>
-                            <span class="stat-label">Qualified Leads</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number">24/7</span>
-                            <span class="stat-label">Automation</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="about-image">
-                    <img src="images/optimized/about-image.jpg" alt="AID Marketing Team">
-                </div>
-            </div>
+        <div class="footer-col">
+          <h4>Products</h4>
+          <ul>
+            <li><a href="#products">AI Receptionist</a></li>
+            <li><a href="https://condition-docs-ai.netlify.app" target="_blank" rel="noopener">Condition Docs AI</a></li>
+            <li><a href="#products">MOV Dashboard</a></li>
+          </ul>
         </div>
-    </section>
 
-    <section id="testimonials" class="section testimonials">
-        <div class="container">
-            <h2 class="section-title">What Our Clients Say</h2>
-            <p class="text-center" style="max-width: 600px; margin: 0 auto 3rem auto;">Real results from real businesses</p>
-            <div class="testimonials-grid">
-                 <div class="testimonial-card">
-                    <div class="testimonial-rating">★★★★★</div>
-                    <p class="testimonial-text">"Ryan completely transformed our email marketing strategy... The website optimization work has been a game-changer for Never Work the 40 - our engagement rates have never been higher!"</p>
-                    <div class="testimonial-author">
-                        <img src="images/optimized/jeremy-funderburk.jpg" alt="Jeremy Funderburk Photo" class="author-avatar">
-                        <div class="author-info">
-                            <h4>Jeremy Funderburk</h4>
-                            <p>Founder, Never Work the 40</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-rating">★★★★★</div>
-                    <p class="testimonial-text">"The lead generation automation Ryan set up...has been incredible. It's like having a full-time marketing team working 24/7!"</p>
-                    <div class="testimonial-author">
-                        <img src="images/optimized/bob-gors.jpg" alt="Bob Gors Photo" class="author-avatar">
-                        <div class="author-info">
-                            <h4>Bob Gors</h4>
-                            <p>Founder & President, Business Leaders Unleashed (BLU)</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-rating">★★★★★</div>
-                    <p class="testimonial-text">"Ryan's automation for our social media management has been phenomenal... The intelligent link hub Ryan developed has been a game-changer."</p>
-                    <div class="testimonial-author">
-                        <img src="images/optimized/gina-davila.jpg" alt="Gina Davila Photo" class="author-avatar">
-                        <div class="author-info">
-                            <h4>Gina Davila</h4>
-                            <p>Social Media & Marketing Director, Pillar To Post - McNally Team</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#about">About Ryan</a></li>
+            <li><a href="#testimonials">Results</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+          </ul>
         </div>
-    </section>
-    
-    <section id="contact" class="section contact">
-        <div class="container">
-            <h2 class="section-title">Ready to Dominate Your Market?</h2>
-            <div class="contact-cards-container">
-                <div class="contact-item">
-                    <div class="contact-icon">📧</div>
-                    <div class="contact-text">
-                        <h4>Email Us</h4>
-                        <a href="mailto:ryan@aidmarketingagency.com">ryan@aidmarketingagency.com</a>
-                    </div>
-                </div>
-                 <div class="contact-item">
-                    <div class="contact-icon">📱</div>
-                    <div class="contact-text">
-                        <h4>Call Us</h4>
-                        <a href="tel:1-856-340-8990">(856) 340-8990</a>
-                    </div>
-                </div>
-            </div>
-            <hr class="section-divider">
-        </div>
-    </section>
+      </div>
 
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>AID Marketing</h3>
-                    <p>AI-powered marketing solutions that help small businesses automate, integrate, and dominate their markets.</p>
-                </div>
-                <div class="footer-section">
-                    <h3>Company</h3>
-                    <div class="footer-links">
-                        <a href="#about">About Us</a>
-                        <a href="#testimonials">Testimonials</a>
-                        <a href="#contact">Contact</a>
-                        <a href="#">Privacy Policy</a>
-                    </div>
-                </div>
-                <div class="footer-section">
-                    <h3>Connect</h3>
-                    <div class="social-links">
-                        <a href="https://www.facebook.com/aidmarketingagency" class="social-link" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M14 13.5h2.5l1-4H14v-2c0-1.03 0-2 2-2h1.5V2.14c-.326-.043-1.557-.14-2.857-.14C11.928 2 10 3.657 10 6.7v2.8H7v4h3V22h4v-8.5z"/></svg></a>
-                        <a href="https://www.linkedin.com/in/ryan-mcnally-7930421bb" class="social-link" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M6.5 21.5h-5v-13h5v13zM4 6.5C2.5 6.5 1.5 5.5 1.5 4s1-2.5 2.5-2.5c1.6 0 2.5 1 2.5 2.5S5.6 6.5 4 6.5zM21.5 21.5h-5v-6.6c0-1.7-.6-2.8-2.1-2.8-1.2 0-1.8.8-2.1 1.6-.1.3-.1.6-.1 1v6.8h-5v-13h5v2.2c.6-1 1.6-2.2 4.5-2.2 3.3 0 5.6 2.1 5.6 6.6v6.4z"/></svg></a>
-                        <a href="https://www.instagram.com/ryan_is_ridiculous/?hl=en" class="social-link" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.011 3.584-.069 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.584-.012-4.85-.07c-3.252-.148-4.771-1.691-4.919-4.919-.058-1.265-.069-1.645-.069-4.85s.011-3.584.069-4.85c.149-3.225 1.664-4.771 4.919 4.919 1.266-.057 1.644-.069 4.85-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98 1.281.059 1.689.073 4.948.073s3.667-.014 4.947-.072c4.358-.2 6.78-2.618 6.98-6.98.059-1.281.073-1.689-.073-4.948s-.014-3.667-.072-4.947c-.2-4.358-2.618-6.78-6.98-6.98-1.281-.059-1.689-.073-4.948-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.79 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.441 1.441 1.441 1.441-.645 1.441-1.441-.645-1.44-1.441-1.44z"/></svg></a>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>© 2025 AID Marketing Agency. All rights reserved.</p>
-            </div>
+      <div class="footer-bottom">
+        <p>© 2026 AIDHQ / AID Marketing Agency LLC. All rights reserved.</p>
+        <div class="footer-legal">
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="mailto:ryan@aidmarketingagency.com">ryan@aidmarketingagency.com</a>
         </div>
-    </footer>
+      </div>
+    </div>
+  </footer>
 
-    <script>
-        // Your original, working script
-        const navToggle = document.querySelector('.nav-toggle');
-        const navMenu = document.querySelector('.nav-menu');
-        if (navToggle && navMenu) {
-            navToggle.addEventListener('click', () => {
-                navMenu.classList.toggle('active');
-                navToggle.classList.toggle('active');
-            });
+  <!-- PAYMEGPT WIDGET — ID 203 (Condition Docs AI Assistant) -->
+  <script>
+    (function(d,s,id){
+      var js,pjs=d.getElementsByTagName(s)[0];
+      if(d.getElementById(id))return;
+      js=d.createElement(s);
+      js.id=id;
+      js.src='https://paymegpt.com/widget/embed.js';
+      js.setAttribute('data-widget-id','203');
+      js.async=true;
+      pjs.parentNode.insertBefore(js,pjs);
+    }(document,'script','paymegpt-widget'));
+  </script>
+
+  <!-- JS — Nav, Form, Scroll Animations -->
+  <script>
+    /* Mobile nav */
+    const toggle = document.getElementById('nav-toggle');
+    const navLinks = document.getElementById('nav-links');
+    if (toggle && navLinks) {
+      toggle.addEventListener('click', () => {
+        const open = navLinks.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', String(open));
+      });
+      navLinks.querySelectorAll('a').forEach(a => {
+        a.addEventListener('click', () => {
+          navLinks.classList.remove('open');
+          toggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+    }
+
+    /* Scroll opacity */
+    window.addEventListener('scroll', () => {
+      document.querySelector('.navbar').style.background =
+        window.scrollY > 40 ? 'rgba(13,13,15,0.98)' : 'rgba(13,13,15,0.92)';
+    }, { passive: true });
+
+    /* Fade-up intersection observer */
+    const fadeObs = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('visible'), i * 60);
+          fadeObs.unobserve(e.target);
         }
-    </script>
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.fade-up').forEach(el => fadeObs.observe(el));
+
+    /* Contact form */
+    const form = document.getElementById('contact-form');
+    const statusEl = document.getElementById('form-status');
+    const submitBtn = document.getElementById('submit-btn');
+
+    if (form) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const name    = form.name.value.trim();
+        const email   = form.email.value.trim();
+        const message = form.message.value.trim();
+
+        if (!name || !email || !message) {
+          showStatus('Please fill in your name, email, and message.', 'error');
+          return;
+        }
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+          showStatus('Please enter a valid email address.', 'error');
+          return;
+        }
+
+        const origHtml = submitBtn.innerHTML;
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending...';
+
+        try {
+          const res = await fetch('/.netlify/functions/contact', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              name,
+              email,
+              phone:         form.phone.value.trim(),
+              business_type: form.business_type.value,
+              message
+            })
+          });
+
+          if (res.ok) {
+            showStatus('Message sent! Ryan will be in touch within 24 hours.', 'success');
+            form.reset();
+          } else {
+            const data = await res.json().catch(() => ({}));
+            showStatus(data.message || 'Something went wrong. Please email ryan@aidmarketingagency.com directly.', 'error');
+          }
+        } catch {
+          showStatus('Network error. Please email ryan@aidmarketingagency.com directly.', 'error');
+        } finally {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = origHtml;
+        }
+      });
+    }
+
+    function showStatus(msg, type) {
+      statusEl.textContent = msg;
+      statusEl.className = 'form-status ' + type;
+      statusEl.style.display = 'block';
+      setTimeout(() => { statusEl.style.display = 'none'; }, 9000);
+    }
+  </script>
 </body>
 </html>

@@ -1,0 +1,12 @@
+{
+  "name": "aidhq-netlify-functions",
+  "version": "1.0.0",
+  "description": "Netlify Functions for AIDHQ contact form proxy",
+  "private": true,
+  "dependencies": {
+    "nodemailer": "^6.9.14"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
