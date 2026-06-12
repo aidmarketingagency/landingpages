@@ -2,7 +2,7 @@
    AID Marketing Agency - Final Production CSS (All Fixes Integrated)
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700;800&display=swap');
 
 /* --- COLOR PALETTE (OPTION 1) --- */
 :root {
@@ -31,7 +31,7 @@ img { max-width: 100%; height: auto; display: block; }
 ::-webkit-scrollbar-thumb:hover { background: var(--gold-highlight); }
 
 /* Typography */
-h1, h2, h3, h4, h5, h6 { font-weight: 700; line-height: 1.2; margin-bottom: 1rem; color: #ffffff; }
+h1, h2, h3, h4, h5, h6 { font-family: 'Outfit', sans-serif; font-weight: 700; line-height: 1.2; margin-bottom: 1rem; color: #ffffff; }
 h1 {
     font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800;
     background: linear-gradient(135deg, var(--gold-primary) 0%, var(--gold-highlight) 100%);
@@ -55,9 +55,9 @@ p { font-size: 1.1rem; line-height: 1.8; color: var(--text-secondary); margin-bo
 .navbar { position: fixed; top: 0; left: 0; right: 0; background: rgba(10, 10, 10, 0.95); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid var(--divider-color); z-index: 1000; transition: all 0.3s ease; }
 .nav-container { display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; }
 .logo { display: flex; align-items: center; gap: 15px; text-decoration: none; }
-.logo img { height: 70px; transition: transform 0.3s ease; }
+.logo img { height: 44px; width: auto; display: block; transition: transform 0.3s ease; }
 .logo:hover img { transform: scale(1.1); }
-.logo span { font-size: 1.8rem; font-weight: 800; color: var(--gold-primary); transition: transform 0.3s ease; }
+.logo span { font-family: 'Outfit', sans-serif; font-size: 1.8rem; font-weight: 800; letter-spacing: 0.06em; color: var(--gold-primary); transition: transform 0.3s ease; white-space: nowrap; }
 .logo:hover span { transform: scale(1.05); }
 .nav-menu { display: flex; list-style: none; gap: 2rem; align-items: center; }
 .nav-link { color: var(--text-secondary); text-decoration: none; font-weight: 500; font-size: 1rem; position: relative; transition: color 0.3s ease; padding: 0.5rem 0; }
@@ -68,11 +68,64 @@ p { font-size: 1.1rem; line-height: 1.8; color: var(--text-secondary); margin-bo
 
 /* Hero Section */
 .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; position: relative; background-color: var(--bg-black); overflow: hidden; }
-.hero::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: linear-gradient(var(--divider-color) 1px, transparent 1px), linear-gradient(90deg, var(--divider-color) 1px, transparent 1px); background-size: 50px 50px; animation: futuristic-grid 4s linear infinite; opacity: 0.7; z-index: 1; }
-.hero-content { text-align: center; max-width: 800px; position: relative; z-index: 2; }
+.hero::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: linear-gradient(var(--divider-color) 1px, transparent 1px), linear-gradient(90deg, var(--divider-color) 1px, transparent 1px); background-size: 50px 50px; opacity: 0.25; z-index: 1; }
+#hero-canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; }
+.hero { padding-top: 80px; }
+.hero-content { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; position: relative; z-index: 2; max-width: 1200px; }
+.hero-text { text-align: left; }
+.hero-text h1 { text-align: left; }
 .hero-subtitle { color: var(--gold-primary); text-transform: uppercase; letter-spacing: 2px; }
-.hero-description { color: var(--text-secondary); max-width: 600px; margin-left: auto; margin-right: auto; }
-.hero-buttons { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; }
+.hero-description { color: var(--text-secondary); max-width: 520px; }
+.hero-buttons { display: flex; gap: 1.5rem; flex-wrap: wrap; margin-top: 2rem; }
+
+/* Phone Mockup */
+.hero-visual { display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 1.5rem; }
+.hero-tagline { font-family: 'Outfit', sans-serif; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.22em; color: var(--gold-primary); text-transform: uppercase; opacity: 0.85; }
+.phone-wrap { display: flex; flex-direction: column; align-items: center; gap: 1.2rem; }
+.phone-frame { width: 220px; height: 420px; background: #0a0a0a; border: 2px solid rgba(212,175,55,0.35); border-radius: 36px; padding: 0; position: relative; box-shadow: 0 0 60px rgba(212,175,55,0.08), 0 30px 80px rgba(0,0,0,0.6), inset 0 0 0 1px rgba(255,255,255,0.04); overflow: hidden; }
+.phone-notch { width: 60px; height: 6px; background: rgba(212,175,55,0.2); border-radius: 3px; margin: 14px auto 0; }
+.phone-screen { position: absolute; top: 36px; left: 8px; right: 8px; bottom: 28px; background: #0d0d0f; border-radius: 28px; overflow: hidden; display: flex; flex-direction: column; }
+.phone-home-bar { position: absolute; bottom: 8px; left: 50%; transform: translateX(-50%); width: 60px; height: 4px; background: rgba(212,175,55,0.3); border-radius: 2px; }
+.phone-caption { font-family: 'Inter', sans-serif; font-size: 0.8rem; color: var(--text-secondary); letter-spacing: 0.05em; text-align: center; opacity: 0.7; }
+
+/* Phone States */
+.phone-state { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 1.2rem; opacity: 0; transition: opacity 0.5s ease; pointer-events: none; }
+.phone-state.active { opacity: 1; pointer-events: auto; }
+
+/* Ring state */
+.call-avatar { width: 60px; height: 60px; border-radius: 50%; background: rgba(212,175,55,0.12); border: 1.5px solid rgba(212,175,55,0.4); display: flex; align-items: center; justify-content: center; color: var(--gold-primary); position: relative; z-index: 2; }
+.call-avatar svg { width: 28px; height: 28px; }
+.ring-rings { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
+.ring { position: absolute; width: 60px; height: 60px; border-radius: 50%; border: 1.5px solid rgba(212,175,55,0.4); animation: ring-pulse 2s ease-out infinite; }
+.r2 { animation-delay: 0.6s; }
+.r3 { animation-delay: 1.2s; }
+@keyframes ring-pulse { 0% { transform: scale(1); opacity: 0.7; } 100% { transform: scale(2.6); opacity: 0; } }
+.call-label { font-family: 'Outfit', sans-serif; font-size: 1rem; font-weight: 700; color: #fff; margin-top: 1rem; letter-spacing: 0.02em; }
+.call-sub { font-size: 0.75rem; color: var(--text-secondary); margin-top: 0.25rem; }
+
+/* Missed state */
+.missed-icon { width: 60px; height: 60px; border-radius: 50%; background: rgba(239,68,68,0.12); border: 1.5px solid rgba(239,68,68,0.4); display: flex; align-items: center; justify-content: center; }
+.missed-icon svg { width: 28px; height: 28px; }
+
+/* SMS states */
+.sms-bar { width: 100%; padding: 0.6rem 0.8rem; background: rgba(212,175,55,0.06); border-bottom: 1px solid rgba(212,175,55,0.1); font-family: 'Outfit', sans-serif; font-size: 0.8rem; font-weight: 700; color: var(--gold-primary); text-align: center; flex-shrink: 0; }
+.sms-thread { flex: 1; overflow: hidden; padding: 0.8rem 0.6rem; display: flex; flex-direction: column; gap: 0.5rem; justify-content: flex-end; }
+.sms-bubble { font-size: 0.72rem; line-height: 1.5; padding: 0.5rem 0.7rem; border-radius: 14px; max-width: 85%; word-break: break-word; animation: bubble-in 0.4s ease; }
+@keyframes bubble-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+.sms-out { background: var(--gold-primary); color: #000; align-self: flex-end; border-bottom-right-radius: 4px; }
+.sms-in { background: #1e1e22; color: #fff; align-self: flex-start; border-bottom-left-radius: 4px; }
+.sms-time { display: block; font-size: 0.6rem; opacity: 0.6; margin-top: 0.2rem; text-align: right; }
+
+@media (max-width: 900px) {
+    .hero { padding-top: 100px; padding-bottom: 3rem; }
+    .hero-content { grid-template-columns: 1fr; gap: 2.5rem; }
+    .hero-text { text-align: center; }
+    .hero-text h1 { text-align: center; }
+    .hero-description { margin: 0 auto; }
+    .hero-buttons { justify-content: center; }
+    .hero-visual { order: -1; }
+    .phone-frame { width: 180px; height: 340px; }
+}
 
 /* Buttons */
 .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2rem; border-radius: 12px; font-weight: 600; text-decoration: none; cursor: pointer; transition: all 0.3s ease; }
@@ -82,10 +135,12 @@ p { font-size: 1.1rem; line-height: 1.8; color: var(--text-secondary); margin-bo
 .btn-secondary:hover { background: var(--gold-primary); color: var(--bg-black); }
 
 /* Services Section */
+.services { padding-top: 3.5rem; }
 .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; }
 .service-card { background: var(--bg-dark-charcoal); border: 1px solid var(--divider-color); border-radius: 20px; padding: 2.5rem; text-align: center; transition: all 0.3s ease; }
-.service-card:hover { transform: translateY(-10px); box-shadow: 0 20px 60px rgba(212, 175, 55, 0.1); border-color: var(--gold-primary); }
-.service-icon { font-size: 3rem; color: var(--gold-primary); margin-bottom: 1.5rem; }
+.service-card:hover { transform: translateY(-6px); box-shadow: 0 12px 32px rgba(0,0,0,0.4); border-color: var(--gold-primary); }
+.service-icon { display: flex; justify-content: center; align-items: center; margin-bottom: 1.5rem; color: var(--gold-primary); }
+.service-icon svg { width: 48px; height: 48px; }
 
 /* About Section */
 .about-content { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
@@ -110,7 +165,8 @@ p { font-size: 1.1rem; line-height: 1.8; color: var(--text-secondary); margin-bo
 /* Contact Section */
 .contact-cards-container { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-bottom: 2rem; }
 .contact-item { background: var(--bg-dark-charcoal); border-radius: 12px; padding: 24px 32px; display: flex; align-items: center; gap: 1.5rem; }
-.contact-icon { font-size: 1.5rem; color: var(--gold-primary); }
+.contact-icon { color: var(--gold-primary); display: flex; align-items: center; flex-shrink: 0; }
+.contact-icon svg { width: 28px; height: 28px; }
 .contact-text h4 { color: var(--gold-primary); }
 .contact-text a { color: var(--text-secondary); text-decoration: none; transition: color 0.3s ease; }
 .contact-text a:hover { color: var(--gold-highlight); }
@@ -133,6 +189,11 @@ p { font-size: 1.1rem; line-height: 1.8; color: var(--text-secondary); margin-bo
 
 /* Mobile Responsive Adjustments */
 @media (max-width: 768px) {
-    .nav-toggle { display: block; }
+    .nav-toggle { display: flex; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
+    .nav-toggle span { display: block; width: 24px; height: 2px; background: var(--gold-primary); border-radius: 2px; transition: all 0.3s ease; }
+    .nav-menu { display: none; position: absolute; top: 100%; left: 0; right: 0; background: rgba(10,10,10,0.98); backdrop-filter: blur(20px); flex-direction: column; padding: 1.5rem 2rem; gap: 1.2rem; border-bottom: 1px solid var(--divider-color); z-index: 999; }
+    .nav-menu.active { display: flex; }
     .about-content { grid-template-columns: 1fr; }
+    .logo img { height: 36px; }
+    .logo span { font-size: 1.4rem; }
 }

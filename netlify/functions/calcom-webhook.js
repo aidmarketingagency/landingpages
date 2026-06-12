@@ -56,7 +56,7 @@ async function writeBooking(payload) {
 
   return post(
     new URL(SUPABASE_URL).hostname,
-    "/rest/v1/bookings",
+    "/rest/v1/bookings?on_conflict=booking_uid",
     {
       "Content-Type": "application/json",
       apikey: SUPABASE_KEY,
