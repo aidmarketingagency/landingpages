@@ -4,14 +4,14 @@
 // Triggers: BOOKING_CREATED, BOOKING_RESCHEDULED, BOOKING_CANCELLED
 // Env vars required (set in Netlify site settings):
 //   SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY
-//   TELEGRAM_BOT_TOKEN, TELEGRAM_OWNER_CHAT_ID
+//   TELEGRAM_WORKSPACE_BOT_TOKEN, TELEGRAM_OWNER_CHAT_ID
 //   CALCOM_WEBHOOK_SECRET (optional — enables signature verification)
 
 const https = require("https");
 
 const SUPABASE_URL = process.env.SUPABASE_URL;
 const SUPABASE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
-const TELEGRAM_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
+const TELEGRAM_TOKEN = process.env.TELEGRAM_WORKSPACE_BOT_TOKEN;
 const TELEGRAM_CHAT_ID = process.env.TELEGRAM_OWNER_CHAT_ID;
 const WEBHOOK_SECRET = process.env.CALCOM_WEBHOOK_SECRET;
 
