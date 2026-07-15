@@ -1,0 +1,213 @@
+<!--
+  AID Blog Post Renderer Template
+  ================================
+  This file is NOT a standalone page. It is consumed by the Chunk 2 Python
+  renderer (execution/blog_engine.py), which replaces every {{TOKEN}} below
+  with rendered content and writes the result as a real post HTML file.
+
+  Placeholder contract (exact tokens, case-sensitive):
+    {{TITLE}}             - H1 text, the natural-language query/promise (plain text, no HTML)
+    {{META_TITLE}}         - <title> tag text, <= 60 chars
+    {{META_DESCRIPTION}}    - meta description, 140-160 chars, written as the answer teaser
+    {{CANONICAL_URL}}      - full https://aidmarketingagency.com/blog/<slug> URL
+    {{JSONLD}}             - full <script type="application/ld+json">...</script> block(s):
+                              BlogPosting + FAQPage schema, author -> Person (sameAs LinkedIn)
+    {{HERO_IMG}}            - full <img> tag (or <picture>) for the hero image, with alt text
+    {{TOC}}                 - rendered table-of-contents HTML (jump links to every H2); empty
+                              string when the post is under 1,000 words per format-spec.md
+    {{CONTENT}}             - the rendered post body HTML (TL;DR, H2 sections, original element)
+    {{FAQ_HTML}}            - rendered FAQ block HTML (3-5 Q&A pairs, mirrors FAQPage schema)
+    {{PUBLISHED_DATE}}      - human-readable published date, e.g. "July 15, 2026"
+    {{UPDATED_DATE}}        - human-readable updated-on date, e.g. "July 15, 2026"
+    {{CONTENT_HASH}}        - sha256 of the exact approved markdown; lands in the
+                              <meta name="aid-content-hash"> tag for deploy-identity verification
+    {{BYLINE_CARD}}         - rendered byline card HTML (photo, credential line, dates, link)
+
+  Format contract: docs/blog/format-spec.md (Chunk 2). Renderer must NOT alter this
+  token list without updating both this header and blog_engine.py in the same change.
+
+  IMPLEMENTATION NOTE FOR THE RENDERER: this documentation comment intentionally
+  repeats the literal double-curly-brace token strings for readability. The
+  renderer MUST strip this entire leading HTML comment block before running
+  token substitution, otherwise a naive find-and-replace will also rewrite the
+  token names inside this comment and duplicate content.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{META_TITLE}}</title>
+    <meta name="description" content="{{META_DESCRIPTION}}">
+    <link rel="canonical" href="{{CANONICAL_URL}}">
+    <meta name="aid-content-hash" content="{{CONTENT_HASH}}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
+    {{JSONLD}}
+    <style>
+        .post-hero { padding: 7.5rem 0 2rem; }
+        .post-hero-inner { max-width: 780px; margin: 0 auto; }
+        .post-hero h1 { font-size: clamp(1.8rem, 4.5vw, 2.75rem); text-align: left; margin-bottom: 1rem; }
+        .post-hero-img { width: 100%; border-radius: 16px; margin-bottom: 1.5rem; box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
+
+        .post-dates { font-size: 0.85rem; color: var(--text-secondary); opacity: 0.8; margin-bottom: 1.5rem; }
+
+        .post-tldr {
+            max-width: 780px; margin: 0 auto 2rem;
+            background: var(--bg-dark-charcoal);
+            border-left: 3px solid var(--gold-primary);
+            border-radius: 12px;
+            padding: 1.5rem 1.75rem;
+        }
+        .post-tldr p { color: #ffffff; margin-bottom: 0; }
+
+        .post-toc {
+            max-width: 780px; margin: 0 auto 2.5rem;
+            background: var(--bg-dark-charcoal);
+            border: 1px solid var(--divider-color);
+            border-radius: 12px;
+            padding: 1.5rem 1.75rem;
+        }
+        .post-toc h2 { font-size: 1rem; text-align: left; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gold-primary); background: none; -webkit-text-fill-color: var(--gold-primary); margin-bottom: 0.75rem; }
+        .post-toc ul { list-style: none; padding: 0; margin: 0; }
+        .post-toc li { margin-bottom: 0.5rem; }
+        .post-toc a { color: var(--text-secondary); text-decoration: none; font-size: 0.95rem; }
+        .post-toc a:hover { color: var(--gold-primary); }
+
+        .post-body { max-width: 780px; margin: 0 auto; }
+        .post-body h2 { font-size: 1.5rem; text-align: left; margin-top: 2.5rem; background: none; -webkit-text-fill-color: var(--gold-primary); color: var(--gold-primary); }
+        .post-body h3 { font-size: 1.15rem; text-align: left; margin-top: 1.5rem; }
+        .post-body p { color: var(--text-secondary); }
+        .post-body ul, .post-body ol { color: var(--text-secondary); padding-left: 1.5rem; margin-bottom: 1rem; }
+        .post-body li { margin-bottom: 0.4rem; line-height: 1.7; }
+        .post-body a { color: var(--gold-primary); text-decoration: underline; }
+        .post-body table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; }
+        .post-body th, .post-body td { border: 1px solid var(--divider-color); padding: 0.6rem 0.8rem; text-align: left; color: var(--text-secondary); font-size: 0.9rem; }
+        .post-body th { color: var(--gold-primary); font-family: 'Outfit', sans-serif; }
+        .post-body img { border-radius: 12px; margin: 1.5rem 0; }
+
+        .post-faq { max-width: 780px; margin: 3rem auto 0; }
+        .post-faq h2 { font-size: 1.5rem; text-align: left; background: none; -webkit-text-fill-color: var(--gold-primary); color: var(--gold-primary); }
+        .faq-item { border-bottom: 1px solid var(--divider-color); padding: 1.25rem 0; }
+        .faq-item h3 { font-size: 1.05rem; text-align: left; margin-bottom: 0.5rem; color: #ffffff; }
+        .faq-item p { color: var(--text-secondary); margin-bottom: 0; }
+
+        .post-cta { max-width: 780px; margin: 3rem auto; text-align: center; padding: 2.5rem; background: var(--bg-dark-charcoal); border: 1px solid var(--divider-color); border-radius: 20px; }
+        .post-cta p { color: var(--text-secondary); margin-bottom: 1.5rem; }
+
+        .byline-card {
+            max-width: 780px; margin: 3rem auto 5rem;
+            display: flex; align-items: center; gap: 1.5rem;
+            background: var(--bg-dark-charcoal);
+            border: 1px solid var(--divider-color);
+            border-radius: 16px;
+            padding: 1.5rem;
+        }
+        .byline-card img { width: 72px; height: 72px; border-radius: 50%; object-fit: cover; border: 2px solid var(--gold-primary); flex-shrink: 0; }
+        .byline-card-text h4 { margin-bottom: 0.25rem; color: #ffffff; }
+        .byline-card-text p { font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0; }
+        .byline-card-text a { color: var(--gold-primary); text-decoration: none; }
+
+        @media (max-width: 480px) {
+            .post-hero { padding: 6.5rem 0 1.5rem; }
+            .post-tldr, .post-toc, .post-body, .post-faq, .post-cta, .byline-card { padding-left: 1.25rem; padding-right: 1.25rem; }
+            .byline-card { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar" id="home">
+        <div class="nav-container container">
+            <a class='logo' href='/'>
+                <img src="/images/optimized/logo-symbol.png" alt="AID HQ Logo">
+                <span>AID HQ</span>
+            </a>
+            <ul class="nav-menu">
+                <li><a class='nav-link' href='/#home'>Home</a></li>
+                <li><a class='nav-link' href='/#services'>Services</a></li>
+                <li><a class='nav-link' href='/#about'>About</a></li>
+                <li><a class='nav-link' href='/blog/'>Blog</a></li>
+                <li><a class='nav-link' href='/#contact'>Contact</a></li>
+            </ul>
+            <button class="nav-toggle" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+
+    <section class="post-hero">
+        <div class="container post-hero-inner">
+            {{HERO_IMG}}
+            <h1>{{TITLE}}</h1>
+            <p class="post-dates">Published {{PUBLISHED_DATE}} &middot; Updated {{UPDATED_DATE}}</p>
+        </div>
+    </section>
+
+    <section class="section" style="padding-top:0;">
+        <div class="container">
+            {{TOC}}
+
+            <div class="post-body">
+                {{CONTENT}}
+            </div>
+
+            <div class="post-faq">
+                <h2>Frequently Asked Questions</h2>
+                {{FAQ_HTML}}
+            </div>
+
+            <div class="post-cta">
+                <p>Want this running on your own business? AID Marketing Agency builds the AI speed-to-lead systems in this post for contractors and local service businesses.</p>
+                <a href="/#contact?utm_source=blog&amp;utm_medium=cta" class="btn btn-primary">Book a Call</a>
+            </div>
+
+            {{BYLINE_CARD}}
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>AID HQ</h3>
+                    <p>AI voice receptionists, missed-call recovery, and automated lead follow-up for contractors and trades businesses.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Company</h3>
+                    <div class="footer-links">
+                        <a href="/#about">About Us</a>
+                        <a href="/about-ryan">About Ryan</a>
+                        <a href="/blog/">Blog</a>
+                        <a href="/#contact">Contact</a>
+                        <a href='/privacy-policy'>Privacy Policy</a>
+                        <a href='/terms-of-service'>Terms of Service</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Connect</h3>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/aidmarketingagency" class="social-link" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M14 13.5h2.5l1-4H14v-2c0-1.03 0-2 2-2h1.5V2.14c-.326-.043-1.557-.14-2.857-.14C11.928 2 10 3.657 10 6.7v2.8H7v4h3V22h4v-8.5z"/></svg></a>
+                        <a href="https://www.linkedin.com/in/ryan-mcnally-7930421bb" class="social-link" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M6.5 21.5h-5v-13h5v13zM4 6.5C2.5 6.5 1.5 5.5 1.5 4s1-2.5 2.5-2.5c1.6 0 2.5 1 2.5 2.5S5.6 6.5 4 6.5zM21.5 21.5h-5v-6.6c0-1.7-.6-2.8-2.1-2.8-1.2 0-1.8.8-2.1 1.6-.1.3-.1.6-.1 1v6.8h-5v-13h5v2.2c.6-1 1.6-2.2 4.5-2.2 3.3 0 5.6 2.1 5.6 6.6v6.4z"/></svg></a>
+                        <a href="https://www.instagram.com/ryan_is_ridiculous/?hl=en" class="social-link" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.011 3.584-.069 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.584-.012-4.85-.07c-3.252-.148-4.771-1.691-4.919-4.919-.058-1.265-.069-1.645-.069-4.85s.011-3.584.069-4.85c.149-3.225 1.664-4.771 4.919 4.919 1.266-.057 1.644-.069 4.85-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98 1.281.059 1.689.073 4.948.073s3.667-.014 4.947-.072c4.358-.2 6.78-2.618 6.98-6.98.059-1.281.073-1.689-.073-4.948s-.014-3.667-.072-4.947c-.2-4.358-2.618-6.78-6.98-6.98-1.281-.059-1.689-.073-4.948-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.79 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.441 1.441 1.441 1.441-.645 1.441-1.441-.645-1.44-1.441-1.44z"/></svg></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 AID HQ / AID Marketing Agency LLC. All rights reserved. &nbsp;|&nbsp; <a href='/privacy-policy' style='color: inherit; text-decoration: underline;'>Privacy Policy</a> &nbsp;|&nbsp; <a href='/terms-of-service' style='color: inherit; text-decoration: underline;'>Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const navToggle = document.querySelector('.nav-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+        if (navToggle && navMenu) {
+            navToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+                navToggle.classList.toggle('active');
+            });
+        }
+    </script>
+</body>
+</html>
