@@ -4,3 +4,9 @@
 
 [functions]
   node_bundler = "esbuild"
+
+[build.environment]
+  # SUPABASE_URL is the public project URL (appears in public storage links,
+  # e.g. brand-asset images on /about-ryan). Not a secret; the service key
+  # remains fully scanned. Without this, secrets scanning fails the build.
+  SECRETS_SCAN_OMIT_KEYS = "SUPABASE_URL"
