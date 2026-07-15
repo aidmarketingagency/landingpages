@@ -183,6 +183,11 @@ p { font-size: 1.1rem; line-height: 1.8; color: var(--text-secondary); margin-bo
 .social-link:hover svg { fill: var(--gold-primary); }
 .footer-bottom { text-align: center; padding-top: 3rem; color: var(--text-secondary); opacity: 0.7; }
 
+/* Cal.com inline embed */
+.cal-embed-wrap { margin-top: 2.5rem; text-align: center; }
+.cal-embed-heading { color: var(--gold-primary); font-family: 'Outfit', sans-serif; font-size: 1.2rem; font-weight: 600; margin-bottom: 1.2rem; }
+.cal-embed-frame { border-radius: 16px; overflow: hidden; min-height: 640px; background: #111; border: 1px solid var(--divider-color); max-width: 900px; margin: 0 auto; }
+
 /* Animations & Utility */
 @keyframes futuristic-grid { from { background-position: 0 0; } to { background-position: 50px 0; } }
 .text-center { text-align: center; }
