@@ -145,10 +145,11 @@ p { font-size: 1.1rem; line-height: 1.8; color: var(--text-secondary); margin-bo
 /* About Section */
 .about-content { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
 .about-image img { border-radius: 20px; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3); }
-.about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem; }
-.stat-item { text-align: center; padding: 1.5rem; background: var(--bg-dark-charcoal); border-radius: 12px; border: 1px solid var(--divider-color); }
-.stat-number { font-size: 2.5rem; font-weight: 800; color: var(--gold-primary); display: block; }
-.stat-label { font-size: 1rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-secondary); }
+.about-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+.stat-item { text-align: center; padding: 1.5rem 1rem; background: var(--bg-dark-charcoal); border-radius: 12px; border: 1px solid var(--divider-color); }
+.stat-number { font-size: 2rem; font-weight: 800; color: var(--gold-primary); display: block; }
+.stat-label { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-secondary); }
+.about-cta { margin: 0.5rem 0 0.5rem; }
 
 /* Testimonials Section */
 .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; }

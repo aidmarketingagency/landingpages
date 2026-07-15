@@ -70,12 +70,39 @@
       display:flex;flex-direction:column;
     }
     .portfolio-card:hover{transform:translateY(-6px);border-color:var(--gold);box-shadow:0 20px 60px rgba(0,0,0,.4),0 0 0 1px rgba(212,175,55,.1)}
-    .card-preview{height:200px;background:var(--graphite-hi);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;border-bottom:1px solid var(--divider)}
-    .card-preview-icon{width:72px;height:72px;border-radius:16px;background:rgba(212,175,55,.1);border:1px solid var(--hair);display:flex;align-items:center;justify-content:center;color:var(--gold)}
-    .card-preview-icon svg{width:36px;height:36px}
-    .card-tag{position:absolute;top:14px;left:14px;font-size:.7rem;text-transform:uppercase;letter-spacing:.15em;color:var(--gold);background:rgba(212,175,55,.12);border:1px solid var(--hair);border-radius:20px;padding:4px 12px}
-    .card-live{position:absolute;top:14px;right:14px;font-size:.7rem;color:#22c55e;background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.25);border-radius:20px;padding:4px 10px;display:flex;align-items:center;gap:5px}
+    .card-preview{height:200px;background:var(--graphite-hi);display:flex;flex-direction:column;justify-content:flex-start;position:relative;overflow:hidden;border-bottom:1px solid var(--divider);padding:20px 18px 16px}
+    .card-tag{position:absolute;top:14px;left:14px;font-size:.7rem;text-transform:uppercase;letter-spacing:.15em;color:var(--gold);background:rgba(212,175,55,.12);border:1px solid var(--hair);border-radius:20px;padding:4px 12px;z-index:2}
+    .card-live{position:absolute;top:14px;right:14px;font-size:.7rem;color:#22c55e;background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.25);border-radius:20px;padding:4px 10px;display:flex;align-items:center;gap:5px;z-index:2}
     .card-live .dot{width:5px;height:5px;border-radius:50%;background:#22c55e;animation:pulse 2s infinite}
+    .card-live.demo{color:var(--gold);background:rgba(212,175,55,.08);border-color:var(--hair)}
+    .card-live.demo .dot{background:var(--gold);animation:none}
+
+    /* Fabricated demo mockups (no real data, no live connections) */
+    .mockup-badge{align-self:flex-end;font-size:.6rem;text-transform:uppercase;letter-spacing:.1em;color:var(--ash);background:rgba(255,255,255,.06);border:1px solid var(--divider);border-radius:20px;padding:3px 9px;margin-top:8px}
+
+    .mockup-topbar{display:flex;align-items:center;gap:5px;margin-top:22px;margin-bottom:10px}
+    .mockup-dot{width:7px;height:7px;border-radius:50%;display:inline-block}
+    .mockup-dot.r{background:#ef4444}
+    .mockup-dot.y{background:#eab308}
+    .mockup-dot.g{background:#22c55e}
+    .mockup-topbar-title{margin-left:6px;font-size:.68rem;color:var(--ash);font-family:'Outfit',sans-serif;letter-spacing:.05em}
+    .mockup-kpis{display:flex;gap:8px;margin-bottom:10px}
+    .mockup-kpi{flex:1;background:rgba(212,175,55,.06);border:1px solid var(--hair);border-radius:10px;padding:7px 4px;text-align:center}
+    .mockup-kpi-num{display:block;font-family:'Outfit',sans-serif;font-weight:800;font-size:1.05rem;color:var(--gold)}
+    .mockup-kpi-label{display:block;font-size:.55rem;text-transform:uppercase;letter-spacing:.05em;color:var(--ash);margin-top:2px}
+    .mockup-bars{display:flex;align-items:flex-end;gap:4px;height:28px;padding:0 2px}
+    .mockup-bars span{flex:1;background:linear-gradient(180deg,var(--gold),rgba(212,175,55,.25));border-radius:3px 3px 0 0}
+
+    .mockup-report-head{margin-top:22px;margin-bottom:8px}
+    .mockup-report-title{font-family:'Outfit',sans-serif;font-weight:700;font-size:.82rem;color:#fff;display:block}
+    .mockup-report-sub{font-size:.66rem;color:var(--ash)}
+    .mockup-report-row{display:flex;justify-content:space-between;align-items:center;font-size:.7rem;color:var(--ash);background:rgba(255,255,255,.03);border:1px solid var(--divider);border-radius:8px;padding:5px 10px;margin-bottom:5px}
+    .mockup-tag-ok{color:#22c55e;font-weight:600;font-size:.66rem}
+    .mockup-tag-warn{color:#eab308;font-weight:600;font-size:.66rem}
+
+    .mockup-quote-head{margin-top:22px;font-family:'Outfit',sans-serif;font-weight:700;font-size:.78rem;color:var(--gold);margin-bottom:6px}
+    .mockup-quote-row{display:flex;justify-content:space-between;font-size:.7rem;color:var(--ash);padding:4px 1px;border-bottom:1px dashed var(--divider)}
+    .mockup-quote-total{display:flex;justify-content:space-between;font-family:'Outfit',sans-serif;font-weight:800;font-size:.82rem;color:#fff;padding:6px 1px 0}
     .card-body{padding:1.5rem 1.5rem 1rem;flex:1}
     .card-body h3{font-family:'Outfit',sans-serif;font-size:1.2rem;font-weight:700;color:#fff;margin-bottom:.5rem}
     .card-body p{font-size:.92rem;color:var(--ash);line-height:1.6}
@@ -124,10 +151,10 @@
 
     <!-- Page Hero -->
     <div class="page-hero">
-      <div class="eyebrow"><span class="dot"></span> Live Builds</div>
+      <div class="eyebrow"><span class="dot"></span> Real Systems</div>
       <h1>Systems We Actually Ship</h1>
-      <p>Every project below is live, accessible, and built on our own stack. No mockups. No screenshots of something that doesn't exist.</p>
-      <div class="live-badge"><span class="pulse"></span> All links are live-verified</div>
+      <p>Real systems we run for the agency and our clients, shown here as demo previews with sample data. No client information, ever.</p>
+      <div class="live-badge"><span class="pulse"></span> Real systems, shown as demos</div>
     </div>
 
     <!-- Portfolio Grid -->
@@ -136,15 +163,23 @@
       <!-- AIOS Dashboard -->
       <div class="portfolio-card">
         <div class="card-preview">
-          <div class="card-preview-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
-          </div>
           <span class="card-tag">AI Dashboard</span>
-          <span class="card-live"><span class="dot"></span> Live</span>
+          <span class="card-live demo"><span class="dot"></span> Demo</span>
+          <div class="mockup-topbar">
+            <span class="mockup-dot r"></span><span class="mockup-dot y"></span><span class="mockup-dot g"></span>
+            <span class="mockup-topbar-title">AIOS Workspace</span>
+          </div>
+          <div class="mockup-kpis">
+            <div class="mockup-kpi"><span class="mockup-kpi-num">14</span><span class="mockup-kpi-label">Agents Active</span></div>
+            <div class="mockup-kpi"><span class="mockup-kpi-num">92%</span><span class="mockup-kpi-label">On Time</span></div>
+            <div class="mockup-kpi"><span class="mockup-kpi-num">8</span><span class="mockup-kpi-label">In Queue</span></div>
+          </div>
+          <div class="mockup-bars"><span style="height:40%"></span><span style="height:70%"></span><span style="height:55%"></span><span style="height:85%"></span><span style="height:60%"></span><span style="height:75%"></span></div>
+          <span class="mockup-badge">Sample Data</span>
         </div>
         <div class="card-body">
           <h3>AID HQ AI Workspace Dashboard</h3>
-          <p>An interactive operations dashboard for the AID agency -- live memory search, agent dispatching, project status, and Supabase-powered intelligence in a single dark-theme interface.</p>
+          <p>An interactive operations dashboard built for the agency. Live memory search, agent dispatching, project status, and Supabase-powered intelligence in a single dark-theme interface.</p>
         </div>
         <div class="card-tags">
           <span class="tag">React</span>
@@ -153,8 +188,8 @@
           <span class="tag">Netlify</span>
         </div>
         <div class="card-footer">
-          <a href="https://aid-interactive-db.netlify.app/" target="_blank" rel="noopener" class="card-link">
-            View live build
+          <a href="/book/" class="card-link">
+            Get one built for your business
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg>
           </a>
         </div>
@@ -163,15 +198,20 @@
       <!-- Condition Docs AI -->
       <div class="portfolio-card">
         <div class="card-preview">
-          <div class="card-preview-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-          </div>
           <span class="card-tag">AI Tool</span>
-          <span class="card-live"><span class="dot"></span> Live</span>
+          <span class="card-live demo"><span class="dot"></span> Demo</span>
+          <div class="mockup-report-head">
+            <span class="mockup-report-title">Move-Out Report</span>
+            <span class="mockup-report-sub">Demo Unit 4B</span>
+          </div>
+          <div class="mockup-report-row"><span>Kitchen</span><span class="mockup-tag-ok">Good</span></div>
+          <div class="mockup-report-row"><span>Bathroom</span><span class="mockup-tag-ok">Good</span></div>
+          <div class="mockup-report-row"><span>Bedroom</span><span class="mockup-tag-warn">Wear Noted</span></div>
+          <span class="mockup-badge">Sample Report</span>
         </div>
         <div class="card-body">
           <h3>Condition Docs AI</h3>
-          <p>AI-powered move-out inspection reports in 90 seconds. Photo upload triggers a Claude-backed analysis that generates a formatted, camera-ready condition report -- no manual write-up required.</p>
+          <p>AI-powered move-out inspection reports in 90 seconds. Photo upload triggers a Claude-backed analysis that generates a formatted, camera-ready condition report. No manual write-up required.</p>
         </div>
         <div class="card-tags">
           <span class="tag">Claude API</span>
@@ -180,8 +220,8 @@
           <span class="tag">Netlify</span>
         </div>
         <div class="card-footer">
-          <a href="https://condition-docs-ai.netlify.app/" target="_blank" rel="noopener" class="card-link">
-            View live build
+          <a href="/book/" class="card-link">
+            Get one built for your business
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg>
           </a>
         </div>
@@ -190,15 +230,17 @@
       <!-- Artisent Quote Tool -->
       <div class="portfolio-card">
         <div class="card-preview">
-          <div class="card-preview-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-          </div>
           <span class="card-tag">AI Quote Tool</span>
-          <span class="card-live"><span class="dot"></span> Live</span>
+          <span class="card-live demo"><span class="dot"></span> Demo</span>
+          <div class="mockup-quote-head">Quote #DEMO-1042</div>
+          <div class="mockup-quote-row"><span>Living Room, 420 sq ft</span><span>$2,940</span></div>
+          <div class="mockup-quote-row"><span>Hallway, 60 sq ft</span><span>$420</span></div>
+          <div class="mockup-quote-total"><span>Total</span><span>$3,360</span></div>
+          <span class="mockup-badge">Sample Quote</span>
         </div>
         <div class="card-body">
           <h3>Artisent AI Floor Quote</h3>
-          <p>An instant AI-powered quoting tool for Artisent Floors. Contractors and clients enter job details conversationally and receive a branded quote in seconds -- cutting the back-and-forth from days to minutes.</p>
+          <p>An instant AI-powered quoting tool for Artisent Floors. Contractors and clients enter job details conversationally and receive a branded quote in seconds, cutting the back-and-forth from days to minutes.</p>
         </div>
         <div class="card-tags">
           <span class="tag">PayMeGPT</span>
@@ -207,8 +249,8 @@
           <span class="tag">Commercial</span>
         </div>
         <div class="card-footer">
-          <a href="https://artisent-quote.netlify.app/" target="_blank" rel="noopener" class="card-link">
-            View live build
+          <a href="/book/" class="card-link">
+            Get one built for your business
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg>
           </a>
         </div>
