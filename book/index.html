@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Book a Free Strategy Call - AID Marketing Agency</title>
+  <meta name="description" content="Book a 30-minute strategy call with Ryan McNally of AID Marketing Agency. We build AI missed-call systems and automated lead follow-up for contractors and trades businesses."/>
+  <meta name="robots" content="noindex"/>
+  <meta property="og:title" content="Book a Free Strategy Call - AID Marketing Agency"/>
+  <meta property="og:description" content="Thirty focused minutes with Ryan to design an AI missed-call takeover for your contracting business."/>
+  <meta property="og:type" content="website"/>
+  <link rel="canonical" href="https://aidmarketingagency.com/book/"/>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+
+  <style>
+    :root{
+      --void:#0D0D0F;
+      --graphite:#1E1E22;
+      --graphite-hi:#27272C;
+      --gold:#D4AF37;
+      --gold-soft:#F5E8C7;
+      --bone:#F0EDE8;
+      --ash:#A7A29B;
+      --hair:rgba(212,175,55,.22);
+      --hair-soft:rgba(240,237,232,.08);
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      background:var(--void);
+      color:var(--bone);
+      font-family:'Inter',-apple-system,sans-serif;
+      line-height:1.6;
+      -webkit-font-smoothing:antialiased;
+      position:relative;
+      overflow-x:hidden;
+    }
+    body::before{
+      content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+      background:
+        radial-gradient(900px 500px at 78% -8%, rgba(212,175,55,.10), transparent 60%),
+        radial-gradient(700px 600px at -10% 110%, rgba(212,175,55,.06), transparent 55%);
+    }
+    .wrap{position:relative;z-index:1;max-width:1180px;margin:0 auto;padding:0 24px}
+
+    /* Back link */
+    .back-link{display:inline-flex;align-items:center;gap:8px;padding:20px 0 0;color:var(--ash);text-decoration:none;font-size:.88rem;letter-spacing:.04em;transition:color .2s}
+    .back-link:hover{color:var(--gold)}
+    .back-link svg{flex:none}
+
+    /* Masthead */
+    header{padding:16px 0 10px}
+    .mast{display:flex;align-items:center;gap:14px}
+    .monogram{
+      width:46px;height:46px;border-radius:9px;flex:none;
+      border:1px solid var(--gold);color:var(--gold);
+      display:flex;align-items:center;justify-content:center;
+      font-family:'Outfit',sans-serif;font-weight:800;font-size:1.2rem;letter-spacing:.04em;
+      background:linear-gradient(160deg,rgba(212,175,55,.12),transparent);
+    }
+    .mast .name{font-family:'Outfit',sans-serif;font-weight:700;font-size:1rem;color:#fff;letter-spacing:.02em}
+    .mast .sub{font-size:.72rem;color:var(--ash);text-transform:uppercase;letter-spacing:.18em}
+
+    /* Hero */
+    .hero{padding:42px 0 12px;max-width:760px}
+    .eyebrow{
+      display:inline-flex;align-items:center;gap:9px;
+      font-size:.74rem;text-transform:uppercase;letter-spacing:.2em;color:var(--gold);
+      border:1px solid var(--hair);border-radius:30px;padding:7px 16px;margin-bottom:26px;
+    }
+    .eyebrow .pulse{width:7px;height:7px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 0 rgba(212,175,55,.6);animation:pulse 2.4s infinite}
+    .hero h1{font-family:'Outfit',sans-serif;font-size:clamp(2.2rem,5.5vw,4rem);font-weight:800;line-height:1.06;color:#fff}
+    .hero h1 em{font-style:italic;color:var(--gold)}
+    .hero p{margin-top:20px;font-size:1.1rem;color:var(--ash);max-width:600px}
+
+    /* Layout */
+    .booking{display:grid;grid-template-columns:1.55fr .95fr;gap:34px;align-items:start;padding:40px 0 24px}
+
+    /* Booker card */
+    .booker-card{
+      background:linear-gradient(180deg,var(--graphite-hi),var(--graphite));
+      border:1px solid var(--hair-soft);border-top:2px solid var(--gold);
+      border-radius:16px;padding:10px;box-shadow:0 30px 70px -30px rgba(0,0,0,.8);
+      min-height:640px;overflow:hidden;
+    }
+    .booker-card .cal-frame{border-radius:10px;overflow:hidden;background:#101013;min-height:620px}
+    #cal-inline{width:100%;height:100%;min-height:620px;overflow:auto}
+    .booker-card noscript iframe{width:100%;min-height:620px;border:0;border-radius:10px;display:block}
+    .cal-note{font-size:.74rem;color:var(--ash);text-align:center;padding:12px 8px 6px;letter-spacing:.02em}
+
+    /* Rail */
+    .rail h2{font-family:'Outfit',sans-serif;font-size:1.9rem;font-weight:700;color:#fff;margin-bottom:6px}
+    .rail .lead{color:var(--ash);font-size:.96rem;margin-bottom:26px}
+    .agenda{list-style:none;display:flex;flex-direction:column;gap:18px;margin-bottom:30px}
+    .agenda li{display:flex;gap:14px;align-items:flex-start}
+    .agenda .num{
+      flex:none;width:30px;height:30px;border-radius:8px;border:1px solid var(--hair);
+      color:var(--gold);font-family:'Outfit',sans-serif;font-size:1rem;font-weight:700;
+      display:flex;align-items:center;justify-content:center;margin-top:1px;
+    }
+    .agenda .t{font-weight:600;color:#fff;font-size:.98rem}
+    .agenda .d{color:var(--ash);font-size:.88rem;line-height:1.5;margin-top:2px}
+
+    /* Host card */
+    .host{
+      border:1px solid var(--hair-soft);border-radius:13px;padding:20px;
+      background:rgba(30,30,34,.5);display:flex;gap:15px;align-items:center;
+    }
+    .host .av{
+      width:52px;height:52px;border-radius:50%;flex:none;
+      background:radial-gradient(circle at 30% 25%,var(--gold-soft),var(--gold) 60%,#8a6f25);
+      color:var(--void);display:flex;align-items:center;justify-content:center;
+      font-family:'Outfit',sans-serif;font-weight:800;font-size:1.3rem;
+    }
+    .host .who{font-weight:600;color:#fff;font-size:.98rem}
+    .host .role{font-size:.82rem;color:var(--ash)}
+    .host .meta{font-size:.78rem;color:var(--gold);margin-top:5px;letter-spacing:.04em}
+
+    /* Trust strip */
+    .strip{
+      border-top:1px solid var(--hair-soft);border-bottom:1px solid var(--hair-soft);
+      margin:24px 0 0;padding:26px 0;display:flex;flex-wrap:wrap;gap:30px;justify-content:space-between;
+    }
+    .strip .item{display:flex;gap:12px;align-items:center;color:var(--ash);font-size:.9rem}
+    .strip .item b{color:#fff;font-weight:600}
+    .strip svg{flex:none;color:var(--gold)}
+
+    /* Footer */
+    footer{padding:46px 0 60px;color:var(--ash);font-size:.84rem}
+    .foot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;border-top:1px solid var(--hair-soft);padding-top:26px;margin-top:14px}
+    .foot a{color:var(--gold);text-decoration:none}
+    .quietline{font-family:'Outfit',sans-serif;font-style:italic;font-size:1.05rem;color:#fff;max-width:640px;margin:0 0 6px;font-weight:400}
+
+    @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(212,175,55,.55)}70%{box-shadow:0 0 0 9px rgba(212,175,55,0)}100%{box-shadow:0 0 0 0 rgba(212,175,55,0)}}
+
+    @media (max-width:880px){
+      .booking{grid-template-columns:1fr;gap:30px}
+      .rail{order:-1}
+      .hero{padding-top:30px}
+    }
+  </style>
+</head>
+<body>
+
+  <div class="wrap">
+
+    <a href="/" class="back-link">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      Back to AID HQ
+    </a>
+
+    <!-- Masthead -->
+    <header>
+      <div class="mast">
+        <div class="monogram">AID</div>
+        <div>
+          <div class="name">AID Marketing Agency</div>
+          <div class="sub">AI Systems for Contractors</div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+      <span class="eyebrow"><span class="pulse"></span> Free Strategy Session</span>
+      <h1>Let's build the system that <em>never misses a lead</em> for you.</h1>
+      <p>Thirty focused minutes with Ryan to design an AI missed-call takeover around your trade, your schedule, and your market. Pick a time below -- you'll get a calendar invite with a Google Meet link.</p>
+    </section>
+
+    <!-- Booker + rail -->
+    <section class="booking">
+      <div class="booker-card">
+        <div class="cal-frame">
+          <!-- Cal.com inline embed -->
+          <div id="cal-inline"></div>
+          <!-- Fallback if JS unavailable -->
+          <noscript>
+            <iframe src="https://cal.com/ryan-mcnally-7zm1zu/discovery-call?embed=true&amp;theme=dark" title="Book a free strategy call with Ryan McNally"></iframe>
+          </noscript>
+        </div>
+        <div class="cal-note">30 minutes &middot; Google Meet &middot; Eastern Time (auto-adjusts to your zone)</div>
+      </div>
+
+      <aside class="rail">
+        <h2>What we'll cover</h2>
+        <p class="lead">No pitch deck. We work on your business, live.</p>
+        <ul class="agenda">
+          <li>
+            <span class="num">1</span>
+            <div>
+              <div class="t">Where leads slip through</div>
+              <div class="d">Missed calls, after-hours texts, and the jobs that go to whoever answers first.</div>
+            </div>
+          </li>
+          <li>
+            <span class="num">2</span>
+            <div>
+              <div class="t">Your AI takeover, mapped</div>
+              <div class="d">How an AI receptionist in your voice captures, qualifies, and books appointments -- wired to your workflow.</div>
+            </div>
+          </li>
+          <li>
+            <span class="num">3</span>
+            <div>
+              <div class="t">A clear next step</div>
+              <div class="d">You leave with a plan you can run with or without us. No obligation.</div>
+            </div>
+          </li>
+        </ul>
+        <div class="host">
+          <div class="av">R</div>
+          <div>
+            <div class="who">Ryan McNally</div>
+            <div class="role">Founder &middot; AID Marketing Agency</div>
+            <div class="meta">ryan@aidmarketingagency.com</div>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <!-- Trust strip -->
+    <div class="strip">
+      <div class="item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2a8 8 0 0 0-8 8c0 5.25 8 12 8 12s8-6.75 8-12a8 8 0 0 0-8-8z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span><b>Real-time availability</b> -- only open slots show</span>
+      </div>
+      <div class="item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 11h18"/></svg>
+        <span><b>Instant calendar invite</b> with a Google Meet link</span>
+      </div>
+      <div class="item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 6 9 17l-5-5"/></svg>
+        <span><b>Reschedule anytime</b> -- one click, no phone tag</span>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <p class="quietline">"Whoever answers first gets the job. Let's make that you -- every time, day or night."</p>
+      <div class="foot">
+        <div>&copy; 2026 AID Marketing Agency &middot; Charlotte, NC</div>
+        <div><a href="mailto:ryan@aidmarketingagency.com">ryan@aidmarketingagency.com</a></div>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- Cal.com inline embed loader -->
+  <script>
+  (function(C,A,L){let p=function(a,ar){a.q.push(ar)};let d=C.document;C.Cal=C.Cal||function(){let cal=C.Cal;let ar=arguments;if(!cal.loaded){cal.ns={};cal.q=cal.q||[];d.head.appendChild(d.createElement("script")).src=A;cal.loaded=true}if(ar[0]===L){const api=function(){p(api,arguments)};const namespace=ar[1];api.q=api.q||[];if(typeof namespace==="string"){cal.ns[namespace]=cal.ns[namespace]||api;p(cal.ns[namespace],ar);p(cal,["initNamespace",namespace])}else p(cal,ar);return}p(cal,ar)};})(window,"https://app.cal.com/embed/embed.js","init");
+  Cal("init","book",{origin:"https://cal.com"});
+  Cal.ns.book("inline",{
+    elementOrSelector:"#cal-inline",
+    calLink:"ryan-mcnally-7zm1zu/discovery-call",
+    layout:"month_view",
+    config:{theme:"dark"}
+  });
+  Cal.ns.book("ui",{
+    theme:"dark",
+    cssVarsPerTheme:{dark:{"cal-brand":"#D4AF37"},light:{"cal-brand":"#D4AF37"}},
+    hideEventTypeDetails:false,
+    layout:"month_view"
+  });
+  </script>
+
+</body>
+</html>

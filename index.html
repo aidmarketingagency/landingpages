@@ -11,6 +11,22 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <!-- GA4: reads GA4_MEASUREMENT_ID from window config; no-op if absent (BLOCKED-ON-RYAN: supply real Measurement ID) -->
+    <script>
+    (function() {
+        var mid = window.GA4_MEASUREMENT_ID || '';
+        if (!mid) return;
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=' + mid;
+        document.head.appendChild(s);
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        window.gtag = gtag;
+        gtag('js', new Date());
+        gtag('config', mid);
+    })();
+    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script type="application/ld+json">
     {
@@ -77,6 +93,9 @@
                 <li><a href="#services" class="nav-link">Services</a></li>
                 <li><a href="#about" class="nav-link">About</a></li>
                 <li><a href="#testimonials" class="nav-link">Testimonials</a></li>
+                <li><a href="/portfolio/" class="nav-link">Portfolio</a></li>
+                <li><a href="/about-ryan" class="nav-link">About Ryan</a></li>
+                <li><a href="/book/" class="nav-link">Book a Call</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
             <button class="nav-toggle" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
@@ -202,16 +221,21 @@
                 <div class="about-text">
                     <h2>Why Choose AID HQ?</h2>
                     <p>
-                        We're not a generic agency. We're a specialist AI systems shop built for contractors and trades, run by a guy who spent a decade in the field living the exact problems we fix: missed calls, slow follow-up, and good leads dying in the pipeline. Everything we sell runs on our own operation first. <a href="/about-ryan">Meet the guy behind it</a>.
+                        We're not a generic agency. We're a specialist AI systems shop built for contractors and trades, run by a guy who spent a decade in the field living the exact problems we fix: missed calls, slow follow-up, and good leads dying in the pipeline. Everything we sell runs on our own operation first.
                     </p>
+                    <a href="/about-ryan" class="btn btn-secondary about-cta">Meet Ryan, the founder &rarr;</a>
                     <div class="about-stats">
-                        <div class="stat-item">
-                            <span class="stat-number">500+</span>
-                            <span class="stat-label">Qualified Leads</span>
-                        </div>
                         <div class="stat-item">
                             <span class="stat-number">24/7</span>
                             <span class="stat-label">Automation</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">Instant</span>
+                            <span class="stat-label">Lead Response</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">10+ Yrs</span>
+                            <span class="stat-label">In the Trades</span>
                         </div>
                     </div>
                 </div>
@@ -231,7 +255,6 @@
                     <div class="testimonial-rating">★★★★★</div>
                     <p class="testimonial-text">"Ryan completely transformed our email marketing strategy. The website optimization work has been a game-changer for Never Work the 40. Our engagement rates have never been higher!"</p>
                     <div class="testimonial-author">
-                        <img src="https://i.pravatar.cc/150?img=11" alt="Jeremy Funderburk" class="author-avatar">
                         <div class="author-info">
                             <h4>Jeremy Funderburk</h4>
                             <p>Founder, Never Work the 40</p>
@@ -242,10 +265,9 @@
                     <div class="testimonial-rating">★★★★★</div>
                     <p class="testimonial-text">"The lead generation automation Ryan set up has been incredible. It's like having a full-time marketing team working 24/7!"</p>
                     <div class="testimonial-author">
-                        <img src="https://i.pravatar.cc/150?img=53" alt="Bob Gors" class="author-avatar">
                         <div class="author-info">
                             <h4>Bob Gors</h4>
-                            <p>Founder & President, Business Leaders Unleashed (BLU)</p>
+                            <p>Founder &amp; President, Business Leaders Unleashed (BLU)</p>
                         </div>
                     </div>
                 </div>
@@ -253,10 +275,9 @@
                     <div class="testimonial-rating">★★★★★</div>
                     <p class="testimonial-text">"Ryan's automation for our social media management has been phenomenal... The intelligent link hub Ryan developed has been a game-changer."</p>
                     <div class="testimonial-author">
-                        <img src="https://i.pravatar.cc/150?img=47" alt="Gina Davila" class="author-avatar">
                         <div class="author-info">
                             <h4>Gina Davila</h4>
-                            <p>Social Media & Marketing Director, Pillar To Post - McNally Team</p>
+                            <p>Social Media &amp; Marketing Director, Pillar To Post - McNally Team</p>
                         </div>
                     </div>
                 </div>
@@ -264,7 +285,6 @@
                     <div class="testimonial-rating">★★★★★</div>
                     <p class="testimonial-text">"I was skeptical at first. Ryan's system flagged an HOA board that already had a storm claim denied by their carrier. We got the meeting, pushed back on the denial, and ended up replacing 47 roofs in one community. If you're in roofing and not using this, you're leaving money on the table."</p>
                     <div class="testimonial-author">
-                        <img src="https://i.pravatar.cc/150?img=68" alt="Mathew Hill" class="author-avatar">
                         <div class="author-info">
                             <h4>Mathew Hill</h4>
                             <p>Owner, HOV Roofing</p>
@@ -278,27 +298,16 @@
     <section id="contact" class="section contact">
         <div class="container">
             <h2 class="section-title">Ready to Dominate Your Market?</h2>
-            <div class="contact-cards-container">
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                    </div>
-                    <div class="contact-text">
-                        <h4>Email Us</h4>
-                        <a href="mailto:ryan@aidmarketingagency.com">ryan@aidmarketingagency.com</a>
-                    </div>
+            <!-- Cal.com inline booking embed -->
+            <div class="cal-embed-wrap">
+                <h3 class="cal-embed-heading">Book a free strategy call directly:</h3>
+                <div id="cal-contact-inline" class="cal-embed-frame">
+                    <!-- Cal.com inline embed loaded by script below -->
                 </div>
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.44 2 2 0 0 1 3.58 1h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.2a16 16 0 0 0 8.09 8.09l1.36-1.36a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                    </div>
-                    <div class="contact-text">
-                        <h4>Call Us</h4>
-                        <a href="tel:1-856-340-8990">(856) 340-8990</a>
-                    </div>
-                </div>
+                <noscript>
+                    <iframe src="https://cal.com/ryan-mcnally-7zm1zu/discovery-call?embed=true&amp;theme=dark" title="Book a strategy call with Ryan McNally" width="100%" height="600" style="border:0;border-radius:12px;"></iframe>
+                </noscript>
             </div>
-            <hr class="section-divider">
         </div>
     </section>
 
@@ -314,6 +323,8 @@
                     <div class="footer-links">
                         <a href="#about">About Us</a>
                         <a href="#testimonials">Testimonials</a>
+                        <a href="/portfolio/">Portfolio</a>
+                        <a href="/book/">Book a Call</a>
                         <a href="#contact">Contact</a>
                         <a href='/blog/'>Blog</a>
                         <a href='/about-ryan'>About Ryan</a>
@@ -336,6 +347,26 @@
             </div>
         </div>
     </footer>
+
+    <!-- Cal.com inline embed for contact section -->
+    <script>
+    (function(C,A,L){let p=function(a,ar){a.q.push(ar)};let d=C.document;C.Cal=C.Cal||function(){let cal=C.Cal;let ar=arguments;if(!cal.loaded){cal.ns={};cal.q=cal.q||[];d.head.appendChild(d.createElement("script")).src=A;cal.loaded=true}if(ar[0]===L){const api=function(){p(api,arguments)};const namespace=ar[1];api.q=api.q||[];if(typeof namespace==="string"){cal.ns[namespace]=cal.ns[namespace]||api;p(cal.ns[namespace],ar);p(cal,["initNamespace",namespace])}else p(cal,ar);return}p(cal,ar)};})(window,"https://app.cal.com/embed/embed.js","init");
+    Cal("init", "contact", {origin:"https://cal.com"});
+    Cal.ns.contact("inline", {
+        elementOrSelector: "#cal-contact-inline",
+        calLink: "ryan-mcnally-7zm1zu/discovery-call",
+        layout: "month_view",
+        config: { theme: "dark" }
+    });
+    Cal.ns.contact("ui", {
+        theme: "dark",
+        hideEventTypeDetails: false,
+        layout: "month_view"
+    });
+    </script>
+
+    <!-- PayMeGPT Webchat Widget (Widget 204 - AID AI Qualifier) -->
+    <script src="https://paymegpt.com/widget.js" data-widget="204" async></script>
 
     <script>
         const navToggle = document.querySelector('.nav-toggle');
