@@ -59,6 +59,9 @@
 
     /* Grid */
     .portfolio-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:2rem;padding:0 0 80px}
+    /* Broken-grid touch: the middle card sits slightly lower so three cards never read as
+       one rigid row. Reset to 0 on mobile, where the grid collapses to a single column. */
+    .portfolio-card:nth-child(2){margin-top:2.25rem}
 
     /* Card */
     .portfolio-card{
@@ -66,13 +69,18 @@
       border:1px solid var(--divider);
       border-radius:20px;
       overflow:hidden;
-      transition:all .3s ease;
+      transition:transform .3s ease, box-shadow .3s ease, border-color .3s ease;
       display:flex;flex-direction:column;
     }
     .portfolio-card:hover{transform:translateY(-6px);border-color:var(--gold);box-shadow:0 20px 60px rgba(0,0,0,.4),0 0 0 1px rgba(212,175,55,.1)}
-    .card-preview{height:200px;background:var(--graphite-hi);display:flex;flex-direction:column;justify-content:flex-start;position:relative;overflow:hidden;border-bottom:1px solid var(--divider);padding:20px 18px 16px}
-    .card-tag{position:absolute;top:14px;left:14px;font-size:.7rem;text-transform:uppercase;letter-spacing:.15em;color:var(--gold);background:rgba(212,175,55,.12);border:1px solid var(--hair);border-radius:20px;padding:4px 12px;z-index:2}
-    .card-live{position:absolute;top:14px;right:14px;font-size:.7rem;color:#22c55e;background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.25);border-radius:20px;padding:4px 10px;display:flex;align-items:center;gap:5px;z-index:2}
+    /* height is content-driven (min-height only) so a taller mockup never clips against
+       a fixed box -- the AIOS/Condition Docs/Quote previews each run a different length */
+    .card-preview{min-height:200px;background:var(--graphite-hi);display:flex;flex-direction:column;justify-content:flex-start;position:relative;overflow:hidden;border-bottom:1px solid var(--divider);padding:18px 18px 16px}
+    /* Tag + live badges are in normal flow now (not position:absolute), so they always
+       reserve their own space and can never sit on top of the mockup content below them */
+    .card-preview-head{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:14px}
+    .card-tag{font-size:.7rem;text-transform:uppercase;letter-spacing:.15em;color:var(--gold);background:rgba(212,175,55,.12);border:1px solid var(--hair);border-radius:20px;padding:4px 12px;white-space:nowrap}
+    .card-live{font-size:.7rem;color:#22c55e;background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.25);border-radius:20px;padding:4px 10px;display:flex;align-items:center;gap:5px;white-space:nowrap}
     .card-live .dot{width:5px;height:5px;border-radius:50%;background:#22c55e;animation:pulse 2s infinite}
     .card-live.demo{color:var(--gold);background:rgba(212,175,55,.08);border-color:var(--hair)}
     .card-live.demo .dot{background:var(--gold);animation:none}
@@ -80,7 +88,7 @@
     /* Fabricated demo mockups (no real data, no live connections) */
     .mockup-badge{align-self:flex-end;font-size:.6rem;text-transform:uppercase;letter-spacing:.1em;color:var(--ash);background:rgba(255,255,255,.06);border:1px solid var(--divider);border-radius:20px;padding:3px 9px;margin-top:8px}
 
-    .mockup-topbar{display:flex;align-items:center;gap:5px;margin-top:22px;margin-bottom:10px}
+    .mockup-topbar{display:flex;align-items:center;gap:5px;margin-bottom:10px}
     .mockup-dot{width:7px;height:7px;border-radius:50%;display:inline-block}
     .mockup-dot.r{background:#ef4444}
     .mockup-dot.y{background:#eab308}
@@ -93,14 +101,14 @@
     .mockup-bars{display:flex;align-items:flex-end;gap:4px;height:28px;padding:0 2px}
     .mockup-bars span{flex:1;background:linear-gradient(180deg,var(--gold),rgba(212,175,55,.25));border-radius:3px 3px 0 0}
 
-    .mockup-report-head{margin-top:22px;margin-bottom:8px}
+    .mockup-report-head{margin-bottom:8px}
     .mockup-report-title{font-family:'Outfit',sans-serif;font-weight:700;font-size:.82rem;color:#fff;display:block}
     .mockup-report-sub{font-size:.66rem;color:var(--ash)}
     .mockup-report-row{display:flex;justify-content:space-between;align-items:center;font-size:.7rem;color:var(--ash);background:rgba(255,255,255,.03);border:1px solid var(--divider);border-radius:8px;padding:5px 10px;margin-bottom:5px}
     .mockup-tag-ok{color:#22c55e;font-weight:600;font-size:.66rem}
     .mockup-tag-warn{color:#eab308;font-weight:600;font-size:.66rem}
 
-    .mockup-quote-head{margin-top:22px;font-family:'Outfit',sans-serif;font-weight:700;font-size:.78rem;color:var(--gold);margin-bottom:6px}
+    .mockup-quote-head{font-family:'Outfit',sans-serif;font-weight:700;font-size:.78rem;color:var(--gold);margin-bottom:6px}
     .mockup-quote-row{display:flex;justify-content:space-between;font-size:.7rem;color:var(--ash);padding:4px 1px;border-bottom:1px dashed var(--divider)}
     .mockup-quote-total{display:flex;justify-content:space-between;font-family:'Outfit',sans-serif;font-weight:800;font-size:.82rem;color:#fff;padding:6px 1px 0}
     .card-body{padding:1.5rem 1.5rem 1rem;flex:1}
@@ -126,9 +134,27 @@
 
     @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(34,197,94,.55)}70%{box-shadow:0 0 0 8px rgba(34,197,94,0)}100%{box-shadow:0 0 0 0 rgba(34,197,94,0)}}
 
+    /* Scroll reveal: staggered fade/slide-up on the portfolio grid, transform+opacity
+       only, reduced-motion gated. Matches the site-wide motion standard. */
+    .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+    .reveal.visible{opacity:1;transform:none}
+    .portfolio-grid.reveal-stagger>*:nth-child(1){transition-delay:0ms}
+    .portfolio-grid.reveal-stagger>*:nth-child(2){transition-delay:120ms}
+    .portfolio-grid.reveal-stagger>*:nth-child(3){transition-delay:240ms}
+    @media (prefers-reduced-motion:reduce){
+      .reveal{transition:none!important;opacity:1!important;transform:none!important}
+    }
+
     @media(max-width:768px){
-      .portfolio-grid{grid-template-columns:1fr}
+      .wrap{padding:0 1.25rem}
+      .portfolio-grid{grid-template-columns:1fr;gap:1.5rem}
+      .portfolio-card:nth-child(2){margin-top:0}
       .nav-inner{padding:1rem}
+      .page-hero{padding:100px 0 44px}
+      .card-preview{padding:16px 16px 14px}
+      .card-body{padding:1.25rem 1.25rem .85rem}
+      .card-tags{padding:0 1.25rem .5rem}
+      .card-footer{padding:.75rem 1.25rem 1.25rem}
     }
   </style>
 </head>
@@ -158,13 +184,15 @@
     </div>
 
     <!-- Portfolio Grid -->
-    <div class="portfolio-grid">
+    <div class="portfolio-grid reveal-stagger">
 
       <!-- AIOS Dashboard -->
-      <div class="portfolio-card">
+      <div class="portfolio-card reveal">
         <div class="card-preview">
-          <span class="card-tag">AI Dashboard</span>
-          <span class="card-live demo"><span class="dot"></span> Demo</span>
+          <div class="card-preview-head">
+            <span class="card-tag">AI Dashboard</span>
+            <span class="card-live demo"><span class="dot"></span> Demo</span>
+          </div>
           <div class="mockup-topbar">
             <span class="mockup-dot r"></span><span class="mockup-dot y"></span><span class="mockup-dot g"></span>
             <span class="mockup-topbar-title">AIOS Workspace</span>
@@ -196,10 +224,12 @@
       </div>
 
       <!-- Condition Docs AI -->
-      <div class="portfolio-card">
+      <div class="portfolio-card reveal">
         <div class="card-preview">
-          <span class="card-tag">AI Tool</span>
-          <span class="card-live demo"><span class="dot"></span> Demo</span>
+          <div class="card-preview-head">
+            <span class="card-tag">AI Tool</span>
+            <span class="card-live demo"><span class="dot"></span> Demo</span>
+          </div>
           <div class="mockup-report-head">
             <span class="mockup-report-title">Move-Out Report</span>
             <span class="mockup-report-sub">Demo Unit 4B</span>
@@ -228,10 +258,12 @@
       </div>
 
       <!-- Artisent Quote Tool -->
-      <div class="portfolio-card">
+      <div class="portfolio-card reveal">
         <div class="card-preview">
-          <span class="card-tag">AI Quote Tool</span>
-          <span class="card-live demo"><span class="dot"></span> Demo</span>
+          <div class="card-preview-head">
+            <span class="card-tag">AI Quote Tool</span>
+            <span class="card-live demo"><span class="dot"></span> Demo</span>
+          </div>
           <div class="mockup-quote-head">Quote #DEMO-1042</div>
           <div class="mockup-quote-row"><span>Living Room, 420 sq ft</span><span>$2,940</span></div>
           <div class="mockup-quote-row"><span>Hallway, 60 sq ft</span><span>$420</span></div>
@@ -275,6 +307,42 @@
     </div>
 
   </div>
+
+  <script>
+  /* Scroll reveal for the portfolio grid: one-time fade/slide-up, transform+opacity
+     only, reduced-motion gated (matches the main site's motion standard). */
+  (function() {
+    var motionQuery = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : { matches: false };
+    function reducedMotion() { return !!motionQuery.matches; }
+
+    var reveals = Array.prototype.slice.call(document.querySelectorAll('.reveal'));
+    if (!reveals.length) return;
+
+    if (reducedMotion() || !('IntersectionObserver' in window)) {
+      reveals.forEach(function(el) { el.classList.add('visible'); });
+      return;
+    }
+
+    var io = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
+
+    reveals.forEach(function(el) { io.observe(el); });
+
+    if (motionQuery.addEventListener) {
+      motionQuery.addEventListener('change', function() {
+        if (reducedMotion()) {
+          reveals.forEach(function(el) { el.classList.add('visible'); });
+        }
+      });
+    }
+  })();
+  </script>
 
 </body>
 </html>
