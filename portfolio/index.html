@@ -50,12 +50,13 @@
     /* Page */
     .wrap{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:0 2rem}
     .page-hero{padding:120px 0 60px;text-align:center}
-    .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.74rem;text-transform:uppercase;letter-spacing:.2em;color:var(--gold);border:1px solid var(--hair);border-radius:30px;padding:7px 16px;margin-bottom:24px}
-    .eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--gold)}
+    /* House-pattern eyebrow: flat uppercase letterspaced text + a small pulsing gold
+       dot. No background fill, no border, no capsule (see docs/design/web-design-arsenal.md
+       -- a pill/badge above the H1 is a banned AI-slop tell). */
+    .eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:.74rem;text-transform:uppercase;letter-spacing:.2em;color:var(--gold);font-weight:600;margin-bottom:24px}
+    .eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 0 rgba(212,175,55,.6);animation:pulse-gold 2.4s infinite}
     .page-hero h1{font-family:'Outfit',sans-serif;font-size:clamp(2.2rem,5vw,3.6rem);font-weight:800;line-height:1.1;background:linear-gradient(135deg,var(--gold) 0%,var(--gold-soft) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:1rem}
     .page-hero p{font-size:1.1rem;color:var(--ash);max-width:560px;margin:0 auto 2rem}
-    .live-badge{display:inline-flex;align-items:center;gap:6px;font-size:.78rem;color:var(--gold);background:rgba(212,175,55,.08);border:1px solid var(--hair);border-radius:20px;padding:5px 14px}
-    .live-badge .pulse{width:6px;height:6px;border-radius:50%;background:#22c55e;animation:pulse 2s infinite}
 
     /* Grid */
     .portfolio-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:2rem;padding:0 0 80px}
@@ -133,6 +134,7 @@
     .btn-gold:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(212,175,55,.35)}
 
     @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(34,197,94,.55)}70%{box-shadow:0 0 0 8px rgba(34,197,94,0)}100%{box-shadow:0 0 0 0 rgba(34,197,94,0)}}
+    @keyframes pulse-gold{0%{box-shadow:0 0 0 0 rgba(212,175,55,.55)}70%{box-shadow:0 0 0 8px rgba(212,175,55,0)}100%{box-shadow:0 0 0 0 rgba(212,175,55,0)}}
 
     /* Scroll reveal: staggered fade/slide-up on the portfolio grid, transform+opacity
        only, reduced-motion gated. Matches the site-wide motion standard. */
@@ -143,6 +145,7 @@
     .portfolio-grid.reveal-stagger>*:nth-child(3){transition-delay:240ms}
     @media (prefers-reduced-motion:reduce){
       .reveal{transition:none!important;opacity:1!important;transform:none!important}
+      .eyebrow .dot{animation:none!important;box-shadow:none!important}
     }
 
     @media(max-width:768px){
@@ -180,7 +183,6 @@
       <div class="eyebrow"><span class="dot"></span> Real Systems</div>
       <h1>Systems We Actually Ship</h1>
       <p>Real systems we run for the agency and our clients, shown here as demo previews with sample data. No client information, ever.</p>
-      <div class="live-badge"><span class="pulse"></span> Real systems, shown as demos</div>
     </div>
 
     <!-- Portfolio Grid -->
