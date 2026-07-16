@@ -118,6 +118,14 @@ p { font-size: 1.1rem; line-height: 1.8; color: var(--text-secondary); margin-bo
 /* Phone States */
 .phone-state { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 1.2rem; opacity: 0; transition: opacity 0.5s ease; pointer-events: none; }
 .phone-state.active { opacity: 1; pointer-events: auto; }
+/* SMS/reply states get the header flush to the screen edge and hand every spare
+   pixel to the thread. Verified live at 375px: with the shared 1.2rem padding,
+   a bottom-anchored two-bubble thread ran out of height and the first bubble's
+   top lines rendered clipped directly under the "Messages" bar. Removing the
+   outer padding here (bar/thread manage their own via .sms-bar/.sms-thread)
+   both frees vertical room for the thread and widens it, which shortens the
+   bubble text wrap enough that both bubbles fit without overlapping the bar. */
+.phone-state:has(.sms-bar) { padding: 0; justify-content: flex-start; }
 
 /* Ring state */
 .call-avatar { width: 60px; height: 60px; border-radius: 50%; background: rgba(212,175,55,0.12); border: 1.5px solid rgba(212,175,55,0.4); display: flex; align-items: center; justify-content: center; color: var(--gold-primary); position: relative; z-index: 2; }
@@ -229,7 +237,24 @@ p { font-size: 1.1rem; line-height: 1.8; color: var(--text-secondary); margin-bo
 
 /* About Section */
 .about-content { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
-.about-image img { border-radius: 20px; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3); }
+.about-image { position: relative; border-radius: 20px; overflow: hidden; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3); }
+.about-image img { display: block; width: 100%; height: auto; filter: saturate(0.88) contrast(1.04) brightness(0.97); }
+.about-image::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(180deg, transparent 55%, rgba(10,10,10,0.55) 100%),
+        linear-gradient(0deg, rgba(212,175,55,0.10), transparent 40%);
+}
+.about-image::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0.05;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
 .about-cta { margin: 0.5rem 0 0.5rem; }
 
 /* About stats: pyramid stack, middle stat emphasized, staggered slide-in */
@@ -327,12 +352,21 @@ p { font-size: 1.1rem; line-height: 1.8; color: var(--text-secondary); margin-bo
 @keyframes futuristic-grid { from { background-position: 0 0; } to { background-position: 50px 0; } }
 .text-center { text-align: center; }
 
-/* Mobile Responsive Adjustments */
-@media (max-width: 768px) {
+/* Nav breakpoint: hamburger below 1101px, desktop nav-menu only at >=1101px.
+   Raised from 768px 2026-07-16: at 769-1100px the desktop nav-menu had no room
+   (logo touching "Home" at 1024, "About Ryan"/"Book a Call" wrapping at 800-1000,
+   Contact running offscreen). Kept in its own query, separate from the general
+   mobile-adjustments block below, so this fix doesn't drag unrelated layout
+   (about-content, logo sizing, stat tiles) to a different breakpoint. */
+@media (max-width: 1100px) {
     .nav-toggle { display: flex; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
     .nav-toggle span { display: block; width: 24px; height: 2px; background: var(--gold-primary); border-radius: 2px; transition: all 0.3s ease; }
     .nav-menu { display: none; position: absolute; top: 100%; left: 0; right: 0; background: rgba(10,10,10,0.98); backdrop-filter: blur(20px); flex-direction: column; padding: 1.5rem 2rem; gap: 1.2rem; border-bottom: 1px solid var(--divider-color); z-index: 999; }
     .nav-menu.active { display: flex; }
+}
+
+/* Mobile Responsive Adjustments */
+@media (max-width: 768px) {
     .about-content { grid-template-columns: 1fr; }
     .logo img { height: 36px; }
     .logo span { font-size: 1.4rem; }
