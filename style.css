@@ -373,15 +373,48 @@ p { font-size: 1.1rem; line-height: 1.8; color: var(--text-secondary); margin-bo
     .stat-item[data-tier="core"] { padding: 1.5rem 1.75rem; }
     .stat-item[data-tier="core"] .stat-number { font-size: 2.25rem; }
 }
-/* ── PayMeGPT concierge bubble: animated gold glow (black-on-black rescue) ── */
+
+/* ── PayMeGPT concierge bubble: gold glow + float + ghost trail ───────────
+   The widget's own float classes animate transform (bubbleFloat/Reverse,
+   2.5s). A bare `animation` override kills the float, so the glow is
+   comma-joined onto the same animation list. The ::after halo runs the
+   same bob 0.18s behind the bubble = trailing ghost. */
 #ultra-fast-widget-bubble-92251613 {
   animation: aidWidgetGlow 2.6s ease-in-out infinite !important;
+  overflow: visible !important;
+}
+#ultra-fast-widget-bubble-92251613.bubble-floating {
+  animation: bubbleFloat 2.5s ease-in-out infinite,
+             aidWidgetGlow 2.6s ease-in-out infinite !important;
+}
+#ultra-fast-widget-bubble-92251613.bubble-floating-reverse {
+  animation: bubbleFloatReverse 2.5s ease-in-out infinite,
+             aidWidgetGlow 2.6s ease-in-out infinite !important;
+}
+#ultra-fast-widget-bubble-92251613::after {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  pointer-events: none;
+  box-shadow: 0 0 18px 5px rgba(212,175,55,.30), 0 0 40px 12px rgba(212,175,55,.12);
+  animation: aidGhostTrail 2.5s ease-in-out infinite;
+  animation-delay: 0.18s;
 }
 @keyframes aidWidgetGlow {
   0%, 100% { box-shadow: 0 0 0 1px rgba(212,175,55,.55), 0 0 14px 3px rgba(212,175,55,.38), 0 0 36px 9px rgba(212,175,55,.16); }
   50%      { box-shadow: 0 0 0 2px rgba(212,175,55,.95), 0 0 26px 7px rgba(212,175,55,.62), 0 0 64px 16px rgba(212,175,55,.30); }
 }
+@keyframes aidGhostTrail {
+  0%, 100% { transform: translateY(0); opacity: .55; }
+  50%      { transform: translateY(8px); opacity: .95; }
+}
 @media (prefers-reduced-motion: reduce) {
-  #ultra-fast-widget-bubble-92251613 { animation: none !important;
-    box-shadow: 0 0 0 1px rgba(212,175,55,.7), 0 0 20px 5px rgba(212,175,55,.45) !important; }
+  #ultra-fast-widget-bubble-92251613,
+  #ultra-fast-widget-bubble-92251613.bubble-floating,
+  #ultra-fast-widget-bubble-92251613.bubble-floating-reverse {
+    animation: none !important;
+    box-shadow: 0 0 0 1px rgba(212,175,55,.7), 0 0 20px 5px rgba(212,175,55,.45) !important;
+  }
+  #ultra-fast-widget-bubble-92251613::after { animation: none; opacity: .4; }
 }
