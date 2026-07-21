@@ -380,10 +380,7 @@ p { font-size: 1.1rem; line-height: 1.8; color: var(--text-secondary); margin-bo
    comma-joined onto the same animation list. The ::after halo runs the
    same bob 0.18s behind the bubble = trailing ghost. */
 #ultra-fast-widget-bubble-92251613 {
-  /* float forced here because widget.js permanently removes its
-     .bubble-floating class after the first click; the bob should live on */
-  animation: bubbleFloat 2.5s ease-in-out infinite,
-             aidWidgetGlow 2.6s ease-in-out infinite !important;
+  animation: aidWidgetGlow 2.6s ease-in-out infinite !important;
   overflow: visible !important;
 }
 #ultra-fast-widget-bubble-92251613.bubble-floating {
