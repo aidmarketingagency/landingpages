@@ -552,5 +552,22 @@
         setTimeout(next, durations[0]);
     })();
     </script>
+
+<script data-aid-refloat>
+/* widget.js removes .bubble-floating permanently on first bubble click;
+   re-add it whenever the chat is closed so the bob never retires. */
+(function(){
+  var W='92251613';
+  setInterval(function(){
+    try{
+      var b=document.getElementById('ultra-fast-widget-bubble-'+W);
+      var c=document.getElementById('ultra-fast-widget-container-'+W);
+      if(!b)return;
+      var open=c&&getComputedStyle(c).display!=='none'&&getComputedStyle(c).pointerEvents!=='none';
+      if(!open&&!b.classList.contains('bubble-floating'))b.classList.add('bubble-floating');
+    }catch(e){}
+  },1000);
+})();
+</script>
 </body>
 </html>
