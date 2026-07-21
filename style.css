@@ -373,3 +373,15 @@ p { font-size: 1.1rem; line-height: 1.8; color: var(--text-secondary); margin-bo
     .stat-item[data-tier="core"] { padding: 1.5rem 1.75rem; }
     .stat-item[data-tier="core"] .stat-number { font-size: 2.25rem; }
 }
+/* ── PayMeGPT concierge bubble: animated gold glow (black-on-black rescue) ── */
+#ultra-fast-widget-bubble-92251613 {
+  animation: aidWidgetGlow 2.6s ease-in-out infinite !important;
+}
+@keyframes aidWidgetGlow {
+  0%, 100% { box-shadow: 0 0 0 1px rgba(212,175,55,.55), 0 0 14px 3px rgba(212,175,55,.38), 0 0 36px 9px rgba(212,175,55,.16); }
+  50%      { box-shadow: 0 0 0 2px rgba(212,175,55,.95), 0 0 26px 7px rgba(212,175,55,.62), 0 0 64px 16px rgba(212,175,55,.30); }
+}
+@media (prefers-reduced-motion: reduce) {
+  #ultra-fast-widget-bubble-92251613 { animation: none !important;
+    box-shadow: 0 0 0 1px rgba(212,175,55,.7), 0 0 20px 5px rgba(212,175,55,.45) !important; }
+}
