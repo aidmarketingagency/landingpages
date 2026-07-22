@@ -163,16 +163,57 @@
         </div>
     </section>
 
-    <!-- Contractor hero image: Pixabay CC0 "contractor nail gun" job-site photo (id 4602618,
-         https://pixabay.com/photos/home-construction-wood-home-4602618/), downloaded and
-         gold-duotone treated with execution-side PIL (near-black shadow to brass highlight LUT),
-         scrim + grain applied in CSS below. No attribution required per Pixabay license. -->
+    <!-- Trade hero rotator: 4-slide cinematic crossfade over the original static banner.
+         Slide 1 is byte-identical to the original card (image + caption unchanged) so the
+         default/reduced-motion view never regresses. Slides 2-4 source: Pixabay CC0 photos
+         (downloaded, never hotlinked), same gold-duotone treatment family as slide 1 but each
+         with its own warm metallic cast (brass / bronze / copper). Attribution + license
+         pages recorded per image below. Pure CSS crossfade + Ken Burns (each slide carries
+         its own keyframe animation encoding its position in one shared 36s cycle) -- no JS
+         carousel, no arrows/dots. Hover/focus pause and prefers-reduced-motion are both
+         handled in style.css. -->
     <section class="trade-strip" aria-label="Built by someone who has done the work">
         <div class="container">
-            <div class="trade-image-frame reveal">
-                <img src="images/optimized/contractor-hero.jpg" alt="A contractor framing a roof on a residential job site" loading="lazy" width="1600" height="818">
-                <div class="trade-caption">
-                    <span class="trade-kicker">Built by someone who's held the ladder, not just the laptop</span>
+            <div class="trade-image-frame reveal" id="trade-rotator">
+                <!-- Slide 1 of 4: original framing-crew photo, unchanged treatment/caption. -->
+                <div class="trade-slide trade-slide-1">
+                    <img src="images/optimized/contractor-hero.jpg" alt="A contractor framing a roof on a residential job site" loading="eager" width="1600" height="818">
+                    <div class="trade-caption pos-bl">
+                        <span class="trade-kicker">Built by someone who's held the ladder, not just the laptop</span>
+                    </div>
+                </div>
+                <!-- Slide 2 of 4: roofing crew. Pixabay id 2681351, "Roofers, roofing work"
+                     by InstagramFOTOGRAFIN, https://pixabay.com/photos/roofers-roofing-work-wool-2681351/
+                     Pixabay Content License (no attribution required). Brass duotone cast.
+                     Caption option A (live): "Systems built for crews who work in the heat, not the office"
+                     Caption option B: "No missed calls. No missed shingles. Just the job done right." -->
+                <div class="trade-slide trade-slide-2">
+                    <img src="images/optimized/hero/roofing-crew.jpg" alt="A roofing crew installing new shingles on a multi-story building" loading="lazy" width="1800" height="920">
+                    <div class="trade-caption pos-br">
+                        <span class="trade-kicker">Systems built for crews who work in the heat, not the office</span>
+                    </div>
+                </div>
+                <!-- Slide 3 of 4: electrician's tools. Pixabay id 3273340, "Electrician, wiring,
+                     mounting, tool" by Sid74, https://pixabay.com/photos/electrician-wiring-mounting-tool-3273340/
+                     Pixabay Content License (no attribution required). Bronze duotone cast.
+                     Caption option A (live): "Built with the same precision you bring to every panel"
+                     Caption option B: "Wired right the first time. Same standard, every call answered." -->
+                <div class="trade-slide trade-slide-3">
+                    <img src="images/optimized/hero/electrician-panel.jpg" alt="An electrician's tools laid out for a wiring job" loading="lazy" width="1800" height="920">
+                    <div class="trade-caption pos-tl">
+                        <span class="trade-kicker">Built with the same precision you bring to every panel</span>
+                    </div>
+                </div>
+                <!-- Slide 4 of 4: plumber's pipe wrench. Pixabay id 585658, "Plumbing, pipe wrench,
+                     repair" by stevepb, https://pixabay.com/photos/plumbing-pipe-wrench-repair-585658/
+                     Pixabay Content License (no attribution required). Copper duotone cast.
+                     Caption option A (live): "Built by someone who knows a leak can't wait till Monday"
+                     Caption option B: "Every call matters. We make sure none of them get missed." -->
+                <div class="trade-slide trade-slide-4">
+                    <img src="images/optimized/hero/plumber-repair.jpg" alt="A pipe wrench tightening a plumbing fitting" loading="lazy" width="1800" height="920">
+                    <div class="trade-caption pos-br">
+                        <span class="trade-kicker">Built by someone who knows a leak can't wait till Monday</span>
+                    </div>
                 </div>
             </div>
         </div>
