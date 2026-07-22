@@ -337,8 +337,8 @@ p { font-size: 1.1rem; line-height: 1.8; color: var(--text-secondary); margin-bo
     .trade-kicker { font-size: 0.62rem; letter-spacing: 0.14em; }
 }
 @media (prefers-reduced-motion: reduce) {
-    .trade-slide { animation: none !important; opacity: 0 !important; }
-    .trade-slide-1 { opacity: 1 !important; }
+    /* reduced motion: keep the gentle opacity crossfade (accessibility-safe),
+       drop only the Ken Burns zoom/pan on the imagery */
     .trade-slide img { animation: none !important; transform: none !important; }
 }
 
