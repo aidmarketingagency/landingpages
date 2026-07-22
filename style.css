@@ -205,7 +205,7 @@ p { font-size: 1.1rem; line-height: 1.8; color: var(--text-secondary); margin-bo
 
 /* --- Trade rotator: 4-slide cinematic crossfade + Ken Burns ---------------
    Pure CSS: each .trade-slide gets its own keyframe animation encoding an
-   absolute position within a single shared 36s cycle (4 slides x 9s, with a
+   absolute position within a single shared 28s cycle (4 slides x 7s, with a
    1.2s crossfade overlap at each boundary), so all four stay in lockstep
    with no JS sequencing needed. The frame's own size never changes (fixed
    height via .trade-image-frame above) so there is zero layout shift. */
@@ -213,7 +213,7 @@ p { font-size: 1.1rem; line-height: 1.8; color: var(--text-secondary); margin-bo
     position: absolute;
     inset: 0;
     opacity: 0;
-    animation: trade-fade-1 36s ease-in-out infinite;
+    animation: trade-fade-1 28s ease-in-out infinite;
 }
 .trade-slide img {
     width: 100%;
@@ -221,7 +221,7 @@ p { font-size: 1.1rem; line-height: 1.8; color: var(--text-secondary); margin-bo
     object-fit: cover;
     object-position: center 60%;
     transform: scale(1.0);
-    animation: trade-kenburns-1 36s ease-in-out infinite;
+    animation: trade-kenburns-1 28s ease-in-out infinite;
     will-change: transform;
 }
 .trade-slide-1 { animation-name: trade-fade-1; z-index: 4; }
@@ -235,58 +235,58 @@ p { font-size: 1.1rem; line-height: 1.8; color: var(--text-secondary); margin-bo
 
 @keyframes trade-fade-1 {
     0%      { opacity: 1; }
-    21.667% { opacity: 1; }
+    20.714% { opacity: 1; }
     25%     { opacity: 0; }
-    96.667% { opacity: 0; }
+    95.714% { opacity: 0; }
     100%    { opacity: 1; }
 }
 @keyframes trade-fade-2 {
     0%      { opacity: 0; }
-    21.667% { opacity: 0; }
+    20.714% { opacity: 0; }
     25%     { opacity: 1; }
-    46.667% { opacity: 1; }
+    45.714% { opacity: 1; }
     50%     { opacity: 0; }
     100%    { opacity: 0; }
 }
 @keyframes trade-fade-3 {
     0%      { opacity: 0; }
-    46.667% { opacity: 0; }
+    45.714% { opacity: 0; }
     50%     { opacity: 1; }
-    71.667% { opacity: 1; }
+    70.714% { opacity: 1; }
     75%     { opacity: 0; }
     100%    { opacity: 0; }
 }
 @keyframes trade-fade-4 {
     0%      { opacity: 0; }
-    71.667% { opacity: 0; }
+    70.714% { opacity: 0; }
     75%     { opacity: 1; }
-    96.667% { opacity: 1; }
+    95.714% { opacity: 1; }
     100%    { opacity: 0; }
 }
 /* Ken Burns: slow scale 1.0 -> 1.06 across each slide's own visible window
    (fade-in start through fade-out end); holds/resets happen only while the
    slide is fully transparent, so no motion is ever visible mid-crossfade. */
 @keyframes trade-kenburns-1 {
-    0%      { transform: scale(1.00706); }
+    0%      { transform: scale(1.00878); }
     25%     { transform: scale(1.06); }
-    96.667% { transform: scale(1.0); }
-    100%    { transform: scale(1.00706); }
+    95.714% { transform: scale(1.0); }
+    100%    { transform: scale(1.00878); }
 }
 @keyframes trade-kenburns-2 {
     0%      { transform: scale(1.0); }
-    21.667% { transform: scale(1.0); }
+    20.714% { transform: scale(1.0); }
     50%     { transform: scale(1.06); }
     100%    { transform: scale(1.0); }
 }
 @keyframes trade-kenburns-3 {
     0%      { transform: scale(1.0); }
-    46.667% { transform: scale(1.0); }
+    45.714% { transform: scale(1.0); }
     75%     { transform: scale(1.06); }
     100%    { transform: scale(1.0); }
 }
 @keyframes trade-kenburns-4 {
     0%      { transform: scale(1.0); }
-    71.667% { transform: scale(1.0); }
+    70.714% { transform: scale(1.0); }
     100%    { transform: scale(1.06); }
 }
 /* Pause the whole rotator on hover/focus (spec requirement) */
@@ -350,7 +350,9 @@ p { font-size: 1.1rem; line-height: 1.8; color: var(--text-secondary); margin-bo
 
 /* Services Section */
 .services { padding-top: 3.5rem; }
-.services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; }
+/* min(350px, 100%) so narrow phones (375px = 311px of content width) never
+   force a 350px column that overflows and clips the cards on the right. */
+.services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(350px, 100%), 1fr)); gap: 2rem; }
 .service-card { background: var(--bg-dark-charcoal); border: 1px solid var(--divider-color); border-radius: 20px; padding: 2.5rem; text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; }
 .service-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-soft), 0 12px 32px rgba(0,0,0,0.4); border-color: var(--gold-primary); }
 .service-icon { display: flex; justify-content: center; align-items: center; min-height: 48px; margin-bottom: 1.5rem; color: var(--gold-primary); }
@@ -459,17 +461,49 @@ p { font-size: 1.1rem; line-height: 1.8; color: var(--text-secondary); margin-bo
    gradient. Very low alpha -- atmosphere only, no stock imagery. */
 .testimonials {
     background:
-        radial-gradient(ellipse 65% 55% at 50% 0%, rgba(212,175,55,0.06), transparent 70%),
-        linear-gradient(160deg, rgba(212,175,55,0.03), transparent 45%);
+        radial-gradient(ellipse 65% 55% at 50% 0%, rgba(224,226,232,0.05), transparent 70%),
+        linear-gradient(160deg, rgba(212,175,55,0.02), transparent 45%);
 }
-.testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; }
+.testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(350px, 100%), 1fr)); gap: 2rem; }
 /* Balanced 2x2 on desktop: auto-fit would jump to 3 columns at wide widths
    and orphan the 4th card alone on row two. Cap at 2 columns, centered. */
 @media (min-width: 900px) {
     .testimonials-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 1000px; margin: 0 auto; }
 }
-.testimonial-card { background: var(--bg-dark-charcoal); border: 1px solid var(--divider-color); border-radius: 20px; padding: 2rem; position: relative; transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; display: flex; flex-direction: column; justify-content: space-between; }
-.testimonial-card:hover { transform: translateY(-5px); border-color: var(--gold-primary); box-shadow: var(--shadow-soft); }
+/* Platinum-in-a-dark-vault treatment: same corner-gradient family as the
+   service cards and pyramid, but in a cool precious-metal register --
+   brushed platinum sheen (E5E4E2) over charcoal, a hairline metal edge,
+   and a polished top highlight. Gold stays on the stars/avatars only. */
+.testimonial-card {
+    background:
+        linear-gradient(135deg, rgba(229,228,226,0.07), transparent 55%),
+        linear-gradient(315deg, rgba(180,184,190,0.05), transparent 60%),
+        var(--bg-dark-charcoal);
+    border: 1px solid rgba(229,228,226,0.16);
+    border-radius: 20px; padding: 2rem; position: relative; overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    display: flex; flex-direction: column; justify-content: space-between;
+}
+/* Alternate the sheen corner like the service cards */
+.testimonial-card:nth-child(even) {
+    background:
+        linear-gradient(225deg, rgba(229,228,226,0.07), transparent 55%),
+        linear-gradient(45deg, rgba(180,184,190,0.05), transparent 60%),
+        var(--bg-dark-charcoal);
+}
+/* Polished top edge: thin platinum highlight, like light catching vault steel */
+.testimonial-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 12%; right: 12%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(229,228,226,0.45), transparent);
+}
+.testimonial-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(229,228,226,0.42);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.5), 0 0 24px rgba(229,228,226,0.10);
+}
 .testimonial-rating { color: var(--gold-primary); font-size: 1.5rem; margin-bottom: 1rem; text-align: center; }
 .testimonial-text { font-style: italic; text-align: center; flex-grow: 1; }
 .testimonial-author { display: flex; flex-direction: column; align-items: center; gap: 1rem; margin-top: 1.5rem; }
