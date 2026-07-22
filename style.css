@@ -181,11 +181,11 @@ p { font-size: 1.1rem; line-height: 1.8; color: var(--text-secondary); margin-bo
     border: 1px solid var(--divider-color);
     box-shadow: var(--shadow-medium), 0 30px 70px rgba(0,0,0,0.5);
 }
-.trade-image-frame img { width: 100%; height: 100%; object-fit: cover; object-position: center 60%; }
 .trade-image-frame::before {
     content: '';
     position: absolute;
     inset: 0;
+    z-index: 1;
     background:
         linear-gradient(180deg, rgba(0,0,0,0.05) 35%, rgba(0,0,0,0.82) 100%),
         linear-gradient(100deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.05) 48%);
@@ -194,17 +194,127 @@ p { font-size: 1.1rem; line-height: 1.8; color: var(--text-secondary); margin-bo
     content: '';
     position: absolute;
     inset: 0;
+    z-index: 1;
     opacity: 0.06;
     mix-blend-mode: overlay;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
+
+/* --- Trade rotator: 4-slide cinematic crossfade + Ken Burns ---------------
+   Pure CSS: each .trade-slide gets its own keyframe animation encoding an
+   absolute position within a single shared 36s cycle (4 slides x 9s, with a
+   1.2s crossfade overlap at each boundary), so all four stay in lockstep
+   with no JS sequencing needed. The frame's own size never changes (fixed
+   height via .trade-image-frame above) so there is zero layout shift. */
+.trade-slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    animation: trade-fade-1 36s ease-in-out infinite;
+}
+.trade-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 60%;
+    transform: scale(1.0);
+    animation: trade-kenburns-1 36s ease-in-out infinite;
+    will-change: transform;
+}
+.trade-slide-1 { animation-name: trade-fade-1; z-index: 4; }
+.trade-slide-1 img { animation-name: trade-kenburns-1; }
+.trade-slide-2 { animation-name: trade-fade-2; z-index: 3; }
+.trade-slide-2 img { animation-name: trade-kenburns-2; object-position: center 42%; }
+.trade-slide-3 { animation-name: trade-fade-3; z-index: 2; }
+.trade-slide-3 img { animation-name: trade-kenburns-3; object-position: center 48%; }
+.trade-slide-4 { animation-name: trade-fade-4; z-index: 1; }
+.trade-slide-4 img { animation-name: trade-kenburns-4; object-position: center 46%; }
+
+@keyframes trade-fade-1 {
+    0%      { opacity: 1; }
+    21.667% { opacity: 1; }
+    25%     { opacity: 0; }
+    96.667% { opacity: 0; }
+    100%    { opacity: 1; }
+}
+@keyframes trade-fade-2 {
+    0%      { opacity: 0; }
+    21.667% { opacity: 0; }
+    25%     { opacity: 1; }
+    46.667% { opacity: 1; }
+    50%     { opacity: 0; }
+    100%    { opacity: 0; }
+}
+@keyframes trade-fade-3 {
+    0%      { opacity: 0; }
+    46.667% { opacity: 0; }
+    50%     { opacity: 1; }
+    71.667% { opacity: 1; }
+    75%     { opacity: 0; }
+    100%    { opacity: 0; }
+}
+@keyframes trade-fade-4 {
+    0%      { opacity: 0; }
+    71.667% { opacity: 0; }
+    75%     { opacity: 1; }
+    96.667% { opacity: 1; }
+    100%    { opacity: 0; }
+}
+/* Ken Burns: slow scale 1.0 -> 1.06 across each slide's own visible window
+   (fade-in start through fade-out end); holds/resets happen only while the
+   slide is fully transparent, so no motion is ever visible mid-crossfade. */
+@keyframes trade-kenburns-1 {
+    0%      { transform: scale(1.00706); }
+    25%     { transform: scale(1.06); }
+    96.667% { transform: scale(1.0); }
+    100%    { transform: scale(1.00706); }
+}
+@keyframes trade-kenburns-2 {
+    0%      { transform: scale(1.0); }
+    21.667% { transform: scale(1.0); }
+    50%     { transform: scale(1.06); }
+    100%    { transform: scale(1.0); }
+}
+@keyframes trade-kenburns-3 {
+    0%      { transform: scale(1.0); }
+    46.667% { transform: scale(1.0); }
+    75%     { transform: scale(1.06); }
+    100%    { transform: scale(1.0); }
+}
+@keyframes trade-kenburns-4 {
+    0%      { transform: scale(1.0); }
+    71.667% { transform: scale(1.0); }
+    100%    { transform: scale(1.06); }
+}
+/* Pause the whole rotator on hover/focus (spec requirement) */
+.trade-image-frame:hover .trade-slide,
+.trade-image-frame:hover .trade-slide img,
+.trade-image-frame:focus-within .trade-slide,
+.trade-image-frame:focus-within .trade-slide img,
+.trade-image-frame.is-paused .trade-slide,
+.trade-image-frame.is-paused .trade-slide img {
+    animation-play-state: paused;
+}
+
 .trade-caption {
     position: absolute;
-    left: 1.75rem;
-    bottom: 1.5rem;
-    z-index: 2;
+    z-index: 3;
     max-width: 420px;
 }
+.trade-caption::before {
+    /* Local scrim behind the caption only -- keeps the kicker legible no
+       matter which corner it lands in or how busy that part of the photo
+       is, without darkening the whole frame differently per slide. */
+    content: '';
+    position: absolute;
+    inset: -0.9rem -1.1rem;
+    z-index: -1;
+    background: radial-gradient(ellipse at center, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.28) 55%, rgba(0,0,0,0) 100%);
+}
+.trade-caption.pos-bl { left: 1.75rem; bottom: 1.5rem; }
+.trade-caption.pos-br { right: 1.75rem; bottom: 1.5rem; text-align: right; }
+.trade-caption.pos-br .trade-kicker { border-left: none; border-right: 2px solid var(--gold-primary); padding-left: 0; padding-right: 0.75rem; }
+.trade-caption.pos-tl { left: 1.75rem; top: 1.5rem; }
 .trade-kicker {
     display: block;
     font-family: 'Outfit', sans-serif;
@@ -220,8 +330,16 @@ p { font-size: 1.1rem; line-height: 1.8; color: var(--text-secondary); margin-bo
 @media (max-width: 640px) {
     .trade-strip { padding-top: 2rem; }
     .trade-image-frame { border-radius: 14px; }
-    .trade-caption { left: 1.1rem; bottom: 1.1rem; max-width: 78%; }
+    .trade-caption { max-width: 78%; }
+    .trade-caption.pos-bl { left: 1.1rem; bottom: 1.1rem; }
+    .trade-caption.pos-br { right: 1.1rem; bottom: 1.1rem; }
+    .trade-caption.pos-tl { left: 1.1rem; top: 1.1rem; }
     .trade-kicker { font-size: 0.62rem; letter-spacing: 0.14em; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .trade-slide { animation: none !important; opacity: 0 !important; }
+    .trade-slide-1 { opacity: 1 !important; }
+    .trade-slide img { animation: none !important; transform: none !important; }
 }
 
 /* Section hairline: marks a transition where two sections would otherwise sit flush */
