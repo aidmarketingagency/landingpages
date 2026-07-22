@@ -152,14 +152,17 @@ p { font-size: 1.1rem; line-height: 1.8; color: var(--text-secondary); margin-bo
 .sms-time { display: block; font-size: 0.6rem; opacity: 0.6; margin-top: 0.2rem; text-align: right; }
 
 @media (max-width: 900px) {
-    .hero { padding-top: 100px; padding-bottom: 3rem; }
-    .hero-content { grid-template-columns: 1fr; gap: 2.5rem; }
+    /* Tighter vertical budget on phones: drop the 100vh floor, shrink the h1
+       and trim padding so phone mockup + full headline + description fit
+       without a screenful of scrolling. Desktop h1 untouched. */
+    .hero { min-height: auto; padding-top: 90px; padding-bottom: 2rem; }
+    .hero-content { grid-template-columns: 1fr; gap: 1.75rem; }
     .hero-text { text-align: center; }
-    .hero-text h1 { text-align: center; }
+    .hero-text h1 { text-align: center; font-size: clamp(1.9rem, 7.5vw, 2.5rem); }
     .hero-description { margin: 0 auto; }
-    .hero-buttons { justify-content: center; }
-    .hero-visual { order: -1; }
-    .phone-frame { width: 180px; height: 340px; }
+    .hero-buttons { justify-content: center; margin-top: 1.5rem; }
+    .hero-visual { order: -1; gap: 1rem; }
+    .phone-frame { width: 172px; height: 325px; }
 }
 
 /* Buttons */
@@ -202,7 +205,7 @@ p { font-size: 1.1rem; line-height: 1.8; color: var(--text-secondary); margin-bo
 
 /* --- Trade rotator: 4-slide cinematic crossfade + Ken Burns ---------------
    Pure CSS: each .trade-slide gets its own keyframe animation encoding an
-   absolute position within a single shared 36s cycle (4 slides x 9s, with a
+   absolute position within a single shared 28s cycle (4 slides x 7s, with a
    1.2s crossfade overlap at each boundary), so all four stay in lockstep
    with no JS sequencing needed. The frame's own size never changes (fixed
    height via .trade-image-frame above) so there is zero layout shift. */
@@ -210,7 +213,7 @@ p { font-size: 1.1rem; line-height: 1.8; color: var(--text-secondary); margin-bo
     position: absolute;
     inset: 0;
     opacity: 0;
-    animation: trade-fade-1 36s ease-in-out infinite;
+    animation: trade-fade-1 28s ease-in-out infinite;
 }
 .trade-slide img {
     width: 100%;
@@ -218,7 +221,7 @@ p { font-size: 1.1rem; line-height: 1.8; color: var(--text-secondary); margin-bo
     object-fit: cover;
     object-position: center 60%;
     transform: scale(1.0);
-    animation: trade-kenburns-1 36s ease-in-out infinite;
+    animation: trade-kenburns-1 28s ease-in-out infinite;
     will-change: transform;
 }
 .trade-slide-1 { animation-name: trade-fade-1; z-index: 4; }
@@ -232,58 +235,58 @@ p { font-size: 1.1rem; line-height: 1.8; color: var(--text-secondary); margin-bo
 
 @keyframes trade-fade-1 {
     0%      { opacity: 1; }
-    21.667% { opacity: 1; }
+    20.714% { opacity: 1; }
     25%     { opacity: 0; }
-    96.667% { opacity: 0; }
+    95.714% { opacity: 0; }
     100%    { opacity: 1; }
 }
 @keyframes trade-fade-2 {
     0%      { opacity: 0; }
-    21.667% { opacity: 0; }
+    20.714% { opacity: 0; }
     25%     { opacity: 1; }
-    46.667% { opacity: 1; }
+    45.714% { opacity: 1; }
     50%     { opacity: 0; }
     100%    { opacity: 0; }
 }
 @keyframes trade-fade-3 {
     0%      { opacity: 0; }
-    46.667% { opacity: 0; }
+    45.714% { opacity: 0; }
     50%     { opacity: 1; }
-    71.667% { opacity: 1; }
+    70.714% { opacity: 1; }
     75%     { opacity: 0; }
     100%    { opacity: 0; }
 }
 @keyframes trade-fade-4 {
     0%      { opacity: 0; }
-    71.667% { opacity: 0; }
+    70.714% { opacity: 0; }
     75%     { opacity: 1; }
-    96.667% { opacity: 1; }
+    95.714% { opacity: 1; }
     100%    { opacity: 0; }
 }
 /* Ken Burns: slow scale 1.0 -> 1.06 across each slide's own visible window
    (fade-in start through fade-out end); holds/resets happen only while the
    slide is fully transparent, so no motion is ever visible mid-crossfade. */
 @keyframes trade-kenburns-1 {
-    0%      { transform: scale(1.00706); }
+    0%      { transform: scale(1.00878); }
     25%     { transform: scale(1.06); }
-    96.667% { transform: scale(1.0); }
-    100%    { transform: scale(1.00706); }
+    95.714% { transform: scale(1.0); }
+    100%    { transform: scale(1.00878); }
 }
 @keyframes trade-kenburns-2 {
     0%      { transform: scale(1.0); }
-    21.667% { transform: scale(1.0); }
+    20.714% { transform: scale(1.0); }
     50%     { transform: scale(1.06); }
     100%    { transform: scale(1.0); }
 }
 @keyframes trade-kenburns-3 {
     0%      { transform: scale(1.0); }
-    46.667% { transform: scale(1.0); }
+    45.714% { transform: scale(1.0); }
     75%     { transform: scale(1.06); }
     100%    { transform: scale(1.0); }
 }
 @keyframes trade-kenburns-4 {
     0%      { transform: scale(1.0); }
-    71.667% { transform: scale(1.0); }
+    70.714% { transform: scale(1.0); }
     100%    { transform: scale(1.06); }
 }
 /* Pause the whole rotator on hover/focus (spec requirement) */
@@ -347,15 +350,40 @@ p { font-size: 1.1rem; line-height: 1.8; color: var(--text-secondary); margin-bo
 
 /* Services Section */
 .services { padding-top: 3.5rem; }
-.services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; }
+/* min(350px, 100%) so narrow phones (375px = 311px of content width) never
+   force a 350px column that overflows and clips the cards on the right. */
+.services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(350px, 100%), 1fr)); gap: 2rem; }
 .service-card { background: var(--bg-dark-charcoal); border: 1px solid var(--divider-color); border-radius: 20px; padding: 2.5rem; text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; }
 .service-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-soft), 0 12px 32px rgba(0,0,0,0.4); border-color: var(--gold-primary); }
-.service-icon { display: flex; justify-content: center; align-items: center; margin-bottom: 1.5rem; color: var(--gold-primary); }
+.service-icon { display: flex; justify-content: center; align-items: center; min-height: 48px; margin-bottom: 1.5rem; color: var(--gold-primary); }
 .service-icon svg { width: 48px; height: 48px; }
+/* Review-engine card: 5-star row icon (120x24 viewBox) sits centered in the same 48px icon lane */
+.service-icon--stars svg { width: 120px; height: 26px; }
 
-/* About Section */
-.about-content { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
-.about-image { position: relative; border-radius: 20px; overflow: hidden; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3); }
+/* Per-card corner gradients: dark charcoal base + faint accent tint, direction
+   alternating corner (odd TL->BR, even TR->BL). Accents stay in the gold /
+   amber / copper family with two very subtle off-family hues (teal, steel
+   blue) at low alpha for variety. Hover intensifies the tint slightly. */
+.service-card--frontdesk { background: linear-gradient(135deg, rgba(212,175,55,0.09), rgba(212,175,55,0) 60%), var(--bg-dark-charcoal); }
+.service-card--frontdesk:hover { background: linear-gradient(135deg, rgba(212,175,55,0.15), rgba(212,175,55,0) 65%), var(--bg-dark-charcoal); }
+.service-card--textback { background: linear-gradient(225deg, rgba(45,148,140,0.08), rgba(45,148,140,0) 60%), var(--bg-dark-charcoal); }
+.service-card--textback:hover { background: linear-gradient(225deg, rgba(45,148,140,0.14), rgba(45,148,140,0) 65%), var(--bg-dark-charcoal); }
+.service-card--followup { background: linear-gradient(135deg, rgba(224,164,72,0.09), rgba(224,164,72,0) 60%), var(--bg-dark-charcoal); }
+.service-card--followup:hover { background: linear-gradient(135deg, rgba(224,164,72,0.15), rgba(224,164,72,0) 65%), var(--bg-dark-charcoal); }
+.service-card--chatbot { background: linear-gradient(225deg, rgba(96,125,160,0.09), rgba(96,125,160,0) 60%), var(--bg-dark-charcoal); }
+.service-card--chatbot:hover { background: linear-gradient(225deg, rgba(96,125,160,0.15), rgba(96,125,160,0) 65%), var(--bg-dark-charcoal); }
+.service-card--crm { background: linear-gradient(135deg, rgba(184,115,51,0.09), rgba(184,115,51,0) 60%), var(--bg-dark-charcoal); }
+.service-card--crm:hover { background: linear-gradient(135deg, rgba(184,115,51,0.15), rgba(184,115,51,0) 65%), var(--bg-dark-charcoal); }
+.service-card--reviews { background: linear-gradient(225deg, rgba(245,232,199,0.07), rgba(245,232,199,0) 60%), var(--bg-dark-charcoal); }
+.service-card--reviews:hover { background: linear-gradient(225deg, rgba(245,232,199,0.12), rgba(245,232,199,0) 65%), var(--bg-dark-charcoal); }
+
+/* About Section: single centered column (intro -> founder block -> pyramid).
+   Replaced the old 2-col grid that misaligned text against the photo. */
+.about-content { display: flex; flex-direction: column; align-items: center; gap: 3rem; }
+.about-intro { max-width: 720px; text-align: center; }
+.about-founder { display: flex; flex-direction: column; align-items: center; gap: 1.5rem; }
+.about-founder-heading { font-size: 1.35rem; color: var(--gold-primary); letter-spacing: 0.04em; margin-bottom: 0; }
+.about-image { position: relative; width: min(380px, 85vw); border-radius: 20px; overflow: hidden; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3); }
 .about-image img { display: block; width: 100%; height: auto; filter: saturate(0.88) contrast(1.04) brightness(0.97); }
 .about-image::before {
     content: '';
@@ -373,10 +401,10 @@ p { font-size: 1.1rem; line-height: 1.8; color: var(--text-secondary); margin-bo
     mix-blend-mode: overlay;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
-.about-cta { margin: 0.5rem 0 0.5rem; }
+.about-cta { margin: 0; }
 
 /* About stats: pyramid stack, middle stat emphasized, staggered slide-in */
-.about-stats { display: flex; flex-direction: column; align-items: center; gap: 1.1rem; margin-top: 2.75rem; position: relative; }
+.about-stats { display: flex; flex-direction: column; align-items: center; gap: 1.1rem; width: 100%; position: relative; }
 .about-stats::before {
     content: '';
     position: absolute;
@@ -429,9 +457,53 @@ p { font-size: 1.1rem; line-height: 1.8; color: var(--text-secondary); margin-bo
 }
 
 /* Testimonials Section */
-.testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; }
-.testimonial-card { background: var(--bg-dark-charcoal); border: 1px solid var(--divider-color); border-radius: 20px; padding: 2rem; position: relative; transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; display: flex; flex-direction: column; justify-content: space-between; }
-.testimonial-card:hover { transform: translateY(-5px); border-color: var(--gold-primary); box-shadow: var(--shadow-soft); }
+/* Faint success glow: radial gold bloom from the top + a whisper of diagonal
+   gradient. Very low alpha -- atmosphere only, no stock imagery. */
+.testimonials {
+    background:
+        radial-gradient(ellipse 65% 55% at 50% 0%, rgba(224,226,232,0.05), transparent 70%),
+        linear-gradient(160deg, rgba(212,175,55,0.02), transparent 45%);
+}
+.testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(350px, 100%), 1fr)); gap: 2rem; }
+/* Balanced 2x2 on desktop: auto-fit would jump to 3 columns at wide widths
+   and orphan the 4th card alone on row two. Cap at 2 columns, centered. */
+@media (min-width: 900px) {
+    .testimonials-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 1000px; margin: 0 auto; }
+}
+/* Platinum-in-a-dark-vault treatment: same corner-gradient family as the
+   service cards and pyramid, but in a cool precious-metal register --
+   brushed platinum sheen (E5E4E2) over charcoal, a hairline metal edge,
+   and a polished top highlight. Gold stays on the stars/avatars only. */
+.testimonial-card {
+    background:
+        linear-gradient(135deg, rgba(229,228,226,0.07), transparent 55%),
+        linear-gradient(315deg, rgba(180,184,190,0.05), transparent 60%),
+        var(--bg-dark-charcoal);
+    border: 1px solid rgba(229,228,226,0.16);
+    border-radius: 20px; padding: 2rem; position: relative; overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    display: flex; flex-direction: column; justify-content: space-between;
+}
+/* Alternate the sheen corner like the service cards */
+.testimonial-card:nth-child(even) {
+    background:
+        linear-gradient(225deg, rgba(229,228,226,0.07), transparent 55%),
+        linear-gradient(45deg, rgba(180,184,190,0.05), transparent 60%),
+        var(--bg-dark-charcoal);
+}
+/* Polished top edge: thin platinum highlight, like light catching vault steel */
+.testimonial-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 12%; right: 12%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(229,228,226,0.45), transparent);
+}
+.testimonial-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(229,228,226,0.42);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.5), 0 0 24px rgba(229,228,226,0.10);
+}
 .testimonial-rating { color: var(--gold-primary); font-size: 1.5rem; margin-bottom: 1rem; text-align: center; }
 .testimonial-text { font-style: italic; text-align: center; flex-grow: 1; }
 .testimonial-author { display: flex; flex-direction: column; align-items: center; gap: 1rem; margin-top: 1.5rem; }
@@ -451,7 +523,7 @@ p { font-size: 1.1rem; line-height: 1.8; color: var(--text-secondary); margin-bo
 .section-divider { width: 50%; margin: 2rem auto 0; border: none; height: 1px; background-color: var(--divider-color); }
 
 /* Footer */
-.footer { background: var(--bg-black); padding: 4rem 0 2rem; }
+.footer { background: var(--bg-black); padding: 4rem 0 2rem; border-top: 1px solid var(--divider-color); }
 .footer-content { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; justify-items: center; text-align: center; }
 .footer-section h3 { color: var(--gold-primary); }
 .footer-links a { display: block; margin-bottom: 0.5rem; color: var(--text-secondary); text-decoration: none; transition: color 0.3s ease; }
@@ -460,6 +532,19 @@ p { font-size: 1.1rem; line-height: 1.8; color: var(--text-secondary); margin-bo
 .social-link svg { height: 24px; width: 24px; fill: var(--text-secondary); transition: fill 0.3s ease; }
 .social-link:hover svg { fill: var(--gold-primary); }
 .footer-bottom { text-align: center; padding-top: 3rem; color: var(--text-secondary); opacity: 0.7; }
+/* Desktop footer: the centered mobile stack reads as three lonely islands on
+   wide screens (Ryan, 2026-07-21). At >=900px: left-aligned columns with real
+   proportions, Company links in a two-column run so the list stops towering,
+   and bigger social icons. Mobile keeps the centered stack above. */
+@media (min-width: 900px) {
+    .footer-content { grid-template-columns: 1.4fr 1.3fr 0.8fr; gap: 3.5rem; justify-items: start; text-align: left; align-items: start; }
+    .footer-section h3 { margin-bottom: 1.25rem; }
+    .footer-section p { max-width: 340px; }
+    .footer-links { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 2.5rem; row-gap: 0.65rem; }
+    .footer-links a { margin-bottom: 0; }
+    .social-links { justify-content: flex-start; gap: 1.25rem; }
+    .social-link svg { height: 30px; width: 30px; }
+}
 
 /* Cal.com inline embed */
 .cal-embed-wrap { margin-top: 2.5rem; text-align: center; }
@@ -485,7 +570,6 @@ p { font-size: 1.1rem; line-height: 1.8; color: var(--text-secondary); margin-bo
 
 /* Mobile Responsive Adjustments */
 @media (max-width: 768px) {
-    .about-content { grid-template-columns: 1fr; }
     .logo img { height: 36px; }
     .logo span { font-size: 1.4rem; }
     .stat-item[data-tier="core"] { padding: 1.5rem 1.75rem; }
@@ -497,8 +581,13 @@ p { font-size: 1.1rem; line-height: 1.8; color: var(--text-secondary); margin-bo
    2.5s). A bare `animation` override kills the float, so the glow is
    comma-joined onto the same animation list. The ::after halo runs the
    same bob 0.18s behind the bubble = trailing ghost. */
+/* Base rule bobs on its own (aidBubbleBob): widget.js only applies its
+   .bubble-floating class on mobile, so without this the desktop bubble sat
+   static. The widget's own float classes below are more specific and win
+   when applied, so mobile never double-floats. */
 #ultra-fast-widget-bubble-92251613 {
-  animation: aidWidgetGlow 2.6s ease-in-out infinite !important;
+  animation: aidBubbleBob 2.5s ease-in-out infinite,
+             aidWidgetGlow 2.6s ease-in-out infinite !important;
   overflow: visible !important;
 }
 #ultra-fast-widget-bubble-92251613.bubble-floating {
@@ -519,6 +608,10 @@ p { font-size: 1.1rem; line-height: 1.8; color: var(--text-secondary); margin-bo
   animation: aidGhostTrail 2.5s ease-in-out infinite;
   animation-delay: 0.18s;
 }
+@keyframes aidBubbleBob {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-8px); }
+}
 @keyframes aidWidgetGlow {
   0%, 100% { box-shadow: 0 0 0 1px rgba(212,175,55,.55), 0 0 14px 3px rgba(212,175,55,.38), 0 0 36px 9px rgba(212,175,55,.16); }
   50%      { box-shadow: 0 0 0 2px rgba(212,175,55,.95), 0 0 26px 7px rgba(212,175,55,.62), 0 0 64px 16px rgba(212,175,55,.30); }
@@ -535,4 +628,21 @@ p { font-size: 1.1rem; line-height: 1.8; color: var(--text-secondary); margin-bo
     box-shadow: 0 0 0 1px rgba(212,175,55,.7), 0 0 20px 5px rgba(212,175,55,.45) !important;
   }
   #ultra-fast-widget-bubble-92251613::after { animation: none; opacity: .4; }
+}
+
+/* ── PayMeGPT chat container: partial sheet on mobile ─────────────────────
+   widget.js inlines inset:0 on the container under 768px (full-screen
+   takeover). Override to a bottom-pinned ~72vh sheet with small side
+   margins and rounded top corners so the site stays visible behind it. */
+@media (max-width: 768px) {
+  #ultra-fast-widget-container-92251613 {
+    inset: auto 8px 0 8px !important;
+    top: auto !important;
+    width: auto !important;
+    height: 72vh !important;
+    max-height: 72vh !important;
+    border-radius: 16px 16px 0 0 !important;
+    overflow: hidden !important;
+    box-shadow: 0 -12px 40px rgba(0,0,0,0.55), 0 0 0 1px rgba(212,175,55,0.25) !important;
+  }
 }
