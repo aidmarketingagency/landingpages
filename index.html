@@ -601,7 +601,10 @@
 
 <script data-aid-refloat>
 /* widget.js removes .bubble-floating permanently on first bubble click;
-   re-add it whenever the chat is closed so the bob never retires. */
+   re-add it whenever the chat is closed so the bob never retires.
+   (Widget header title + footer text are platform config on the agent
+   itself -- the chat renders in a cross-origin iframe, so page scripts
+   cannot restyle its internals.) */
 (function(){
   var W='92251613';
   setInterval(function(){
