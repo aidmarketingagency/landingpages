@@ -10,6 +10,7 @@
     {{META_TITLE}}         - <title> tag text, <= 60 chars
     {{META_DESCRIPTION}}    - meta description, 140-160 chars, written as the answer teaser
     {{CANONICAL_URL}}      - full https://aidmarketingagency.com/blog/<slug> URL
+    {{SOCIAL_IMAGE_URL}}    - absolute https URL for og:image and twitter:image
     {{JSONLD}}             - full <script type="application/ld+json">...</script> block(s):
                               BlogPosting + FAQPage schema, author -> Person (sameAs LinkedIn)
     {{HERO_IMG}}            - full <img> tag (or <picture>) for the hero image, with alt text
@@ -41,6 +42,15 @@
     <meta name="description" content="{{META_DESCRIPTION}}">
     <link rel="canonical" href="{{CANONICAL_URL}}">
     <meta name="aid-content-hash" content="{{CONTENT_HASH}}">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="{{META_TITLE}}">
+    <meta property="og:description" content="{{META_DESCRIPTION}}">
+    <meta property="og:url" content="{{CANONICAL_URL}}">
+    <meta property="og:image" content="{{SOCIAL_IMAGE_URL}}">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{META_TITLE}}">
+    <meta name="twitter:description" content="{{META_DESCRIPTION}}">
+    <meta name="twitter:image" content="{{SOCIAL_IMAGE_URL}}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -70,8 +80,8 @@
             border-radius: 12px;
             padding: 1.5rem 1.75rem;
         }
-        .post-toc h2 { font-size: 1rem; text-align: left; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gold-primary); background: none; -webkit-text-fill-color: var(--gold-primary); margin-bottom: 0.75rem; }
-        .post-toc ul { list-style: none; padding: 0; margin: 0; }
+        .post-toc h2, .post-toc .post-toc-label { font-size: 1rem; text-align: left; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gold-primary); background: none; -webkit-text-fill-color: var(--gold-primary); margin-bottom: 0.75rem; font-family: 'Outfit', sans-serif; font-weight: 700; }
+        .post-toc ul, .post-toc ol { list-style: none; padding: 0; margin: 0; }
         .post-toc li { margin-bottom: 0.5rem; }
         .post-toc a { color: var(--text-secondary); text-decoration: none; font-size: 0.95rem; }
         .post-toc a:hover { color: var(--gold-primary); }
@@ -83,10 +93,15 @@
         .post-body ul, .post-body ol { color: var(--text-secondary); padding-left: 1.5rem; margin-bottom: 1rem; }
         .post-body li { margin-bottom: 0.4rem; line-height: 1.7; }
         .post-body a { color: var(--gold-primary); text-decoration: underline; }
-        .post-body table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; }
+        .post-body table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; display: block; overflow-x: auto; }
         .post-body th, .post-body td { border: 1px solid var(--divider-color); padding: 0.6rem 0.8rem; text-align: left; color: var(--text-secondary); font-size: 0.9rem; }
         .post-body th { color: var(--gold-primary); font-family: 'Outfit', sans-serif; }
-        .post-body img { border-radius: 12px; margin: 1.5rem 0; }
+        .post-body img { max-width: 100%; border-radius: 12px; margin: 1.5rem 0; }
+        .post-body figure.post-inbody-img { margin: 2rem 0; }
+        .post-body figure.post-inbody-img img { display: block; width: 100%; margin: 0 0 0.6rem; box-shadow: 0 12px 40px rgba(0,0,0,0.35); }
+        .post-body figure.post-inbody-img figcaption { font-size: 0.8rem; color: var(--text-secondary); opacity: 0.7; text-align: left; }
+        .post-body aside.post-cta { margin: 2.5rem 0; padding: 2rem; background: var(--bg-dark-charcoal); border: 1px solid var(--divider-color); border-radius: 16px; text-align: left; }
+        .post-body aside.post-cta p { margin-bottom: 0; }
 
         .post-faq { max-width: 780px; margin: 3rem auto 0; }
         .post-faq h2 { font-size: 1.5rem; text-align: left; background: none; -webkit-text-fill-color: var(--gold-primary); color: var(--gold-primary); }
@@ -106,9 +121,11 @@
             padding: 1.5rem;
         }
         .byline-card img { width: 72px; height: 72px; border-radius: 50%; object-fit: cover; border: 2px solid var(--gold-primary); flex-shrink: 0; }
-        .byline-card-text h4 { margin-bottom: 0.25rem; color: #ffffff; }
-        .byline-card-text p { font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0; }
-        .byline-card-text a { color: var(--gold-primary); text-decoration: none; }
+        .byline-card-label { display: block; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gold-primary); margin-bottom: 0.35rem; }
+        .byline-card-copy h2, .byline-card-text h4 { font-size: 1.25rem; text-align: left; margin-bottom: 0.25rem; color: #ffffff; background: none; -webkit-text-fill-color: #ffffff; }
+        .byline-card-copy p, .byline-card-text p { font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.5rem; }
+        .byline-card-copy a, .byline-card-text a { color: var(--gold-primary); text-decoration: none; font-size: 0.9rem; }
+        .byline-card-copy a:hover, .byline-card-text a:hover { text-decoration: underline; }
 
         @media (max-width: 480px) {
             .post-hero { padding: 6.5rem 0 1.5rem; }
