@@ -152,14 +152,17 @@ p { font-size: 1.1rem; line-height: 1.8; color: var(--text-secondary); margin-bo
 .sms-time { display: block; font-size: 0.6rem; opacity: 0.6; margin-top: 0.2rem; text-align: right; }
 
 @media (max-width: 900px) {
-    .hero { padding-top: 100px; padding-bottom: 3rem; }
-    .hero-content { grid-template-columns: 1fr; gap: 2.5rem; }
+    /* Tighter vertical budget on phones: drop the 100vh floor, shrink the h1
+       and trim padding so phone mockup + full headline + description fit
+       without a screenful of scrolling. Desktop h1 untouched. */
+    .hero { min-height: auto; padding-top: 90px; padding-bottom: 2rem; }
+    .hero-content { grid-template-columns: 1fr; gap: 1.75rem; }
     .hero-text { text-align: center; }
-    .hero-text h1 { text-align: center; }
+    .hero-text h1 { text-align: center; font-size: clamp(1.9rem, 7.5vw, 2.5rem); }
     .hero-description { margin: 0 auto; }
-    .hero-buttons { justify-content: center; }
-    .hero-visual { order: -1; }
-    .phone-frame { width: 180px; height: 340px; }
+    .hero-buttons { justify-content: center; margin-top: 1.5rem; }
+    .hero-visual { order: -1; gap: 1rem; }
+    .phone-frame { width: 172px; height: 325px; }
 }
 
 /* Buttons */
@@ -350,12 +353,35 @@ p { font-size: 1.1rem; line-height: 1.8; color: var(--text-secondary); margin-bo
 .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; }
 .service-card { background: var(--bg-dark-charcoal); border: 1px solid var(--divider-color); border-radius: 20px; padding: 2.5rem; text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; }
 .service-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-soft), 0 12px 32px rgba(0,0,0,0.4); border-color: var(--gold-primary); }
-.service-icon { display: flex; justify-content: center; align-items: center; margin-bottom: 1.5rem; color: var(--gold-primary); }
+.service-icon { display: flex; justify-content: center; align-items: center; min-height: 48px; margin-bottom: 1.5rem; color: var(--gold-primary); }
 .service-icon svg { width: 48px; height: 48px; }
+/* Review-engine card: 5-star row icon (120x24 viewBox) sits centered in the same 48px icon lane */
+.service-icon--stars svg { width: 120px; height: 26px; }
 
-/* About Section */
-.about-content { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
-.about-image { position: relative; border-radius: 20px; overflow: hidden; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3); }
+/* Per-card corner gradients: dark charcoal base + faint accent tint, direction
+   alternating corner (odd TL->BR, even TR->BL). Accents stay in the gold /
+   amber / copper family with two very subtle off-family hues (teal, steel
+   blue) at low alpha for variety. Hover intensifies the tint slightly. */
+.service-card--frontdesk { background: linear-gradient(135deg, rgba(212,175,55,0.09), rgba(212,175,55,0) 60%), var(--bg-dark-charcoal); }
+.service-card--frontdesk:hover { background: linear-gradient(135deg, rgba(212,175,55,0.15), rgba(212,175,55,0) 65%), var(--bg-dark-charcoal); }
+.service-card--textback { background: linear-gradient(225deg, rgba(45,148,140,0.08), rgba(45,148,140,0) 60%), var(--bg-dark-charcoal); }
+.service-card--textback:hover { background: linear-gradient(225deg, rgba(45,148,140,0.14), rgba(45,148,140,0) 65%), var(--bg-dark-charcoal); }
+.service-card--followup { background: linear-gradient(135deg, rgba(224,164,72,0.09), rgba(224,164,72,0) 60%), var(--bg-dark-charcoal); }
+.service-card--followup:hover { background: linear-gradient(135deg, rgba(224,164,72,0.15), rgba(224,164,72,0) 65%), var(--bg-dark-charcoal); }
+.service-card--chatbot { background: linear-gradient(225deg, rgba(96,125,160,0.09), rgba(96,125,160,0) 60%), var(--bg-dark-charcoal); }
+.service-card--chatbot:hover { background: linear-gradient(225deg, rgba(96,125,160,0.15), rgba(96,125,160,0) 65%), var(--bg-dark-charcoal); }
+.service-card--crm { background: linear-gradient(135deg, rgba(184,115,51,0.09), rgba(184,115,51,0) 60%), var(--bg-dark-charcoal); }
+.service-card--crm:hover { background: linear-gradient(135deg, rgba(184,115,51,0.15), rgba(184,115,51,0) 65%), var(--bg-dark-charcoal); }
+.service-card--reviews { background: linear-gradient(225deg, rgba(245,232,199,0.07), rgba(245,232,199,0) 60%), var(--bg-dark-charcoal); }
+.service-card--reviews:hover { background: linear-gradient(225deg, rgba(245,232,199,0.12), rgba(245,232,199,0) 65%), var(--bg-dark-charcoal); }
+
+/* About Section: single centered column (intro -> founder block -> pyramid).
+   Replaced the old 2-col grid that misaligned text against the photo. */
+.about-content { display: flex; flex-direction: column; align-items: center; gap: 3rem; }
+.about-intro { max-width: 720px; text-align: center; }
+.about-founder { display: flex; flex-direction: column; align-items: center; gap: 1.5rem; }
+.about-founder-heading { font-size: 1.35rem; color: var(--gold-primary); letter-spacing: 0.04em; margin-bottom: 0; }
+.about-image { position: relative; width: min(380px, 85vw); border-radius: 20px; overflow: hidden; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3); }
 .about-image img { display: block; width: 100%; height: auto; filter: saturate(0.88) contrast(1.04) brightness(0.97); }
 .about-image::before {
     content: '';
@@ -373,10 +399,10 @@ p { font-size: 1.1rem; line-height: 1.8; color: var(--text-secondary); margin-bo
     mix-blend-mode: overlay;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
-.about-cta { margin: 0.5rem 0 0.5rem; }
+.about-cta { margin: 0; }
 
 /* About stats: pyramid stack, middle stat emphasized, staggered slide-in */
-.about-stats { display: flex; flex-direction: column; align-items: center; gap: 1.1rem; margin-top: 2.75rem; position: relative; }
+.about-stats { display: flex; flex-direction: column; align-items: center; gap: 1.1rem; width: 100%; position: relative; }
 .about-stats::before {
     content: '';
     position: absolute;
@@ -429,7 +455,19 @@ p { font-size: 1.1rem; line-height: 1.8; color: var(--text-secondary); margin-bo
 }
 
 /* Testimonials Section */
+/* Faint success glow: radial gold bloom from the top + a whisper of diagonal
+   gradient. Very low alpha -- atmosphere only, no stock imagery. */
+.testimonials {
+    background:
+        radial-gradient(ellipse 65% 55% at 50% 0%, rgba(212,175,55,0.06), transparent 70%),
+        linear-gradient(160deg, rgba(212,175,55,0.03), transparent 45%);
+}
 .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; }
+/* Balanced 2x2 on desktop: auto-fit would jump to 3 columns at wide widths
+   and orphan the 4th card alone on row two. Cap at 2 columns, centered. */
+@media (min-width: 900px) {
+    .testimonials-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 1000px; margin: 0 auto; }
+}
 .testimonial-card { background: var(--bg-dark-charcoal); border: 1px solid var(--divider-color); border-radius: 20px; padding: 2rem; position: relative; transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; display: flex; flex-direction: column; justify-content: space-between; }
 .testimonial-card:hover { transform: translateY(-5px); border-color: var(--gold-primary); box-shadow: var(--shadow-soft); }
 .testimonial-rating { color: var(--gold-primary); font-size: 1.5rem; margin-bottom: 1rem; text-align: center; }
@@ -485,7 +523,6 @@ p { font-size: 1.1rem; line-height: 1.8; color: var(--text-secondary); margin-bo
 
 /* Mobile Responsive Adjustments */
 @media (max-width: 768px) {
-    .about-content { grid-template-columns: 1fr; }
     .logo img { height: 36px; }
     .logo span { font-size: 1.4rem; }
     .stat-item[data-tier="core"] { padding: 1.5rem 1.75rem; }
@@ -497,8 +534,13 @@ p { font-size: 1.1rem; line-height: 1.8; color: var(--text-secondary); margin-bo
    2.5s). A bare `animation` override kills the float, so the glow is
    comma-joined onto the same animation list. The ::after halo runs the
    same bob 0.18s behind the bubble = trailing ghost. */
+/* Base rule bobs on its own (aidBubbleBob): widget.js only applies its
+   .bubble-floating class on mobile, so without this the desktop bubble sat
+   static. The widget's own float classes below are more specific and win
+   when applied, so mobile never double-floats. */
 #ultra-fast-widget-bubble-92251613 {
-  animation: aidWidgetGlow 2.6s ease-in-out infinite !important;
+  animation: aidBubbleBob 2.5s ease-in-out infinite,
+             aidWidgetGlow 2.6s ease-in-out infinite !important;
   overflow: visible !important;
 }
 #ultra-fast-widget-bubble-92251613.bubble-floating {
@@ -519,6 +561,10 @@ p { font-size: 1.1rem; line-height: 1.8; color: var(--text-secondary); margin-bo
   animation: aidGhostTrail 2.5s ease-in-out infinite;
   animation-delay: 0.18s;
 }
+@keyframes aidBubbleBob {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-8px); }
+}
 @keyframes aidWidgetGlow {
   0%, 100% { box-shadow: 0 0 0 1px rgba(212,175,55,.55), 0 0 14px 3px rgba(212,175,55,.38), 0 0 36px 9px rgba(212,175,55,.16); }
   50%      { box-shadow: 0 0 0 2px rgba(212,175,55,.95), 0 0 26px 7px rgba(212,175,55,.62), 0 0 64px 16px rgba(212,175,55,.30); }
@@ -535,4 +581,21 @@ p { font-size: 1.1rem; line-height: 1.8; color: var(--text-secondary); margin-bo
     box-shadow: 0 0 0 1px rgba(212,175,55,.7), 0 0 20px 5px rgba(212,175,55,.45) !important;
   }
   #ultra-fast-widget-bubble-92251613::after { animation: none; opacity: .4; }
+}
+
+/* ── PayMeGPT chat container: partial sheet on mobile ─────────────────────
+   widget.js inlines inset:0 on the container under 768px (full-screen
+   takeover). Override to a bottom-pinned ~72vh sheet with small side
+   margins and rounded top corners so the site stays visible behind it. */
+@media (max-width: 768px) {
+  #ultra-fast-widget-container-92251613 {
+    inset: auto 8px 0 8px !important;
+    top: auto !important;
+    width: auto !important;
+    height: 72vh !important;
+    max-height: 72vh !important;
+    border-radius: 16px 16px 0 0 !important;
+    overflow: hidden !important;
+    box-shadow: 0 -12px 40px rgba(0,0,0,0.55), 0 0 0 1px rgba(212,175,55,0.25) !important;
+  }
 }
