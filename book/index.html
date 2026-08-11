@@ -56,10 +56,8 @@
     .mast{display:flex;align-items:center;gap:14px}
     .monogram{
       width:46px;height:46px;border-radius:9px;flex:none;
-      border:1px solid var(--gold);color:var(--gold);
-      display:flex;align-items:center;justify-content:center;
-      font-family:'Outfit',sans-serif;font-weight:800;font-size:1.2rem;letter-spacing:.04em;
-      background:linear-gradient(160deg,rgba(212,175,55,.12),transparent);
+      border:1px solid var(--gold);
+      display:block;object-fit:cover;
     }
     .mast .name{font-family:'Outfit',sans-serif;font-weight:700;font-size:1rem;color:#fff;letter-spacing:.02em}
     .mast .sub{font-size:.72rem;color:var(--ash);text-transform:uppercase;letter-spacing:.18em}
@@ -155,7 +153,7 @@
     <!-- Masthead -->
     <header>
       <div class="mast">
-        <div class="monogram">AID</div>
+        <img class="monogram" src="/images/optimized/logo-avatar-square.png" alt="AID HQ Logo">
         <div>
           <div class="name">AID Marketing Agency</div>
           <div class="sub">AI Systems for Contractors</div>
