@@ -42,7 +42,7 @@
     .navbar{position:fixed;top:0;left:0;right:0;background:rgba(10,10,10,.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--divider);z-index:1000}
     .nav-inner{max-width:1200px;margin:0 auto;padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center}
     .logo{display:flex;align-items:center;gap:12px;text-decoration:none}
-    .logo-mark{width:38px;height:38px;border-radius:8px;border:1px solid var(--gold);color:var(--gold);display:flex;align-items:center;justify-content:center;font-family:'Outfit',sans-serif;font-weight:800;font-size:1rem;letter-spacing:.04em;background:linear-gradient(160deg,rgba(212,175,55,.12),transparent)}
+    .logo-mark{width:38px;height:38px;border-radius:8px;border:1px solid var(--gold);display:block;object-fit:cover}
     .logo-name{font-family:'Outfit',sans-serif;font-weight:800;font-size:1.4rem;color:var(--gold);letter-spacing:.06em}
     .nav-back{color:var(--ash);text-decoration:none;font-size:.9rem;display:flex;align-items:center;gap:6px;transition:color .2s}
     .nav-back:hover{color:var(--gold)}
@@ -166,7 +166,7 @@
   <nav class="navbar">
     <div class="nav-inner">
       <a href="/" class="logo">
-        <div class="logo-mark">AID</div>
+        <img class="logo-mark" src="/images/optimized/logo-avatar-square.png" alt="AID HQ Logo">
         <span class="logo-name">AID HQ</span>
       </a>
       <a href="/" class="nav-back">
