@@ -10,6 +10,7 @@
     {{META_TITLE}}         - <title> tag text, <= 60 chars
     {{META_DESCRIPTION}}    - meta description, 140-160 chars, written as the answer teaser
     {{CANONICAL_URL}}      - full https://aidmarketingagency.com/blog/<slug> URL
+    {{SOCIAL_IMAGE_URL}}   - absolute https:// URL to the hero image for OG/Twitter cards
     {{JSONLD}}             - full <script type="application/ld+json">...</script> block(s):
                               BlogPosting + FAQPage schema, author -> Person (sameAs LinkedIn)
     {{HERO_IMG}}            - full <img> tag (or <picture>) for the hero image, with alt text
@@ -40,11 +41,52 @@
     <title>{{META_TITLE}}</title>
     <meta name="description" content="{{META_DESCRIPTION}}">
     <link rel="canonical" href="{{CANONICAL_URL}}">
+    <meta property="og:image" content="{{SOCIAL_IMAGE_URL}}">
+    <meta name="twitter:image" content="{{SOCIAL_IMAGE_URL}}">
     <meta name="aid-content-hash" content="{{CONTENT_HASH}}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/style.css">
+    <!-- GA4: same pattern as homepage. Reads GA4_MEASUREMENT_ID from window scope.
+         No-op until the Measurement ID is configured (BLOCKED-ON-RYAN: set
+         GA4_MEASUREMENT_ID via Netlify snippet injection or index.html script block).
+         Fires a 'cta_click' event on .post-cta book-a-call link clicks so
+         cta_clicks can be pulled via GA4 Data API into blog_posts.cta_clicks.
+         Chunk 5 of docs/plans/2026-07-15-blog-seo-geo-engine-masterplan.md. -->
+    <script>
+    (function () {
+        var mid = window.GA4_MEASUREMENT_ID || '';
+        if (!mid) return;
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=' + mid;
+        document.head.appendChild(s);
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        window.gtag = gtag;
+        gtag('js', new Date());
+        gtag('config', mid, { anonymize_ip: true });
+
+        // CTA click event: fires on every .post-cta book-a-call link click.
+        // utm_campaign from the href is used as the blog_slug label in GA4.
+        document.addEventListener('DOMContentLoaded', function () {
+            var ctaLinks = document.querySelectorAll('.post-cta a[href*="/book"]');
+            ctaLinks.forEach(function (link) {
+                link.addEventListener('click', function () {
+                    var href = link.getAttribute('href') || '';
+                    var m = href.match(/utm_campaign=([^&"#]+)/);
+                    var slug = m ? m[1] : 'unknown';
+                    gtag('event', 'cta_click', {
+                        event_category: 'blog_cta',
+                        event_label: slug,
+                        blog_slug: slug,
+                    });
+                });
+            });
+        });
+    })();
+    </script>
     {{JSONLD}}
     <style>
         .post-hero { padding: 7.5rem 0 2rem; }
