@@ -131,10 +131,10 @@
    figure.stage[data-storyboard][data-state="idle"][data-beat="1"] > h2.stage-title.vh + div.sb-frame > svg.sb-svg
    + figcaption.sb-bar (span.sb-note + div.sb-controls > button[data-sb-toggle][aria-pressed] + button[data-sb-replay]).
    The svg is a fixed 480/500 box holding FIVE frames (g.sb-f1 to g.sb-f5), one visible at a time: JS sets
-   data-beat 1 to 5 and the active frame crossfades in. data-state: idle (start), playing, done (beat 5, the end
-   frame). No JS shows the end frame and hides the controls. The story ALWAYS plays, including under Reduce
-   Motion: there each beat is about 2.5 s and only fades (no translate, scale, rotate or draw). Under no-preference
-   the parts inside a frame also draw, rise and flip. Classes on svg parts: .sb-fade .sb-rise .sb-draw take --d (delay)
+   data-beat 1 to 6 (frame 3 holds beats 3 and 4) and the active frame crossfades in over 600 ms. data-state: idle
+   (start), playing, done (beat 6, the end frame). No JS shows the end frame and hides the controls. The story
+   ALWAYS plays, with the same beat lengths (4.5 s or more) in both motion modes; under Reduce Motion it only
+   fades (no translate, scale, rotate or draw). Under no-preference the parts inside a frame also draw, rise and flip. Classes on svg parts: .sb-fade .sb-rise .sb-draw take --d (delay)
    and --t (duration) inline and only run on the active frame. Defaults are END states; idle and the animations
    set the start states. Pause sets data-paused="true", which pauses every animation.
 
@@ -231,7 +231,7 @@ p, ul, ol, dl, figure { margin: 0; }
 .wrap { width: 100%; max-width: var(--max); margin-inline: auto; padding-inline: var(--gutter); }
 .grid12 { display: grid; grid-template-columns: minmax(0, 1fr); }
 /* static fallback first (static scanners and old engines), then the fluid --sect value in each rule below */
-.sect, .prose, .feel, .caught, .gap, .how, .doors, .teacher, .cta { padding-top: 4rem; padding-bottom: 4rem; }
+.sect, .prose, .feel, .caught, .gap, .how, .doors, .teacher, .cta, .tools { padding-top: 4rem; padding-bottom: 4rem; }
 .sect { padding-block: var(--sect); }
 .sect-tight { padding-block: calc(var(--sect) * 0.6); }
 .band { background-color: var(--paper-deep); background-image: var(--tooth); border-top: var(--hair); border-bottom: var(--hair); padding-left: 0.5rem; padding-right: 0.5rem; }
@@ -423,12 +423,14 @@ p, ul, ol, dl, figure { margin: 0; }
 .sb-line { fill: none; stroke: var(--ink); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 .sb-line-acc { fill: none; stroke: var(--accent); stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
 
-/* Five frames, one visible at a time. JS sets data-beat on the stage; the active frame fades in. */
-.sb-f { opacity: 0; transition: opacity 450ms linear; }
-.stage[data-beat="1"] .sb-f1, .stage[data-beat="2"] .sb-f2, .stage[data-beat="3"] .sb-f3,
-.stage[data-beat="4"] .sb-f4, .stage[data-beat="5"] .sb-f5 { opacity: 1; }
+/* Five frames, six beats, one frame visible at a time. JS sets data-beat 1 to 6 on the stage and the active
+   frame crossfades in over 600 ms in BOTH motion modes. Frame 3 (the inquiry card) holds beats 3 and 4, so the
+   card flips to Answered on its own beat. Every beat holds 4.5 s or more (see site.js). */
+.sb-f { opacity: 0; transition: opacity 600ms linear; }
+.stage[data-beat="1"] .sb-f1, .stage[data-beat="2"] .sb-f2, .stage[data-beat="3"] .sb-f3, .stage[data-beat="4"] .sb-f3,
+.stage[data-beat="5"] .sb-f4, .stage[data-beat="6"] .sb-f5 { opacity: 1; }
 @media (scripting: none) {
-  /* no JS: the end frame (beat 5) only, and no dead controls */
+  /* no JS: the end frame (beat 6) only, and no dead controls */
   .stage .sb-f { opacity: 0; transition: none; }
   .stage .sb-f5 { opacity: 1; }
   .sb-controls { display: none; }
@@ -449,30 +451,38 @@ p, ul, ol, dl, figure { margin: 0; }
   .stage[data-state="playing"][data-beat="1"] .sb-f1,
   .stage[data-state="playing"][data-beat="2"] .sb-f2,
   .stage[data-state="playing"][data-beat="3"] .sb-f3,
-  .stage[data-state="playing"][data-beat="4"] .sb-f4,
-  .stage[data-state="playing"][data-beat="5"] .sb-f5 { --an-fade: sb-fade; --an-rise: sb-rise; --an-draw: sb-draw; }
+  .stage[data-state="playing"][data-beat="4"] .sb-f3,
+  .stage[data-state="playing"][data-beat="5"] .sb-f4,
+  .stage[data-state="playing"][data-beat="6"] .sb-f5 { --an-fade: sb-fade; --an-rise: sb-rise; --an-draw: sb-draw; }
   /* start frame of the story: the time and a dark phone, nothing else */
   .stage[data-state="idle"] .sb-a { opacity: 0; }
 
   .stage[data-state="playing"][data-beat="2"] .sb-buzz { animation: sb-buzz 1.1s linear 1.5s both; }
   .stage[data-state="playing"][data-beat="2"] .sb-flicker { animation: sb-flicker 0.5s ease-in-out 1s 4 both; }
-  .stage[data-state="playing"][data-beat="3"] .sb-front { animation: sb-flip-out 0.22s ease-in 1.2s both; }
-  .stage[data-state="playing"][data-beat="3"] .sb-back { animation: sb-flip-in 0.32s var(--ease) 1.42s both; }
-  .stage[data-state="playing"][data-beat="4"] .sb-typing { animation: sb-typing 1.15s linear 0.2s both; }
-  .stage[data-state="playing"][data-beat="4"] .sb-dot { animation: sb-dot 0.6s ease-in-out 0.3s 2 both; }
-  .stage[data-state="playing"][data-beat="4"] .sb-dot:nth-child(2) { animation-delay: 0.4s; }
-  .stage[data-state="playing"][data-beat="4"] .sb-dot:nth-child(3) { animation-delay: 0.5s; }
-  .stage[data-state="playing"][data-beat="4"] .sb-in { animation: sb-popl 0.5s var(--ease) 1.5s both; }
-  .stage[data-state="playing"][data-beat="5"] .sb-slot { animation: sb-grow 0.5s var(--ease) 0.9s both; }
+  /* beat 4: the card flips to Answered, on its own beat */
+  .stage[data-state="playing"][data-beat="4"] .sb-front { animation: sb-flip-out 0.25s ease-in 0s both; }
+  .stage[data-state="playing"][data-beat="4"] .sb-back { animation: sb-flip-in 0.35s var(--ease) 0.25s both; }
+  .stage[data-state="playing"][data-beat="4"] .sb-check { animation: sb-draw 0.5s var(--ease) 0.7s both; }
+  /* beat 5: the buyer types, then the message lands */
+  .stage[data-state="playing"][data-beat="5"] .sb-typing { animation: sb-typing 1.15s linear 0.2s both; }
+  .stage[data-state="playing"][data-beat="5"] .sb-dot { animation: sb-dot 0.6s ease-in-out 0.3s 2 both; }
+  .stage[data-state="playing"][data-beat="5"] .sb-dot:nth-child(2) { animation-delay: 0.4s; }
+  .stage[data-state="playing"][data-beat="5"] .sb-dot:nth-child(3) { animation-delay: 0.5s; }
+  .stage[data-state="playing"][data-beat="5"] .sb-in { animation: sb-popl 0.5s var(--ease) 1.5s both; }
+  .stage[data-state="playing"][data-beat="6"] .sb-slot { animation: sb-grow 0.5s var(--ease) 0.9s both; }
 }
 @media (prefers-reduced-motion: reduce) {
-  /* Calm motion: every beat is a plain opacity crossfade. No translate, scale, rotate or draw. */
-  .sb-f { transition-duration: 800ms; }
-  .stage[data-state="playing"][data-beat="3"] .sb-front { animation: sb-fadeout 0.7s linear 1.2s both; }
-  .stage[data-state="playing"][data-beat="3"] .sb-back { animation: sb-fade 0.7s linear 1.2s both; }
-  .stage[data-state="playing"][data-beat="4"] .sb-typing { animation: sb-fadeout 0.6s linear 1.2s both; }
-  .stage[data-state="playing"][data-beat="4"] .sb-in { animation: sb-fade 0.7s linear 1.2s both; }
+  /* Calm motion: every beat is a plain opacity crossfade, same 600 ms and same beat lengths as full motion.
+     No translate, scale, rotate or draw. */
+  .stage[data-state="playing"][data-beat="4"] .sb-front { animation: sb-fadeout 0.7s linear 0s both; }
+  .stage[data-state="playing"][data-beat="4"] .sb-back { animation: sb-fade 0.7s linear 0s both; }
+  .stage[data-state="playing"][data-beat="5"] .sb-typing { animation: sb-fadeout 0.6s linear 1.2s both; }
+  .stage[data-state="playing"][data-beat="5"] .sb-in { animation: sb-fade 0.7s linear 1.2s both; }
 }
+/* beat 3 shows the inquiry card (front); the Answered side waits for beat 4. Both motion modes. */
+.stage[data-state="playing"][data-beat="3"] .sb-front { opacity: 1; }
+.stage[data-state="playing"][data-beat="3"] .sb-back { opacity: 0; }
+.stage[data-state="playing"][data-beat="3"] .sb-check { animation: none; }
 @keyframes sb-fade { from { opacity: 0; } to { opacity: 1; } }
 @keyframes sb-fadeout { from { opacity: 1; } to { opacity: 0; } }
 @keyframes sb-rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
@@ -546,6 +556,9 @@ p, ul, ol, dl, figure { margin: 0; }
 .bar-long { background: var(--ink); }
 .bar-short { background: var(--accent); transform: scaleX(0.03); }
 .gap .source { margin-top: var(--s-3); }
+.gap-stat { margin-top: var(--s-4); }
+.gap-stat .zillow { margin-top: 0; }
+.gap-stat .source { margin-top: var(--s-2); }
 .zillow { margin-top: var(--s-4); padding-top: var(--s-3); border-top: var(--hair); font-family: var(--display); font-size: clamp(1.3rem, 1.05rem + 1vw, 1.75rem); line-height: 1.45; letter-spacing: -0.01em; font-weight: 400; max-width: 34rem; text-wrap: pretty; }
 @media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
   .js-ok [data-reveal]:not(.is-in) .bar-long { transform: scaleX(0); }
@@ -561,7 +574,7 @@ p, ul, ol, dl, figure { margin: 0; }
 @media (min-width: 62rem) {
   .gap { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); column-gap: var(--gap-cols); align-content: start; }
   .gap > h2 { grid-column: 1; grid-row: 1 / 4; max-width: none; align-self: start; }
-  .gap > .bars, .gap > .source, .gap > .zillow { grid-column: 2; }
+  .gap > .bars, .gap > .source, .gap > .zillow, .gap > .gap-stat { grid-column: 2; }
   .gap > .bars { margin-top: 0; }
 }
 
@@ -604,13 +617,23 @@ p, ul, ol, dl, figure { margin: 0; }
 
 /* ---------- who teaches it ---------- */
 .teacher { display: grid; grid-template-columns: minmax(0, 1fr); row-gap: var(--s-4); padding-block: var(--sect); border-top: 2px solid var(--ink); align-items: center; }
-.teacher .plate { max-width: 20rem; }
-.teacher .plate-frame { aspect-ratio: 1 / 1; }
+.teacher .plate { max-width: 24rem; }
 .teacher-body { max-width: 36rem; }
 .teacher-body p { font-family: var(--display); font-size: clamp(1.3rem, 1.05rem + 1vw, 1.75rem); line-height: 1.45; letter-spacing: -0.01em; font-weight: 400; text-wrap: pretty; }
 .teacher-body .link-quiet { display: inline-flex; align-items: center; min-height: 44px; margin-top: var(--s-2); font-weight: 600; }
 @media (min-width: 62rem) {
   .teacher { grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); column-gap: var(--gap-cols); }
+}
+
+/* ---------- the AI tools band (Home and Real estate teams) ---------- */
+.tools { padding-block: var(--sect); }
+.tools-wrap { display: grid; grid-template-columns: minmax(0, 1fr); row-gap: var(--s-4); }
+.tools h2 { max-width: 20ch; margin-bottom: var(--s-3); }
+.tool-row { margin-top: var(--s-3); font-family: var(--display); font-size: clamp(1.25rem, 1rem + 1vw, 1.65rem); line-height: 1.4; letter-spacing: -0.008em; font-weight: 500; }
+.tools-stat { font-family: var(--display); font-size: clamp(1.3rem, 1.05rem + 1vw, 1.75rem); line-height: 1.45; letter-spacing: -0.01em; font-weight: 400; max-width: 30rem; text-wrap: pretty; }
+.tools-stat-wrap .source { margin-top: var(--s-2); }
+@media (min-width: 62rem) {
+  .tools-wrap { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); column-gap: var(--gap-cols); align-items: center; }
 }
 
 /* ---------- legacy price block, sessions, CRM list (V1; V2 copy no longer uses them) ---------- */

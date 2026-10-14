@@ -4,9 +4,9 @@
    two sourced count-ups (47 and 39), and the optional "inquiries you get each month" input.
    Numbers used: 0.47 (DelPrete, August 2024) and 39 minutes (DelPrete, August 2024).
    Nothing is stored or sent.
-   Motion rule: the storyboard ALWAYS plays. Under Reduce Motion it plays the same five beats as plain
-   fades (CSS) at about 2.5 s a beat; the count-ups stay at their final values. Timers re-time on the
-   media query change event. */
+   Motion rule: the storyboard ALWAYS plays, six beats on five frames, with the SAME beat lengths in both
+   motion modes (every beat holds 4.5 s or more, crossfades are 600 ms in CSS). Under Reduce Motion it is
+   plain opacity fades only; the count-ups stay at their final values. */
 (function () {
   "use strict";
 
@@ -55,17 +55,18 @@
     });
   }
 
-  /* ---- hero storyboard: five beats, one frame at a time, always plays, Pause and Replay ----
-     data-state: idle (waiting), playing, done (beat 5 settled). data-beat: 1 to 5.
-     data-paused="true" pauses the CSS animations (see site.css). */
+  /* ---- hero storyboard: six beats on five frames, always plays, Pause and Replay ----
+     data-state: idle (waiting), playing, done (beat 6 settled). data-beat: 1 to 6 (beat 4 is the card
+     flipping to Answered, on frame 3). data-paused="true" pauses the CSS animations (see site.css). */
   function initStoryboard() {
     var root = document.querySelector("[data-storyboard]");
     if (!root) { return; }
     var replayBtn = root.querySelector("[data-sb-replay]");
     var toggleBtn = root.querySelector("[data-sb-toggle]");
     var frame = root.querySelector(".sb-frame") || root;
-    var FULL_MS = [2400, 2600, 2800, 2600, 2800];
-    var CALM_MS = 2500;
+    /* hold time per beat, the same in both motion modes; every beat is at least 4 s */
+    var BEAT_MS = [4500, 4500, 4500, 4500, 5000, 5500];
+    var LAST = BEAT_MS.length;
     var timer = 0;
     var raf = 0;
     var beat = 1;
@@ -77,7 +78,7 @@
 
     function setState(s) { root.setAttribute("data-state", s); }
     function isPlaying() { return root.getAttribute("data-state") === "playing"; }
-    function beatMs(n) { return reduced() ? CALM_MS : FULL_MS[n - 1]; }
+    function beatMs(n) { return BEAT_MS[n - 1]; }
     function clearTimers() {
       if (timer) { window.clearTimeout(timer); timer = 0; }
       if (raf) { window.cancelAnimationFrame(raf); raf = 0; }
@@ -95,7 +96,7 @@
     }
     function advance() {
       timer = 0;
-      if (beat < 5) { enterBeat(beat + 1); }
+      if (beat < LAST) { enterBeat(beat + 1); }
       else { finish(); }
     }
     function finish() {
@@ -139,18 +140,11 @@
       if (toggleBtn && toggleBtn.getAttribute("aria-disabled") === "true") { return; }
       setPaused(!paused);
     }
-    function onMotionChange() {
-      /* the same story, re-timed for the new setting */
-      if (isPlaying()) {
-        if (timer) { window.clearTimeout(timer); timer = 0; }
-        remaining = beatMs(beat);
-        schedule();
-      }
-    }
 
+    /* the beat lengths are the same in both motion modes, so a motion-setting change needs no re-timing:
+       CSS swaps the draws and flips for plain fades on its own */
     if (replayBtn) { replayBtn.addEventListener("click", replay); }
     if (toggleBtn) { toggleBtn.addEventListener("click", onToggle); }
-    onReduceChange(onMotionChange);
 
     afterLoad(function () {
       window.requestAnimationFrame(function () {
