@@ -115,6 +115,13 @@
    count-up, view transitions between pages. All of it is off under prefers-reduced-motion: reduce.
    ===================================================================== */
 
+/* Metric-matched fallbacks so the swap to the web fonts does not move the layout.
+   Values measured against the loaded Newsreader and Libre Franklin in Chromium. */
+@font-face { font-family: "Newsreader Fallback"; src: local("Georgia"); font-weight: 300 599; size-adjust: 93%; ascent-override: 79.6%; descent-override: 28%; line-gap-override: 0%; }
+@font-face { font-family: "Newsreader Fallback"; src: local("Georgia Bold"), local("Georgia-Bold"); font-weight: 600 700; size-adjust: 93%; ascent-override: 79.6%; descent-override: 28%; line-gap-override: 0%; }
+@font-face { font-family: "Libre Franklin Fallback"; src: local("Arial"), local("Helvetica"), local("Liberation Sans"), local("Arimo"); font-weight: 400 599; size-adjust: 103%; ascent-override: 94%; descent-override: 24.5%; line-gap-override: 0%; }
+@font-face { font-family: "Libre Franklin Fallback"; src: local("Arial Bold"), local("Arial-BoldMT"), local("Helvetica Bold"), local("Liberation Sans Bold"), local("Arimo Bold"); font-weight: 600 700; size-adjust: 103%; ascent-override: 94%; descent-override: 24.5%; line-gap-override: 0%; }
+
 :root {
   --paper: #E3E8E2;
   --paper-deep: #D3DBD3;
@@ -126,8 +133,8 @@
   --hair: 1px solid rgba(23, 25, 27, 0.34);
   --hair-soft: 1px solid rgba(23, 25, 27, 0.16);
 
-  --display: "Newsreader", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
-  --body: "Libre Franklin", "Franklin Gothic Medium", "Helvetica Neue", Helvetica, sans-serif;
+  --display: "Newsreader", "Newsreader Fallback", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  --body: "Libre Franklin", "Libre Franklin Fallback", "Franklin Gothic Medium", "Helvetica Neue", Helvetica, sans-serif;
 
   --gutter: clamp(1rem, 4.5vw, 4.5rem);
   --max: 82rem;

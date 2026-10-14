@@ -195,6 +195,7 @@
     var leadsErr = document.getElementById("leads-err");
     var minsErr = document.getElementById("mins-err");
     var empty = document.getElementById("empty");
+    var preview = document.getElementById("preview");
     var bench = document.getElementById("bench");
     var out1 = document.getElementById("out-1");
     var out1Text = document.getElementById("out-1-text");
@@ -266,6 +267,7 @@
 
       var firstShow = !shown;
       empty.hidden = true;
+      if (preview) { preview.hidden = true; }
       bench.hidden = false;
       out1.hidden = false;
       out2.hidden = false;
