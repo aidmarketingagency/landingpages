@@ -3,7 +3,10 @@
    Features: menu toggle, placeholder links, the hero storyboard controller, scroll reveals with the
    two sourced count-ups (47 and 39), and the optional "inquiries you get each month" input.
    Numbers used: 0.47 (DelPrete, August 2024) and 39 minutes (DelPrete, August 2024).
-   Nothing is stored or sent. Every timer and frame is cancelled under reduced motion. */
+   Nothing is stored or sent.
+   Motion rule: the storyboard ALWAYS plays. Under Reduce Motion it plays the same five beats as plain
+   fades (CSS) at about 2.5 s a beat; the count-ups stay at their final values. Timers re-time on the
+   media query change event. */
 (function () {
   "use strict";
 
@@ -52,88 +55,145 @@
     });
   }
 
-  /* ---- hero storyboard: autoplay once after load, Replay, end frame under reduced motion ---- */
+  /* ---- hero storyboard: five beats, one frame at a time, always plays, Pause and Replay ----
+     data-state: idle (waiting), playing, done (beat 5 settled). data-beat: 1 to 5.
+     data-paused="true" pauses the CSS animations (see site.css). */
   function initStoryboard() {
     var root = document.querySelector("[data-storyboard]");
     if (!root) { return; }
-    var btn = root.querySelector("[data-sb-replay]");
+    var replayBtn = root.querySelector("[data-sb-replay]");
+    var toggleBtn = root.querySelector("[data-sb-toggle]");
     var frame = root.querySelector(".sb-frame") || root;
-    var TOTAL_MS = 11600;
+    var FULL_MS = [2400, 2600, 2800, 2600, 2800];
+    var CALM_MS = 2500;
     var timer = 0;
     var raf = 0;
-    var autoplayed = false;
+    var beat = 1;
+    var remaining = 0;
+    var startedAt = 0;
+    var paused = false;
     var io = null;
+    var started = false;
 
-    function clear() {
+    function setState(s) { root.setAttribute("data-state", s); }
+    function isPlaying() { return root.getAttribute("data-state") === "playing"; }
+    function beatMs(n) { return reduced() ? CALM_MS : FULL_MS[n - 1]; }
+    function clearTimers() {
       if (timer) { window.clearTimeout(timer); timer = 0; }
       if (raf) { window.cancelAnimationFrame(raf); raf = 0; }
     }
-    function setState(s) { root.setAttribute("data-state", s); }
-    function showEnd() { clear(); setState("done"); }
-    function play() {
-      clear();
-      if (reduced()) { showEnd(); return; }
-      setState("idle");
-      void root.offsetWidth;
-      raf = window.requestAnimationFrame(function () {
-        raf = 0;
-        setState("playing");
-        timer = window.setTimeout(function () { timer = 0; setState("done"); }, TOTAL_MS);
-      });
+    function schedule() {
+      if (paused || !isPlaying()) { return; }
+      startedAt = Date.now();
+      timer = window.setTimeout(advance, Math.max(0, remaining));
     }
-    function applyMotionPref() {
-      if (reduced()) {
-        if (io) { io.disconnect(); io = null; }
-        autoplayed = true;
-        root.setAttribute("data-motion", "off");
-        showEnd();
+    function enterBeat(n) {
+      beat = n;
+      root.setAttribute("data-beat", String(n));
+      remaining = beatMs(n);
+      schedule();
+    }
+    function advance() {
+      timer = 0;
+      if (beat < 5) { enterBeat(beat + 1); }
+      else { finish(); }
+    }
+    function finish() {
+      clearTimers();
+      setState("done");
+      if (toggleBtn) { toggleBtn.setAttribute("aria-disabled", "true"); }
+    }
+    function setPaused(p) {
+      paused = p;
+      if (p) {
+        if (timer) {
+          window.clearTimeout(timer);
+          timer = 0;
+          remaining -= Date.now() - startedAt;
+        }
+        root.setAttribute("data-paused", "true");
       } else {
-        root.setAttribute("data-motion", "on");
+        root.removeAttribute("data-paused");
+        schedule();
+      }
+      if (toggleBtn) { toggleBtn.setAttribute("aria-pressed", p ? "true" : "false"); }
+    }
+    function begin() {
+      clearTimers();
+      setState("playing");
+      enterBeat(1);
+    }
+    function replay() {
+      clearTimers();
+      started = true;
+      if (io) { io.disconnect(); io = null; }
+      if (toggleBtn) { toggleBtn.removeAttribute("aria-disabled"); }
+      setPaused(false);
+      setState("idle");
+      beat = 1;
+      root.setAttribute("data-beat", "1");
+      void root.offsetWidth;
+      raf = window.requestAnimationFrame(function () { raf = 0; begin(); });
+    }
+    function onToggle() {
+      if (toggleBtn && toggleBtn.getAttribute("aria-disabled") === "true") { return; }
+      setPaused(!paused);
+    }
+    function onMotionChange() {
+      /* the same story, re-timed for the new setting */
+      if (isPlaying()) {
+        if (timer) { window.clearTimeout(timer); timer = 0; }
+        remaining = beatMs(beat);
+        schedule();
       }
     }
 
-    if (btn) { btn.addEventListener("click", play); }
-    onReduceChange(applyMotionPref);
-    applyMotionPref();
-    if (reduced()) { return; }
+    if (replayBtn) { replayBtn.addEventListener("click", replay); }
+    if (toggleBtn) { toggleBtn.addEventListener("click", onToggle); }
+    onReduceChange(onMotionChange);
 
     afterLoad(function () {
       window.requestAnimationFrame(function () {
-        if (autoplayed || reduced()) { return; }
+        if (started) { return; }
         if ("IntersectionObserver" in window) {
           io = new IntersectionObserver(function (entries) {
             entries.forEach(function (entry) {
-              if (entry.isIntersecting && !autoplayed) {
-                autoplayed = true;
+              if (entry.isIntersecting && !started) {
+                started = true;
                 io.disconnect();
                 io = null;
-                play();
+                begin();
               }
             });
-          }, { threshold: 0.3 });
+          }, { threshold: 0.35 });
           io.observe(frame);
         } else {
-          autoplayed = true;
-          play();
+          started = true;
+          begin();
         }
       });
     });
   }
 
-  /* ---- scroll reveals and the sourced count-ups (47%, 39 minutes) ---- */
+  /* ---- scroll reveals and the sourced count-ups (47%, 39 minutes) ----
+     Under Reduce Motion the blocks still reveal (grid and bars fade, see site.css) but the numbers
+     keep their final values: no count-up. */
   function initReveals() {
     var blocks = Array.prototype.slice.call(document.querySelectorAll("[data-reveal]"));
     if (!blocks.length) { return; }
     var frames = [];
 
     function counters(block) { return Array.prototype.slice.call(block.querySelectorAll("[data-count-to]")); }
-    function finishAll() {
+    function finalNumbers() {
       frames.forEach(function (id) { window.cancelAnimationFrame(id); });
       frames = [];
       blocks.forEach(function (b) {
-        b.classList.add("is-in");
         counters(b).forEach(function (el) { el.textContent = el.getAttribute("data-count-to"); });
       });
+    }
+    function showAll() {
+      blocks.forEach(function (b) { b.classList.add("is-in"); });
+      finalNumbers();
     }
     function countUp(el, ms) {
       var target = parseInt(el.getAttribute("data-count-to"), 10);
@@ -141,6 +201,7 @@
       var t0 = null;
       el.textContent = "0";
       function tick(now) {
+        if (reduced()) { el.textContent = String(target); return; }
         if (t0 === null) { t0 = now; }
         var p = Math.min(1, (now - t0) / ms);
         var eased = p === 1 ? 1 : 1 - Math.pow(2, -10 * p);
@@ -151,10 +212,10 @@
     }
     function reveal(block) {
       block.classList.add("is-in");
-      counters(block).forEach(function (el) { countUp(el, 1500); });
+      if (!reduced()) { counters(block).forEach(function (el) { countUp(el, 1500); }); }
     }
 
-    if (reduced() || !("IntersectionObserver" in window)) { finishAll(); return; }
+    if (!("IntersectionObserver" in window)) { showAll(); return; }
     document.documentElement.classList.add("js-ok");
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
@@ -162,7 +223,7 @@
       });
     }, { threshold: 0.3 });
     blocks.forEach(function (b) { io.observe(b); });
-    onReduceChange(function () { if (reduced()) { io.disconnect(); finishAll(); } });
+    onReduceChange(function () { if (reduced()) { finalNumbers(); } });
   }
 
   /* ---- optional input: about N of yours, N x 0.47 rounded (benchmark, not a result) ---- */

@@ -1,12 +1,12 @@
 /* =====================================================================
    AID Marketing Agency site kit. Direction B, "Listing Sheet". V2.
-   One paper field (grey-green stock), one ink, one accent (yard-sign vermilion).
+   One paper field (warm cream stock), one ink, one accent (yard-sign brick red).
    Display: Newsreader (upright, optical size on). Body: Libre Franklin.
    Every page loads this file and /assets/site/site.js (deferred). Do not edit either
    from an inner page. Everything below is mobile first; wide layouts start at 62rem.
 
    TOKENS (custom properties on :root)
-   --paper #E3E8E2, --paper-deep #D3DBD3, --sheet #F4F7F3, --ink #17191B, --ink-2 #4A4E4C,
+   --paper #F5F0E6, --paper-deep #EBE3D4, --sheet #FBF8F2, --ink #17191B, --ink-2 #4A4E4C,
    --accent #B3301B (vermilion), --accent-ink #8E2412 (use for small accent text on paper-deep).
    --hair / --hair-soft hairline borders. --s-1 to --s-6 spacing scale. --gutter, --max.
    --sect   Section rhythm: the vertical padding of every full section (fluid, 3.5rem to 7rem).
@@ -68,8 +68,9 @@
 
    HEROES
    .hero             Home hero (two columns from 62rem, stacked below). Structure:
-                     section.hero.wrap > div.hero-text (h1, p.lede, div.actions) + figure.stage (the storyboard).
-                     The text column has one left edge. The column gap is --gap-cols.
+                     section.hero.wrap > div.hero-text (p.for-line, h1, p.lede, div.actions) + figure.stage (the storyboard).
+                     The text column has one left edge. The column gap is --gap-cols. Columns are top aligned.
+   .for-line         Plain flat text above the H1 that says who the page is for. No pill, border, background or dot.
    .stage            The hero storyboard block (see HERO STORYBOARD below).
    .page-hero        Inner page hero: section.page-hero.wrap > h1, p.lede, div.actions. Text shares one left
                      edge. An optional figure.plate as the LAST child puts a photo in the right column
@@ -127,14 +128,19 @@
                      (p text, a.link-quiet). Give the section an aria-label or a .vh h2.
 
    HERO STORYBOARD (Home only)
-   figure.stage[data-storyboard][data-state="idle"] > h2.stage-title + div.sb-frame > svg.sb-svg + figcaption.sb-bar
-   (span.sb-note + button.sb-replay[data-sb-replay]). The svg is a fixed 4/5 box. States on data-state:
-   idle (start frame), playing (CSS keyframes, about 11.3 s, once), done (end frame). No JS or reduced
-   motion shows the end frame and hides Replay. Classes on svg parts: .sb-fade .sb-rise .sb-draw take
-   --d (delay) and --t (duration) inline. Only transform, opacity and stroke-dashoffset animate.
+   figure.stage[data-storyboard][data-state="idle"][data-beat="1"] > h2.stage-title.vh + div.sb-frame > svg.sb-svg
+   + figcaption.sb-bar (span.sb-note + div.sb-controls > button[data-sb-toggle][aria-pressed] + button[data-sb-replay]).
+   The svg is a fixed 480/500 box holding FIVE frames (g.sb-f1 to g.sb-f5), one visible at a time: JS sets
+   data-beat 1 to 5 and the active frame crossfades in. data-state: idle (start), playing, done (beat 5, the end
+   frame). No JS shows the end frame and hides the controls. The story ALWAYS plays, including under Reduce
+   Motion: there each beat is about 2.5 s and only fades (no translate, scale, rotate or draw). Under no-preference
+   the parts inside a frame also draw, rise and flip. Classes on svg parts: .sb-fade .sb-rise .sb-draw take --d (delay)
+   and --t (duration) inline and only run on the active frame. Defaults are END states; idle and the animations
+   set the start states. Pause sets data-paused="true", which pauses every animation.
 
-   MOTION: the storyboard, the grid fade, the bars filling, two sourced count-ups (47 and 39), view
-   transitions between pages, the Link pending flash. All of it is off under prefers-reduced-motion: reduce.
+   MOTION: the storyboard (always, calmer under Reduce Motion), the grid and bars (fades only under Reduce
+   Motion), two sourced count-ups (47 and 39, static final values under Reduce Motion), view transitions
+   between pages (off under Reduce Motion), the Link pending flash.
 
    LEGACY (V1, kept until the inner pages are restyled; V2 copy no longer uses them)
    .price-block / .price-main / .price-note, .sessions / .session, .crm-list / .crm-status.
@@ -150,9 +156,9 @@
 @font-face { font-family: "Libre Franklin Fallback"; src: local("Arial Bold"), local("Arial-BoldMT"), local("Helvetica Bold"), local("Liberation Sans Bold"), local("Arimo Bold"); font-weight: 600 700; size-adjust: 103%; ascent-override: 94%; descent-override: 24.5%; line-gap-override: 0%; }
 
 :root {
-  --paper: #E3E8E2;
-  --paper-deep: #D3DBD3;
-  --sheet: #F4F7F3;
+  --paper: #F5F0E6;
+  --paper-deep: #EBE3D4;
+  --sheet: #FBF8F2;
   --ink: #17191B;
   --ink-2: #4A4E4C;
   --accent: #B3301B;
@@ -181,7 +187,7 @@
   --fs-h3: clamp(1.5rem, 1.2rem + 0.9vw, 2rem);
 
   /* paper tooth: grain baked into the background, no overlay layer to repaint on scroll */
-  --tooth: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.09  0 0 0 0 0.1  0 0 0 0 0.11  0 0 0 0.075 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  --tooth: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.12  0 0 0 0 0.09  0 0 0 0 0.05  0 0 0 0.07 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -327,6 +333,7 @@ p, ul, ol, dl, figure { margin: 0; }
 /* ---------- home hero: one text column, one visual column ---------- */
 .hero { display: grid; grid-template-columns: minmax(0, 1fr); row-gap: var(--s-5); padding-top: var(--s-4); padding-bottom: var(--sect); }
 .hero-text { display: flex; flex-direction: column; align-items: flex-start; }
+.for-line { margin-bottom: var(--s-2); font-size: 1.125rem; line-height: 1.4; font-weight: 600; color: var(--ink); }
 .hero h1 { font-size: clamp(2.5rem, 1rem + 6.4vw, 4.25rem); line-height: 1.05; letter-spacing: -0.03em; font-weight: 400; }
 .hero .lede { margin-top: var(--s-3); }
 .hero .actions { margin-top: var(--s-4); }
@@ -336,8 +343,8 @@ p, ul, ol, dl, figure { margin: 0; }
   .hero .action .btn, .hero .actions > .btn { width: 100%; }
 }
 @media (min-width: 62rem) {
-  .hero { grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); column-gap: var(--gap-cols); align-items: center; padding-top: var(--s-5); }
-  .hero .stage { justify-self: end; }
+  .hero { grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); column-gap: var(--gap-cols); align-items: start; padding-top: var(--s-4); }
+  .hero .stage { justify-self: end; align-self: start; }
   .hero h1 { font-size: clamp(2.75rem, 1rem + 3.4vw, 4.25rem); }
 }
 
@@ -390,79 +397,93 @@ p, ul, ol, dl, figure { margin: 0; }
 }
 
 /* ---------- HERO STORYBOARD ---------- */
-.stage { width: 100%; max-width: 32rem; }
-.stage-title { font-size: clamp(1.4rem, 1.1rem + 1vw, 1.85rem); line-height: 1.3; letter-spacing: -0.015em; font-weight: 420; max-width: 24ch; margin-bottom: var(--s-2); }
-.sb-frame { position: relative; aspect-ratio: 4 / 5; }
+.stage { width: 100%; max-width: 30rem; }
+.sb-frame { position: relative; aspect-ratio: 480 / 500; }
 .sb-svg { display: block; width: 100%; height: 100%; padding: 8px; line-height: 1.5; background: var(--sheet); border: var(--hair); box-shadow: var(--shadow-soft); overflow: hidden; }
-.sb-bar { display: flex; align-items: center; justify-content: space-between; gap: var(--s-2); margin-top: 0.6rem; min-height: 44px; }
+.sb-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.25rem var(--s-2); margin-top: 0.6rem; min-height: 44px; }
+.sb-controls { display: flex; gap: 0.5rem; }
+.sb-controls .btn { min-width: 5.5rem; }
+.sb-controls .btn[aria-pressed="true"] { background: var(--ink); color: var(--sheet); }
 .sb-note { font-size: 0.8125rem; color: var(--ink-2); letter-spacing: 0.01em; }
-.sb-replay { visibility: hidden; }
-.stage[data-motion="on"] .sb-replay { visibility: visible; }
 
 .sb-svg text { font-family: var(--body); }
-.sb-day { font-size: 15px; font-weight: 500; fill: var(--ink-2); }
-.sb-time { font-family: var(--display) !important; font-size: 48px; font-weight: 420; letter-spacing: -0.02em; fill: var(--ink); font-variant-numeric: lining-nums; }
-.sb-cap { font-size: 15px; fill: var(--ink-2); opacity: 0; }
-.sb-t1 { font-size: 21px; font-weight: 600; fill: var(--ink); }
-.sb-t3 { font-size: 12px; fill: var(--ink-2); }
-.sb-pn { font-size: 17px; font-weight: 600; fill: var(--ink); }
-.sb-bub { font-size: 16px; fill: var(--ink); }
-.sb-ans { font-family: var(--display) !important; font-size: 36px; font-weight: 520; letter-spacing: -0.015em; fill: var(--accent); }
-.sb-calh { font-family: var(--display) !important; font-size: 18px; font-weight: 520; fill: var(--ink); }
-.sb-slot-t { font-family: var(--display) !important; font-size: 24px; font-weight: 500; fill: var(--ink); font-variant-numeric: lining-nums; }
-.sb-slot-s { font-size: 13px; fill: var(--ink-2); }
-.sb-first-t { font-family: var(--display) !important; font-size: 36px; font-weight: 520; letter-spacing: -0.015em; fill: var(--accent); }
+.sb-day { font-size: 16px; font-weight: 500; fill: var(--ink-2); }
+.sb-time { font-family: var(--display) !important; font-size: 50px; font-weight: 420; letter-spacing: -0.02em; fill: var(--ink); font-variant-numeric: lining-nums; }
+.sb-big { font-family: var(--display) !important; font-size: 40px; font-weight: 420; letter-spacing: -0.02em; fill: var(--ink); }
+.sb-med { font-family: var(--display) !important; font-size: 32px; font-weight: 420; letter-spacing: -0.015em; fill: var(--ink); }
+.sb-t1 { font-size: 22px; font-weight: 600; fill: var(--ink); }
+.sb-t2 { font-size: 18px; fill: var(--ink-2); }
+.sb-pn { font-size: 18px; font-weight: 600; fill: var(--ink); }
+.sb-bub { font-size: 24px; fill: var(--ink); }
+.sb-ans { font-family: var(--display) !important; font-size: 42px; font-weight: 520; letter-spacing: -0.015em; fill: var(--accent); }
+.sb-calh { font-family: var(--display) !important; font-size: 22px; font-weight: 520; fill: var(--ink); }
+.sb-slot-t { font-family: var(--display) !important; font-size: 40px; font-weight: 500; fill: var(--ink); font-variant-numeric: lining-nums; }
+.sb-slot-s { font-size: 17px; fill: var(--ink-2); }
+.sb-first-t { font-family: var(--display) !important; font-size: 46px; font-weight: 520; letter-spacing: -0.015em; fill: var(--accent); }
 .sb-line { fill: none; stroke: var(--ink); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 .sb-line-acc { fill: none; stroke: var(--accent); stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
 
-/* end frame is the default: the phone, buzz, typing dots, card front and captions belong to the middle of the story */
-.sb-phone, .sb-buzz, .sb-typing, .sb-front { opacity: 0; }
+/* Five frames, one visible at a time. JS sets data-beat on the stage; the active frame fades in. */
+.sb-f { opacity: 0; transition: opacity 450ms linear; }
+.stage[data-beat="1"] .sb-f1, .stage[data-beat="2"] .sb-f2, .stage[data-beat="3"] .sb-f3,
+.stage[data-beat="4"] .sb-f4, .stage[data-beat="5"] .sb-f5 { opacity: 1; }
+@media (scripting: none) {
+  /* no JS: the end frame (beat 5) only, and no dead controls */
+  .stage .sb-f { opacity: 0; transition: none; }
+  .stage .sb-f5 { opacity: 1; }
+  .sb-controls { display: none; }
+}
+
+/* Defaults are END states. The start states come from idle and from the animations below. */
+.sb-buzz, .sb-typing, .sb-front { opacity: 0; }
 .sb-draw { stroke-dasharray: 1 2; stroke-dashoffset: 0; }
-.sb-phone, .sb-slot, .sb-front, .sb-back { transform-box: fill-box; transform-origin: center; }
+.sb-front, .sb-back, .sb-slot { transform-box: fill-box; transform-origin: center; }
 .sb-slot { transform-origin: left center; }
+.sb-fade { animation: var(--an-fade, none) var(--t, 0.5s) var(--ease) var(--d, 0s) both; }
+.sb-rise { animation: var(--an-rise, none) var(--t, 0.6s) var(--ease) var(--d, 0s) both; }
+.sb-draw { animation: var(--an-draw, none) var(--t, 0.7s) var(--ease) var(--d, 0s) both; }
+.stage[data-paused="true"] .sb-svg * { animation-play-state: paused !important; }
 
-@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
-  /* start frame: a dark phone, the time, nothing else */
-  .stage[data-state="idle"] .sb-fade, .stage[data-state="idle"] .sb-rise,
-  .stage[data-state="idle"] .sb-slot, .stage[data-state="idle"] .sb-back,
-  .stage[data-state="idle"] .sb-card, .stage[data-state="idle"] .sb-out, .stage[data-state="idle"] .sb-in { opacity: 0; }
-  .stage[data-state="idle"] .sb-draw { stroke-dashoffset: 1; }
-  .stage[data-state="idle"] .sb-phone, .stage[data-state="idle"] .sb-front { opacity: 1; }
+@media (prefers-reduced-motion: no-preference) {
+  /* Full motion: the parts of the ACTIVE frame draw, rise and flip. Only transform, opacity, stroke-dashoffset. */
+  .stage[data-state="playing"][data-beat="1"] .sb-f1,
+  .stage[data-state="playing"][data-beat="2"] .sb-f2,
+  .stage[data-state="playing"][data-beat="3"] .sb-f3,
+  .stage[data-state="playing"][data-beat="4"] .sb-f4,
+  .stage[data-state="playing"][data-beat="5"] .sb-f5 { --an-fade: sb-fade; --an-rise: sb-rise; --an-draw: sb-draw; }
+  /* start frame of the story: the time and a dark phone, nothing else */
+  .stage[data-state="idle"] .sb-a { opacity: 0; }
 
-  .stage[data-state="playing"] .sb-fade { animation: sb-fade var(--t, 0.5s) var(--ease) var(--d, 0s) both; }
-  .stage[data-state="playing"] .sb-rise { animation: sb-rise var(--t, 0.6s) var(--ease) var(--d, 0s) both; }
-  .stage[data-state="playing"] .sb-draw { animation: sb-draw var(--t, 0.7s) var(--ease) var(--d, 0s) both; }
-  .stage[data-state="playing"] .sb-phone { animation: sb-away 1s cubic-bezier(0.65, 0, 0.35, 1) 2.4s both; }
-  .stage[data-state="playing"] .sb-buzz { animation: sb-buzz 1.1s linear 3.5s both; }
-  .stage[data-state="playing"] .sb-front { animation: sb-flip-out 0.22s ease-in 5.95s both; }
-  .stage[data-state="playing"] .sb-back { animation: sb-flip-in 0.32s var(--ease) 6.17s both; }
-  .stage[data-state="playing"] .sb-out { animation: sb-popr 0.5s var(--ease) 5.35s both; }
-  .stage[data-state="playing"] .sb-typing { animation: sb-typing 1.15s linear 6.95s both; }
-  .stage[data-state="playing"] .sb-dot { animation: sb-dot 0.6s ease-in-out 7.05s 2 both; }
-  .stage[data-state="playing"] .sb-dot:nth-child(2) { animation-delay: 7.15s; }
-  .stage[data-state="playing"] .sb-dot:nth-child(3) { animation-delay: 7.25s; }
-  .stage[data-state="playing"] .sb-in { animation: sb-popl 0.5s var(--ease) 8.05s both; }
-  .stage[data-state="playing"] .sb-slot { animation: sb-grow 0.5s var(--ease) 9.4s both; }
-  .stage[data-state="playing"] .sb-cap { animation: sb-cap var(--t) linear var(--d) both; }
-  .stage[data-state="playing"] .sb-flicker { animation: sb-flicker 0.5s ease-in-out 3.6s 4 both; }
+  .stage[data-state="playing"][data-beat="2"] .sb-buzz { animation: sb-buzz 1.1s linear 1.5s both; }
+  .stage[data-state="playing"][data-beat="2"] .sb-flicker { animation: sb-flicker 0.5s ease-in-out 1s 4 both; }
+  .stage[data-state="playing"][data-beat="3"] .sb-front { animation: sb-flip-out 0.22s ease-in 1.2s both; }
+  .stage[data-state="playing"][data-beat="3"] .sb-back { animation: sb-flip-in 0.32s var(--ease) 1.42s both; }
+  .stage[data-state="playing"][data-beat="4"] .sb-typing { animation: sb-typing 1.15s linear 0.2s both; }
+  .stage[data-state="playing"][data-beat="4"] .sb-dot { animation: sb-dot 0.6s ease-in-out 0.3s 2 both; }
+  .stage[data-state="playing"][data-beat="4"] .sb-dot:nth-child(2) { animation-delay: 0.4s; }
+  .stage[data-state="playing"][data-beat="4"] .sb-dot:nth-child(3) { animation-delay: 0.5s; }
+  .stage[data-state="playing"][data-beat="4"] .sb-in { animation: sb-popl 0.5s var(--ease) 1.5s both; }
+  .stage[data-state="playing"][data-beat="5"] .sb-slot { animation: sb-grow 0.5s var(--ease) 0.9s both; }
+}
+@media (prefers-reduced-motion: reduce) {
+  /* Calm motion: every beat is a plain opacity crossfade. No translate, scale, rotate or draw. */
+  .sb-f { transition-duration: 800ms; }
+  .stage[data-state="playing"][data-beat="3"] .sb-front { animation: sb-fadeout 0.7s linear 1.2s both; }
+  .stage[data-state="playing"][data-beat="3"] .sb-back { animation: sb-fade 0.7s linear 1.2s both; }
+  .stage[data-state="playing"][data-beat="4"] .sb-typing { animation: sb-fadeout 0.6s linear 1.2s both; }
+  .stage[data-state="playing"][data-beat="4"] .sb-in { animation: sb-fade 0.7s linear 1.2s both; }
 }
 @keyframes sb-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes sb-fadeout { from { opacity: 1; } to { opacity: 0; } }
 @keyframes sb-rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
 @keyframes sb-draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
-@keyframes sb-away {
-  0% { opacity: 1; transform: none; }
-  72% { opacity: 1; }
-  100% { opacity: 0; transform: translate(52px, 248px) scale(0.29); }
-}
 @keyframes sb-buzz { 0%, 100% { opacity: 0; } 12%, 48%, 84% { opacity: 1; } 30%, 66% { opacity: 0; } }
 @keyframes sb-flip-out { from { opacity: 1; transform: scaleX(1); } to { opacity: 0; transform: scaleX(0.02); } }
 @keyframes sb-flip-in { from { opacity: 0; transform: scaleX(0.02); } to { opacity: 1; transform: scaleX(1); } }
-@keyframes sb-popr { from { opacity: 0; transform: translateX(18px); } to { opacity: 1; transform: none; } }
 @keyframes sb-popl { from { opacity: 0; transform: translateX(-18px); } to { opacity: 1; transform: none; } }
 @keyframes sb-typing { 0% { opacity: 0; } 12%, 88% { opacity: 1; } 100% { opacity: 0; } }
 @keyframes sb-dot { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
 @keyframes sb-grow { from { opacity: 0; transform: scaleX(0); } to { opacity: 1; transform: none; } }
-@keyframes sb-cap { 0% { opacity: 0; } 14%, 86% { opacity: 1; } 100% { opacity: 0; } }
 @keyframes sb-flicker { 0%, 100% { opacity: 1; } 50% { opacity: 0.55; } }
 
 /* ---------- how it feels ---------- */
@@ -506,7 +527,8 @@ p, ul, ol, dl, figure { margin: 0; }
 .hint { margin-top: 0.45rem; font-size: 0.8125rem; color: var(--ink-2); }
 .err { margin-top: 0.4rem; font-size: 0.875rem; font-weight: 600; color: var(--accent-ink); }
 .err:empty { display: none; }
-@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+@media (scripting: enabled) {
+  /* the grid fades in both motion modes (a colour fade, no movement) */
   .js-ok [data-reveal]:not(.is-in) .h.is-lost { fill: transparent; stroke: var(--ink); }
 }
 @media (min-width: 62rem) {
@@ -529,6 +551,12 @@ p, ul, ol, dl, figure { margin: 0; }
   .js-ok [data-reveal]:not(.is-in) .bar-long { transform: scaleX(0); }
   .js-ok [data-reveal]:not(.is-in) .bar-short { transform: scaleX(0); }
   .bar-short { transition-delay: 500ms; }
+}
+@media (scripting: enabled) and (prefers-reduced-motion: reduce) {
+  /* bars crossfade in place, no scaling */
+  .bar-fill { transition: opacity 900ms linear; }
+  .js-ok [data-reveal]:not(.is-in) .bar-fill { opacity: 0; }
+  .bar-short { transform: scaleX(0.03); transition-delay: 0ms; }
 }
 @media (min-width: 62rem) {
   .gap { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); column-gap: var(--gap-cols); align-content: start; }
@@ -718,5 +746,5 @@ p, ul, ol, dl, figure { margin: 0; }
 @media (prefers-reduced-motion: reduce) {
   @view-transition { navigation: none; }
   ::view-transition-group(*), ::view-transition-old(*), ::view-transition-new(*) { animation: none !important; }
-  .h, .bar-fill { transition: none; }
+  .h { transition: fill 900ms linear, stroke 900ms linear; transition-delay: 0ms; }
 }
