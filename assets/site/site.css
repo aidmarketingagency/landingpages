@@ -231,7 +231,7 @@ p, ul, ol, dl, figure { margin: 0; }
 .wrap { width: 100%; max-width: var(--max); margin-inline: auto; padding-inline: var(--gutter); }
 .grid12 { display: grid; grid-template-columns: minmax(0, 1fr); }
 /* static fallback first (static scanners and old engines), then the fluid --sect value in each rule below */
-.sect, .prose, .feel, .caught, .gap, .how, .doors, .teacher, .cta, .tools { padding-top: 4rem; padding-bottom: 4rem; }
+.sect, .prose, .feel, .caught, .gap, .how, .doors, .teacher, .cta, .tools, .promises { padding-top: 4rem; padding-bottom: 4rem; }
 .sect { padding-block: var(--sect); }
 .sect-tight { padding-block: calc(var(--sect) * 0.6); }
 .band { background-color: var(--paper-deep); background-image: var(--tooth); border-top: var(--hair); border-bottom: var(--hair); padding-left: 0.5rem; padding-right: 0.5rem; }
@@ -677,6 +677,20 @@ p, ul, ol, dl, figure { margin: 0; }
 .teacher-body .link-quiet { display: inline-flex; align-items: center; min-height: 44px; margin-top: var(--s-2); font-weight: 600; }
 @media (min-width: 62rem) {
   .teacher { grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); column-gap: var(--gap-cols); }
+}
+
+/* ---------- the three-promise band (Home and Real estate teams) ----------
+   section.promises.band > .wrap > h2.vh + ul.promise-list > li.promise (h3 + p [+ p.source]) + p.promise-foot.
+   Three equal items in a row from 62rem, stacked below. */
+.promises { padding-block: var(--sect); }
+.promise-list { list-style: none; padding: 0; display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--s-4); }
+.promise { border-top: var(--hair); padding-top: var(--s-3); }
+.promise h3 { font-size: var(--fs-h3); letter-spacing: -0.015em; font-weight: 480; line-height: 1.25; margin-bottom: var(--s-1); }
+.promise p { max-width: 30rem; font-size: 1.125rem; line-height: 1.55; }
+.promise .source { margin-top: var(--s-2); font-size: 0.8125rem; line-height: 1.5; }
+.promise-foot { margin-top: var(--s-4); max-width: 40rem; font-family: var(--display); font-size: clamp(1.25rem, 1rem + 1vw, 1.65rem); line-height: 1.4; letter-spacing: -0.008em; font-weight: 400; text-wrap: pretty; }
+@media (min-width: 62rem) {
+  .promise-list { grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: var(--s-4); }
 }
 
 /* ---------- the AI tools band (Home and Real estate teams) ---------- */
