@@ -15,6 +15,8 @@ Each photo appears on exactly one page. Ryan's own photos (ryan-phone-* on Home,
 
 These three are AI-generated illustrations, not stock photos. Every person in them is invented, and no real person's likeness was used. Ryan McNally picked each one in a blind ChatGPT versus Google Gemini ("Nano Banana") image bake-off on 2026-10-14 (about 11:00 PM ET), without knowing which tool made which. Each carries a small visible caption "Illustration" and alt text that starts with "Illustration:" (fair-housing check rule 7: AI-generated images of people are labeled). Any of them can be swapped for real photos later.
 
+V8 (2026-10-15): per Ryan's 8:29 AM ET ruling, captions on the site are feeling lines, not labels, so the "Illustration" caption and the "Illustration:" alt prefix are gone from the pages. This file and the /assumptions/ page are now the only place the AI versus stock record lives.
+
 Treatment: same as above (light warm tint, EXIF removed, WebP plus JPEG at 1x and 2x). Source files were 1200 by 800.
 
 | Illustration | Made with | Picked by | Page and slot | Files |
