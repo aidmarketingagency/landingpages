@@ -436,6 +436,19 @@ p, ul, ol, dl, figure { margin: 0; }
 .sb-ph { position: absolute; left: 52.5%; top: 10.8%; width: 41.667%; height: 52%; display: block; opacity: 0; transition: opacity 600ms linear; box-shadow: var(--shadow-soft); background: var(--paper-deep); }
 .sb-ph img { display: block; width: 100%; height: 100%; object-fit: cover; border: var(--hair); }
 .stage[data-beat="6"] .sb-ph { opacity: 1; }
+/* The AI illustration of the couple belongs to the buyer-reply frame (beat 5): left 28, top 156, 424 wide,
+   11:6, with the bubble below it. Labeled "Illustration". Hidden in every other beat and without JS. */
+.sb-pc { position: absolute; left: 5.833%; top: 31.2%; width: 88.333%; aspect-ratio: 440 / 240; opacity: 0; transition: opacity 600ms linear; box-shadow: var(--shadow-soft); background: var(--paper-deep); }
+.sb-pc img { display: block; width: 100%; height: 100%; object-fit: cover; border: var(--hair); }
+.sb-cap { position: absolute; left: 8px; bottom: 8px; padding: 0.15rem 0.55rem; background: var(--paper); color: var(--ink-2); font-size: 0.8125rem; line-height: 1.4; letter-spacing: 0.01em; border: var(--hair); }
+.stage[data-beat="5"] .sb-pc { opacity: 1; }
+/* a labeled AI illustration inside a Home feel beat */
+.beat-photo { margin-top: var(--s-3); max-width: 34rem; }
+.beat-photo img { display: block; width: 100%; height: auto; border: var(--hair); box-shadow: var(--shadow-soft); background: var(--paper-deep); }
+.beat-photo figcaption { margin-top: 0.5rem; }
+/* a plate whose photo is already warm-tinted in the file: no second tint or filter on top */
+.plate-flat .plate-frame img { filter: none; object-position: 50% 30%; }
+.plate-flat .plate-frame::after { display: none; }
 @media (scripting: none) {
   /* no JS: the end frame (beat 6) only, and no dead controls */
   .stage .sb-f { opacity: 0; transition: none; }

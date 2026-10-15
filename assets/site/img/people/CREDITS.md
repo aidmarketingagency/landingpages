@@ -1,4 +1,4 @@
-# Photo credits (V5 draft)
+# Photo credits (V6 draft)
 
 Both photos are under the Pexels License (https://www.pexels.com/license/): free for commercial use, no attribution required. Credits are kept here and on the /assumptions/ page anyway. Both were downloaded on 2026-10-14 (about 10:36 and 10:37 PM ET) and were picked by Ryan McNally in chat on 2026-10-14. Three other candidates he saw (a couple looking at a phone, a key handoff, a family dinner) were dropped and are not on the site.
 
@@ -10,3 +10,17 @@ Treatment: each file is cropped, given a light warm tint (about 16 percent multi
 | Group of women having a discussion using a laptop (pexels id 8485664) | Thirdman | https://www.pexels.com/photo/group-of-women-having-discussion-using-the-laptop-8485664/ | Real estate teams (/real-estate-teams/), the "Learn the AI tools" band | team-laptop-540.webp/.jpg (1x), team-laptop-1080.webp/.jpg (2x) |
 
 Each photo appears on exactly one page. Ryan's own photos (ryan-phone-* on Home, ryan-rail-* on About Ryan) are separate and also never repeat across pages.
+
+## AI illustrations (V6, added 2026-10-14)
+
+These three are AI-generated illustrations, not stock photos. Every person in them is invented, and no real person's likeness was used. Ryan McNally picked each one in a blind ChatGPT versus Google Gemini ("Nano Banana") image bake-off on 2026-10-14 (about 11:00 PM ET), without knowing which tool made which. Each carries a small visible caption "Illustration" and alt text that starts with "Illustration:" (fair-housing check rule 7: AI-generated images of people are labeled). Any of them can be swapped for real photos later.
+
+Treatment: same as above (light warm tint, EXIF removed, WebP plus JPEG at 1x and 2x). Source files were 1200 by 800.
+
+| Illustration | Made with | Picked by | Page and slot | Files |
+|---|---|---|---|---|
+| A couple at a kitchen counter looking at a phone | ChatGPT image generation | Ryan, blind bake-off, 2026-10-14 | Home (/), hero story beat five, beside the buyer's reply "Yes! Can we see it tomorrow?" (cropped to 11:6) | ai-couple-phone-440.webp/.jpg (1x), ai-couple-phone-880.webp/.jpg (2x) |
+| A relaxed family dinner | ChatGPT image generation | Ryan, blind bake-off, 2026-10-14 | Home (/), "How it feels", under Calm evenings | ai-family-dinner-540.webp/.jpg (1x), ai-family-dinner-1080.webp/.jpg (2x) |
+| A silver-haired agent handing keys to a smiling couple at a front door | Google Gemini ("Nano Banana") | Ryan, blind bake-off, 2026-10-14 | Done for you (/done-for-you/), the one photo, beside the top of the page (cropped to 5:4) | ai-agent-keys-420.webp/.jpg (1x), ai-agent-keys-840.webp/.jpg (2x) |
+
+Seven photos on the site in all, each on exactly one page: Ryan's phone-call photo (Home, who teaches it), Ryan's railing portrait (About Ryan), the SOLD agent (Home), the team at a laptop (Real estate teams), and the three illustrations above.
