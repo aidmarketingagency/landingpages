@@ -119,7 +119,15 @@
       }
       if (toggleBtn) { toggleBtn.setAttribute("aria-pressed", p ? "true" : "false"); }
     }
+    /* the end-frame photo is fetched at parse time (eager, low priority); at story start make sure it is
+       also decoded, so beat 6 never flashes empty */
+    function warmPhotos() {
+      Array.prototype.forEach.call(root.querySelectorAll("[data-sb-photo] img"), function (img) {
+        if (img.decode) { img.decode().catch(function () {}); }
+      });
+    }
     function begin() {
+      warmPhotos();
       clearTimers();
       setState("playing");
       enterBeat(1);
