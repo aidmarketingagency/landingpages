@@ -6,7 +6,8 @@
    Nothing is stored or sent.
    Motion rule: the storyboard ALWAYS plays, six beats on five frames, with the SAME beat lengths in both
    motion modes (every beat holds 4.5 s or more, crossfades are 600 ms in CSS). Under Reduce Motion it is
-   plain opacity fades only; the count-ups stay at their final values. */
+   small in-place animations keep playing with softer timings and only travelling or rotating movement is
+   removed (reduce means reduce, not remove); the count-ups stay at their final values. */
 (function () {
   "use strict";
 
@@ -178,7 +179,7 @@
   }
 
   /* ---- scroll reveals and the sourced count-ups (47%, 39 minutes) ----
-     Under Reduce Motion the blocks still reveal (grid and bars fade, see site.css) but the numbers
+     Under Reduce Motion the blocks still reveal (grid fades, bars grow in place, see site.css) but the numbers
      keep their final values: no count-up. */
   function initReveals() {
     var blocks = Array.prototype.slice.call(document.querySelectorAll("[data-reveal]"));

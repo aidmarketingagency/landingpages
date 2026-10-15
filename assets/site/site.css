@@ -462,9 +462,11 @@ p, ul, ol, dl, figure { margin: 0; }
 .sb-draw { stroke-dasharray: 1 2; stroke-dashoffset: 0; }
 .sb-front, .sb-back, .sb-slot { transform-box: fill-box; transform-origin: center; }
 .sb-slot { transform-origin: left center; }
-.sb-fade { animation: var(--an-fade, none) var(--t, 0.5s) var(--ease) var(--d, 0s) both; }
-.sb-rise { animation: var(--an-rise, none) var(--t, 0.6s) var(--ease) var(--d, 0s) both; }
-.sb-draw { animation: var(--an-draw, none) var(--t, 0.7s) var(--ease) var(--d, 0s) both; }
+/* --tm and --dm stretch the durations and delays under Reduce Motion (softer, same shapes) */
+.sb-fade { animation: var(--an-fade, none) calc(var(--t, 0.5s) * var(--tm, 1)) var(--ease) calc(var(--d, 0s) * var(--dm, 1)) both; }
+.sb-rise { animation: var(--an-rise, none) calc(var(--t, 0.6s) * var(--tm, 1)) var(--ease) calc(var(--d, 0s) * var(--dm, 1)) both; }
+.sb-draw { animation: var(--an-draw, none) calc(var(--t, 0.7s) * var(--tm, 1)) var(--ease) calc(var(--d, 0s) * var(--dm, 1)) both; }
+.sb-halo { fill: none; stroke: var(--accent); stroke-width: 10; stroke-opacity: 0.32; stroke-linejoin: round; opacity: 0; }
 .stage[data-paused="true"] .sb-svg * { animation-play-state: paused !important; }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -493,12 +495,33 @@ p, ul, ol, dl, figure { margin: 0; }
   .stage[data-state="playing"][data-beat="6"] .sb-slot { animation: sb-grow 0.5s var(--ease) 0.9s both; }
 }
 @media (prefers-reduced-motion: reduce) {
-  /* Calm motion: every beat is a plain opacity crossfade, same 600 ms and same beat lengths as full motion.
-     No translate, scale, rotate or draw. */
+  /* Reduce means reduce, not remove (Ryan, 2026-10-15). Every SMALL IN-PLACE animation keeps playing with
+     softer, longer timings: line drawing, check-mark draw, typing dots, candle flicker (2 cycles), the
+     calendar slot grow, a glow pulse for the phone buzz (no shake). Only movement that travels or rotates
+     is gone: sb-rise becomes a plain fade, the card flip stays a crossfade, no slides, no page slides.
+     Same 600 ms frame crossfade and the same beat lengths as full motion. */
+  .stage[data-state="playing"][data-beat="1"] .sb-f1,
+  .stage[data-state="playing"][data-beat="2"] .sb-f2,
+  .stage[data-state="playing"][data-beat="3"] .sb-f3,
+  .stage[data-state="playing"][data-beat="4"] .sb-f3,
+  .stage[data-state="playing"][data-beat="5"] .sb-f4,
+  .stage[data-state="playing"][data-beat="6"] .sb-f5 { --an-fade: sb-fade; --an-rise: sb-fade; --an-draw: sb-draw; --tm: 1.4; --dm: 1.15; }
+  .stage[data-state="idle"] .sb-a { opacity: 0; }
+
+  .stage[data-state="playing"][data-beat="2"] .sb-buzz { animation: sb-pulse 1.4s ease-in-out 1.7s 2 both; }
+  .stage[data-state="playing"][data-beat="2"] .sb-halo { animation: sb-pulse 1.4s ease-in-out 1.7s 2 both; }
+  .stage[data-state="playing"][data-beat="2"] .sb-flicker { animation: sb-flicker 0.7s ease-in-out 1.1s 2 both; }
+  /* beat 4: the card crossfades to Answered, then the check draws itself */
   .stage[data-state="playing"][data-beat="4"] .sb-front { animation: sb-fadeout 0.7s linear 0s both; }
   .stage[data-state="playing"][data-beat="4"] .sb-back { animation: sb-fade 0.7s linear 0s both; }
-  .stage[data-state="playing"][data-beat="5"] .sb-typing { animation: sb-fadeout 0.6s linear 1.2s both; }
-  .stage[data-state="playing"][data-beat="5"] .sb-in { animation: sb-fade 0.7s linear 1.2s both; }
+  .stage[data-state="playing"][data-beat="4"] .sb-check { animation: sb-draw 0.75s var(--ease) 0.9s both; }
+  /* beat 5: the typing dots pulse, then the message fades in */
+  .stage[data-state="playing"][data-beat="5"] .sb-typing { animation: sb-typing 1.5s linear 0.2s both; }
+  .stage[data-state="playing"][data-beat="5"] .sb-dot { animation: sb-dot 0.7s ease-in-out 0.3s 2 both; }
+  .stage[data-state="playing"][data-beat="5"] .sb-dot:nth-child(2) { animation-delay: 0.4s; }
+  .stage[data-state="playing"][data-beat="5"] .sb-dot:nth-child(3) { animation-delay: 0.5s; }
+  .stage[data-state="playing"][data-beat="5"] .sb-in { animation: sb-fade 0.7s linear 1.6s both; }
+  .stage[data-state="playing"][data-beat="6"] .sb-slot { animation: sb-grow 0.75s var(--ease) 0.9s both; }
 }
 /* beat 3 shows the inquiry card (front); the Answered side waits for beat 4. Both motion modes. */
 .stage[data-state="playing"][data-beat="3"] .sb-front { opacity: 1; }
@@ -508,6 +531,7 @@ p, ul, ol, dl, figure { margin: 0; }
 @keyframes sb-fadeout { from { opacity: 1; } to { opacity: 0; } }
 @keyframes sb-rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
 @keyframes sb-draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+@keyframes sb-pulse { 0%, 100% { opacity: 0; } 50% { opacity: 1; } }
 @keyframes sb-buzz { 0%, 100% { opacity: 0; } 12%, 48%, 84% { opacity: 1; } 30%, 66% { opacity: 0; } }
 @keyframes sb-flip-out { from { opacity: 1; transform: scaleX(1); } to { opacity: 0; transform: scaleX(0.02); } }
 @keyframes sb-flip-in { from { opacity: 0; transform: scaleX(0.02); } to { opacity: 1; transform: scaleX(1); } }
@@ -548,8 +572,13 @@ p, ul, ol, dl, figure { margin: 0; }
 .caught-yours .small { display: block; margin-top: 0.3rem; font-family: var(--body); font-size: 0.875rem; }
 .caught-visual { width: 100%; max-width: 30rem; }
 .houses { display: block; width: 100%; height: auto; }
-.h { fill: transparent; stroke: var(--ink); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; transition: fill 600ms var(--ease), stroke 600ms var(--ease); transition-delay: calc(var(--i, 0) * 28ms); }
+.h { fill: transparent; stroke: var(--ink); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+/* Resting state (no JS, crawlers): lost homes are already marked. With JS they start transparent with an ink
+   stroke and a keyframe animation fades them to the accent when the block reveals, staggered by --i, in BOTH
+   motion modes (a colour fade in place). A keyframe animation cannot be skipped the way a transition can. */
 .h.is-lost { fill: rgba(179, 48, 27, 0.22); stroke: var(--accent); }
+@keyframes h-lose { from { fill: transparent; stroke: var(--ink); } to { fill: rgba(179, 48, 27, 0.22); stroke: var(--accent); } }
+.js-ok [data-reveal].is-in .h.is-lost { animation: h-lose 700ms var(--ease) calc(var(--i, 0) * 28ms) both; }
 .field label { display: block; font-size: 0.9375rem; font-weight: 600; line-height: 1.4; margin-bottom: 0.5rem; }
 .field input { width: 100%; font-family: var(--display); font-size: 1.85rem; font-weight: 450; line-height: 1.4; padding: 0.1rem 0 0.2rem; color: var(--ink); background: transparent; border: 0; border-bottom: 2px solid var(--ink); border-radius: 0; font-variant-numeric: lining-nums tabular-nums; min-height: 52px; transition: border-color 160ms var(--ease), box-shadow 160ms var(--ease); }
 .field input:hover { border-bottom-color: var(--accent-ink); }
@@ -587,10 +616,11 @@ p, ul, ol, dl, figure { margin: 0; }
   .bar-short { transition-delay: 500ms; }
 }
 @media (scripting: enabled) and (prefers-reduced-motion: reduce) {
-  /* bars crossfade in place, no scaling */
-  .bar-fill { transition: opacity 900ms linear; }
-  .js-ok [data-reveal]:not(.is-in) .bar-fill { opacity: 0; }
-  .bar-short { transform: scaleX(0.03); transition-delay: 0ms; }
+  /* Reduce means reduce, not remove: the bars still grow in place by scaleX, over 1.2 s */
+  .bar-fill { transition: transform 1200ms var(--ease); }
+  .js-ok [data-reveal]:not(.is-in) .bar-long { transform: scaleX(0); }
+  .js-ok [data-reveal]:not(.is-in) .bar-short { transform: scaleX(0); }
+  .bar-short { transition-delay: 400ms; }
 }
 @media (min-width: 62rem) {
   .gap { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); column-gap: var(--gap-cols); align-content: start; }
@@ -799,5 +829,5 @@ p, ul, ol, dl, figure { margin: 0; }
 @media (prefers-reduced-motion: reduce) {
   @view-transition { navigation: none; }
   ::view-transition-group(*), ::view-transition-old(*), ::view-transition-new(*) { animation: none !important; }
-  .h { transition: fill 900ms linear, stroke 900ms linear; transition-delay: 0ms; }
+  .js-ok [data-reveal].is-in .h.is-lost { animation-duration: 1000ms; animation-timing-function: linear; }
 }
