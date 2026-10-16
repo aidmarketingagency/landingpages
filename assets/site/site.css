@@ -57,13 +57,12 @@
    .sub-line         The line beside or under a CTA button: "20 minutes, free. See if it fits."
                      Put it as a sibling after the .action inside .actions.
 
-   BUTTONS AND PLACEHOLDER NOTE
+   BUTTONS
    .btn .btn-primary Vermilion button. .btn-quiet outlined. .btn-ink solid ink. 52px high. .btn-sm is 44px.
-   .action           Wrapper for a button plus its note, so the note sits directly under it:
-                     <div class="action"><a class="btn btn-primary" href="#" data-placeholder="paymegpt-speed-check">
-                     Book the free Speed Check</a><span class="pending">Link pending</span></div>
-   .pending          The small "Link pending" note that follows every buy, book or Speed Check button.
-   .actions          Flex row (wraps) of .action items, buttons and a .sub-line.
+   .action           Wrapper for a button, so spacing stays the same if a note is ever added:
+                     <div class="action"><a class="btn btn-primary" href="https://cal.com/ryan-mcnally-7zm1zu/speed-check">
+                     Book the free Speed Check</a></div>
+   .actions         Flex row (wraps) of .action items, buttons and a .sub-line.
    Disabled state: .btn:disabled or .btn[aria-disabled="true"].
 
    HEROES
@@ -102,6 +101,9 @@
                      Add .bio-flip to put the portrait on the right. Portrait img needs width and height.
    .book-options     <ul class="book-options"><li class="book-option book-option-lead"><h3>..</h3><p>..</p>
                      <div class="action">..</div></li><li class="book-option">..</li></ul>
+   .cal-embed        Cal.com booking calendar frame on /book/: <div class="cal-embed"><div id="cal-inline"></div></div>
+                     followed by <p class="cal-fallback">..</p>, the plain link shown if the calendar does not load.
+                     Reserves 640px (560px on phones) so the page does not jump when the embed arrives.
    .cta              Final call to action on a band: <section class="cta band"><div class="wrap"><h2>..</h2>
                      <div class="actions"><div class="action">..</div><p class="sub-line">..</p></div></div></section>
    .assump           Assumptions list, grouped. Per group:
@@ -140,7 +142,7 @@
 
    MOTION: the storyboard (always, calmer under Reduce Motion), the grid and bars (fades only under Reduce
    Motion), two sourced count-ups (47 and 39, static final values under Reduce Motion), view transitions
-   between pages (off under Reduce Motion), the Link pending flash.
+   between pages (off under Reduce Motion).
 
    LEGACY (V1, kept until the inner pages are restyled; V2 copy no longer uses them)
    .price-block / .price-main / .price-note, .sessions / .session, .crm-list / .crm-status.
@@ -311,8 +313,6 @@ p, ul, ol, dl, figure { margin: 0; }
 .btn-quiet:disabled:hover, .btn-quiet[aria-disabled="true"]:hover { background: transparent; color: var(--ink); }
 
 .action { display: inline-flex; flex-direction: column; align-items: flex-start; gap: 0.45rem; }
-.pending { display: inline-block; font-size: 0.8125rem; line-height: 1.3; color: var(--ink-2); border: 1px dashed var(--ink-2); padding: 0.12rem 0.55rem; }
-.pending.is-flash { color: var(--sheet); background: var(--ink); border-color: var(--ink); }
 .actions { display: flex; flex-wrap: wrap; align-items: flex-start; gap: var(--s-2) var(--s-3); }
 .sub-line { display: flex; align-items: center; min-height: 52px; font-size: 0.9375rem; color: var(--ink-2); }
 .link-quiet:hover { text-decoration-color: var(--accent); }
@@ -798,6 +798,16 @@ p, ul, ol, dl, figure { margin: 0; }
   .book-options { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); column-gap: var(--gap-cols); }
   .book-option-lead { grid-column: 1; grid-row: 1 / 3; padding-bottom: var(--s-5); }
   .book-option:not(.book-option-lead) { grid-column: 2; }
+}
+
+/* ---------- cal.com embed ---------- */
+/* div.cal-embed: Cal.com gives its own iframe the class "cal-embed", so the frame is scoped to the div. */
+div.cal-embed { width: 100%; min-height: 640px; margin-top: var(--s-3); background: var(--sheet); border: var(--hair); overflow: auto; }
+#cal-inline { width: 100%; min-height: 640px; }
+.cal-embed iframe { width: 100%; min-height: 640px; border: 0; }
+.cal-fallback { font-size: 0.875rem; color: var(--ink-2); margin-top: var(--s-2); }
+@media (max-width: 600px) {
+  div.cal-embed, #cal-inline, .cal-embed iframe { min-height: 560px; }
 }
 
 /* ---------- assumptions ---------- */

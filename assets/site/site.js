@@ -1,6 +1,6 @@
 /* AID Marketing Agency site script. One deferred file for every page.
    Each feature starts only if its elements exist, inside its own try/catch.
-   Features: menu toggle, placeholder links, the hero storyboard controller, scroll reveals with the
+   Features: menu toggle, the hero storyboard controller, scroll reveals with the
    two sourced count-ups (47 and 39), and the optional "inquiries you get each month" input.
    Numbers used: 0.47 (DelPrete, August 2024) and 39 minutes (DelPrete, August 2024).
    Nothing is stored or sent.
@@ -39,20 +39,6 @@
     });
     document.addEventListener("click", function (e) {
       if (links.classList.contains("is-open") && !links.contains(e.target) && !toggle.contains(e.target)) { setOpen(false); }
-    });
-  }
-
-  /* ---- placeholder links never navigate; the note beside them answers the click ---- */
-  function initPlaceholders() {
-    var holders = document.querySelectorAll("a[data-placeholder]");
-    Array.prototype.forEach.call(holders, function (a) {
-      a.addEventListener("click", function (e) {
-        e.preventDefault();
-        var note = a.parentNode ? a.parentNode.querySelector(".pending") : null;
-        if (!note) { return; }
-        note.classList.add("is-flash");
-        window.setTimeout(function () { note.classList.remove("is-flash"); }, 1400);
-      });
     });
   }
 
@@ -266,7 +252,7 @@
     });
   }
 
-  var inits = [initMenu, initPlaceholders, initStoryboard, initReveals, initPerMonth];
+  var inits = [initMenu, initStoryboard, initReveals, initPerMonth];
   inits.forEach(function (fn) {
     try { fn(); } catch (err) { warn(fn.name || "feature", err); }
   });

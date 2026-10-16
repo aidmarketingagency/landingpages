@@ -38,7 +38,7 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://aidmarketingagency.com/"},{"@type":"ListItem","position":2,"name":"Book","item":"https://aidmarketingagency.com/book/"}]}</script>
 </head>
 <body>
-<div class="draft-banner" role="note"><div class="wrap"><p>DRAFT v10. Provisional choices pending Ryan&rsquo;s review. <a href="/assumptions/">See every assumption</a></p></div></div>
+<div class="draft-banner" role="note"><div class="wrap"><p>DRAFT v11. Provisional choices pending Ryan&rsquo;s review. <a href="/assumptions/">See every assumption</a></p></div></div>
 <a class="skip" href="#main">Skip to content</a>
 
 <header class="masthead">
@@ -104,30 +104,39 @@
       <h3>Speed Check</h3>
       <p>A free look at how fast your team answers today.</p>
       <div class="action">
-        <a class="btn btn-primary" href="#" data-placeholder="paymegpt-speed-check">Book the free Speed Check</a>
-        <span class="pending">Link pending</span>
+        <a class="btn btn-primary" href="#pick-a-time">Book the free Speed Check</a>
       </div>
     </li>
     <li class="book-option">
       <h3>Learn it</h3>
       <p>Your team learns to answer first, on its own.</p>
       <div class="action">
-        <a class="btn btn-ink" href="#" data-placeholder="paymegpt-checkout">Talk through learning it</a>
-        <span class="pending">Link pending</span>
+        <a class="btn btn-ink" href="https://cal.com/ryan-mcnally-7zm1zu/speed-check">Talk through learning it</a>
       </div>
     </li>
     <li class="book-option">
       <h3>Have it done</h3>
       <p>I set it up and run it for you.</p>
       <div class="action">
-        <a class="btn btn-quiet" href="#" data-placeholder="paymegpt-booking">Talk through done for you</a>
-        <span class="pending">Link pending</span>
+        <a class="btn btn-quiet" href="https://cal.com/ryan-mcnally-7zm1zu/speed-check">Talk through done for you</a>
       </div>
       <div class="blocked" role="note">
         <p class="blocked-tag">[BLOCKED: DD-11 terms pending Ryan approval]</p>
       </div>
     </li>
   </ul>
+</section>
+
+<section class="wrap sect-tight" id="pick-a-time" aria-labelledby="time-title">
+  <h2 id="time-title">Pick a time for your Speed Check</h2>
+  <p>20 minutes, free.</p>
+  <div class="cal-embed">
+    <div id="cal-inline"></div>
+    <noscript>
+      <iframe src="https://cal.com/ryan-mcnally-7zm1zu/speed-check?embed=true&amp;theme=light" title="Book the free Speed Check with Ryan McNally"></iframe>
+    </noscript>
+  </div>
+  <p class="cal-fallback">Calendar not loading? <a href="https://cal.com/ryan-mcnally-7zm1zu/speed-check">Open the booking page</a>.</p>
 </section>
 
 <section class="wrap sect-tight" aria-labelledby="qa-title">
@@ -145,8 +154,7 @@
     <h2 id="cta-title">Start with the Speed Check.</h2>
     <div class="actions">
       <div class="action">
-        <a class="btn btn-primary" href="#" data-placeholder="paymegpt-speed-check">Book the free Speed Check</a>
-        <span class="pending">Link pending</span>
+        <a class="btn btn-primary" href="https://cal.com/ryan-mcnally-7zm1zu/speed-check">Book the free Speed Check</a>
       </div>
       <p class="sub-line">20 minutes, free. See if it fits. I share pricing on the Speed Check, once we know it fits.</p>
     </div>
@@ -178,6 +186,24 @@
     <p class="foot-sms">By contacting us or opting into our services, you agree to receive SMS and voice communications. Reply STOP to opt out. Message &amp; data rates may apply.</p>
   </div>
 </footer>
+
+<!-- Cal.com inline embed loader (same pattern as the live /book/) -->
+<script>
+(function(C,A,L){let p=function(a,ar){a.q.push(ar)};let d=C.document;C.Cal=C.Cal||function(){let cal=C.Cal;let ar=arguments;if(!cal.loaded){cal.ns={};cal.q=cal.q||[];d.head.appendChild(d.createElement("script")).src=A;cal.loaded=true}if(ar[0]===L){const api=function(){p(api,arguments)};const namespace=ar[1];api.q=api.q||[];if(typeof namespace==="string"){cal.ns[namespace]=cal.ns[namespace]||api;p(cal.ns[namespace],ar);p(cal,["initNamespace",namespace])}else p(cal,ar);return}p(cal,ar)};})(window,"https://app.cal.com/embed/embed.js","init");
+Cal("init","book",{origin:"https://cal.com"});
+Cal.ns.book("inline",{
+  elementOrSelector:"#cal-inline",
+  calLink:"ryan-mcnally-7zm1zu/speed-check",
+  layout:"month_view",
+  config:{theme:"light"}
+});
+Cal.ns.book("ui",{
+  theme:"light",
+  cssVarsPerTheme:{light:{"cal-brand":"#B3301B"},dark:{"cal-brand":"#B3301B"}},
+  hideEventTypeDetails:false,
+  layout:"month_view"
+});
+</script>
 
 </body>
 </html>
