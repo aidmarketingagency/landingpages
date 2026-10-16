@@ -1,4 +1,4 @@
-# Photo credits (V6 draft)
+# Photo credits (V9 draft)
 
 Both photos are under the Pexels License (https://www.pexels.com/license/): free for commercial use, no attribution required. Credits are kept here and on the /assumptions/ page anyway. Both were downloaded on 2026-10-14 (about 10:36 and 10:37 PM ET) and were picked by Ryan McNally in chat on 2026-10-14. Three other candidates he saw (a couple looking at a phone, a key handoff, a family dinner) were dropped and are not on the site.
 
@@ -13,7 +13,9 @@ Each photo appears on exactly one page. Ryan's own photos (ryan-phone-* on Home,
 
 ## AI illustrations (V6, added 2026-10-14)
 
-These three are AI-generated illustrations, not stock photos. Every person in them is invented, and no real person's likeness was used. Ryan McNally picked each one in a blind ChatGPT versus Google Gemini ("Nano Banana") image bake-off on 2026-10-14 (about 11:00 PM ET), without knowing which tool made which. Each carries a small visible caption "Illustration" and alt text that starts with "Illustration:" (fair-housing check rule 7: AI-generated images of people are labeled). Any of them can be swapped for real photos later.
+These three are AI-generated illustrations, not stock photos. Every person in them is invented, and no real person's likeness was used. Ryan McNally picked each one in a blind ChatGPT versus Google Gemini ("Nano Banana") image bake-off on 2026-10-14 (about 11:00 PM ET), without knowing which tool made which. (Superseded by V8 below: in V6 and V7 each carried a visible "Illustration" caption and an "Illustration:" alt prefix; neither is on the pages now.) Any of them can be swapped for real photos later.
+
+Bake-off source map (sealed key in the photo session's notes, photo-bakeoff/KEY-do-not-open-before-picking.md): couple = scene1_B2 (ChatGPT, original s1b_couple_kitchen.png), family dinner = scene3_B (ChatGPT, original s3a_dinner_table.png), keys agent = scene2_B (Gemini chat 2d43c610c3461aae). The keys file is a roughly 1300 pixel screen capture because the automated browser could not save the download; it covers the 840 pixel 2x size used here. A larger use needs the full-size download from that Gemini chat, signed in as the AID account.
 
 V8 (2026-10-15): per Ryan's 8:29 AM ET ruling, captions on the site are feeling lines, not labels, so the "Illustration" caption and the "Illustration:" alt prefix are gone from the pages. This file and the /assumptions/ page are now the only place the AI versus stock record lives.
 
