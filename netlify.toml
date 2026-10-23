@@ -10,3 +10,18 @@
   # e.g. brand-asset images on /about-ryan). Not a secret; the service key
   # remains fully scanned. Without this, secrets scanning fails the build.
   SECRETS_SCAN_OMIT_KEYS = "SUPABASE_URL"
+
+# /portfolio/ was the old contractor portfolio page; it no longer fits the site.
+# Retired in the 2026-10 rebuild; the file stays in the repo until its deletion is approved.
+# force = true because Netlify serves an existing file ahead of a redirect otherwise.
+[[redirects]]
+  from = "/portfolio"
+  to = "/about-ryan/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/portfolio/*"
+  to = "/about-ryan/"
+  status = 301
+  force = true
