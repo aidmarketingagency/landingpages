@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lead Triage: How Contractors Should Prioritize Responses</title>
+    <meta name="description" content="Learn how to prioritize contractor leads using the 5-15-60 rule. Discover which inquiries require instant action and how to automate your response system.">
+    <link rel="canonical" href="https://aidmarketingagency.com/blog/contractor-lead-intent-map/">
+    <meta name="aid-content-hash" content="aa12a175d47db74c5a86ee8c486e084a1f09da2c1c93678162767116ef2e7b23">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Lead Triage: How Contractors Should Prioritize Responses">
+    <meta property="og:description" content="Learn how to prioritize contractor leads using the 5-15-60 rule. Discover which inquiries require instant action and how to automate your response system.">
+    <meta property="og:url" content="https://aidmarketingagency.com/blog/contractor-lead-intent-map/">
+    <meta property="og:image" content="https://aidmarketingagency.com/assets/blog/contractor-lead-intent-map-hero.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Lead Triage: How Contractors Should Prioritize Responses">
+    <meta name="twitter:description" content="Learn how to prioritize contractor leads using the 5-15-60 rule. Discover which inquiries require instant action and how to automate your response system.">
+    <meta name="twitter:image" content="https://aidmarketingagency.com/assets/blog/contractor-lead-intent-map-hero.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Which Leads Are Worth an Instant Reply? Roofing, HVAC, and Plumbing Inquiry Intent Map", "description": "Learn how to prioritize contractor leads using the 5-15-60 rule. Discover which inquiries require instant action and how to automate your response system.", "image": "https://aidmarketingagency.com/assets/blog/contractor-lead-intent-map-hero.jpg", "author": {"@type": "Person", "name": "Ryan McNally", "jobTitle": "Founder, AID Marketing Agency", "worksFor": {"@type": "Organization", "name": "AID Marketing Agency"}, "sameAs": ["https://www.linkedin.com/in/ryan-mcnally-7930421bb"], "url": "https://aidmarketingagency.com/about-ryan"}, "datePublished": "2026-10-26", "dateModified": "2026-10-26", "mainEntityOfPage": {"@type": "WebPage", "@id": "https://aidmarketingagency.com/blog/contractor-lead-intent-map/"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Does responding to a lead in under 5 minutes actually increase conversion rates?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Older research from the MIT-affiliated Lead Response Management Study (2007) established that lead conversion drops sharply after five minutes, and recent 2025 data from Invoca corroborates that faster response times correlate with higher booking rates. Homeowners value the speed of the response as a proxy for the speed of the service."}}, {"@type": "Question", "name": "How should I handle vague leads that do not specify the problem?", "acceptedAnswer": {"@type": "Answer", "text": "Treat these as high-priority triage. Send a quick, templated text asking, \"Is this an emergency or a repair request?\" This one-question filter allows you to identify if the lead needs an instant call or if it can wait for a scheduled slot."}}, {"@type": "Question", "name": "What is the best way to handle emergency leads that come in after business hours?", "acceptedAnswer": {"@type": "Answer", "text": "Use an AI-powered receptionist or a dedicated after-hours service. The goal is to ensure the customer feels heard and knows that help is on the way, rather than leaving them to wonder if you will ever call back."}}, {"@type": "Question", "name": "Should I treat a request for a new roof estimate the same as an active roof leak?", "acceptedAnswer": {"@type": "Answer", "text": "No. An active leak is an emergency that requires an instant response to prevent property damage. A request for a new roof estimate is a high-value sales opportunity that can be scheduled for a professional consultation within the 15-minute window."}}, {"@type": "Question", "name": "How can I automate my lead response without losing the personal touch?", "acceptedAnswer": {"@type": "Answer", "text": "Use automation for the \"handshake\" (confirming receipt) and humans for the \"conversation\" (diagnosing the problem). Automate the initial text-back so the customer knows you are coming, then follow up with a personal call to address their specific needs."}}]}</script>
+    <style>
+        .post-hero { padding: 7.5rem 0 2rem; }
+        .post-hero-inner { max-width: 780px; margin: 0 auto; }
+        .post-hero h1 { font-size: clamp(1.8rem, 4.5vw, 2.75rem); text-align: left; margin-bottom: 1rem; }
+        .post-hero-img { width: 100%; border-radius: 16px; margin-bottom: 1.5rem; box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
+
+        .post-dates { font-size: 0.85rem; color: var(--text-secondary); opacity: 0.8; margin-bottom: 1.5rem; }
+
+        .post-tldr {
+            max-width: 780px; margin: 0 auto 2rem;
+            background: var(--bg-dark-charcoal);
+            border-left: 3px solid var(--gold-primary);
+            border-radius: 12px;
+            padding: 1.5rem 1.75rem;
+        }
+        .post-tldr p { color: #ffffff; margin-bottom: 0; }
+
+        .post-toc {
+            max-width: 780px; margin: 0 auto 2.5rem;
+            background: var(--bg-dark-charcoal);
+            border: 1px solid var(--divider-color);
+            border-radius: 12px;
+            padding: 1.5rem 1.75rem;
+        }
+        .post-toc h2, .post-toc .post-toc-label { font-size: 1rem; text-align: left; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gold-primary); background: none; -webkit-text-fill-color: var(--gold-primary); margin-bottom: 0.75rem; font-family: 'Outfit', sans-serif; font-weight: 700; }
+        .post-toc ul, .post-toc ol { list-style: none; padding: 0; margin: 0; }
+        .post-toc li { margin-bottom: 0.5rem; }
+        .post-toc a { color: var(--text-secondary); text-decoration: none; font-size: 0.95rem; }
+        .post-toc a:hover { color: var(--gold-primary); }
+
+        .post-body { max-width: 780px; margin: 0 auto; }
+        .post-body h2 { font-size: 1.5rem; text-align: left; margin-top: 2.5rem; background: none; -webkit-text-fill-color: var(--gold-primary); color: var(--gold-primary); }
+        .post-body h3 { font-size: 1.15rem; text-align: left; margin-top: 1.5rem; }
+        .post-body p { color: var(--text-secondary); }
+        .post-body ul, .post-body ol { color: var(--text-secondary); padding-left: 1.5rem; margin-bottom: 1rem; }
+        .post-body li { margin-bottom: 0.4rem; line-height: 1.7; }
+        .post-body a { color: var(--gold-primary); text-decoration: underline; }
+        .post-body table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; display: block; overflow-x: auto; }
+        .post-body th, .post-body td { border: 1px solid var(--divider-color); padding: 0.6rem 0.8rem; text-align: left; color: var(--text-secondary); font-size: 0.9rem; }
+        .post-body th { color: var(--gold-primary); font-family: 'Outfit', sans-serif; }
+        .post-body img { max-width: 100%; border-radius: 12px; margin: 1.5rem 0; }
+        .post-body figure.post-inbody-img { margin: 2rem 0; }
+        .post-body figure.post-inbody-img img { display: block; width: 100%; margin: 0 0 0.6rem; box-shadow: 0 12px 40px rgba(0,0,0,0.35); }
+        .post-body figure.post-inbody-img figcaption { font-size: 0.8rem; color: var(--text-secondary); opacity: 0.7; text-align: left; }
+        .post-body aside.post-cta { margin: 2.5rem 0; padding: 2rem; background: var(--bg-dark-charcoal); border: 1px solid var(--divider-color); border-radius: 16px; text-align: left; }
+        .post-body aside.post-cta p { margin-bottom: 0; }
+
+        .post-faq { max-width: 780px; margin: 3rem auto 0; }
+        .post-faq h2 { font-size: 1.5rem; text-align: left; background: none; -webkit-text-fill-color: var(--gold-primary); color: var(--gold-primary); }
+        .faq-item { border-bottom: 1px solid var(--divider-color); padding: 1.25rem 0; }
+        .faq-item h3 { font-size: 1.05rem; text-align: left; margin-bottom: 0.5rem; color: #ffffff; }
+        .faq-item p { color: var(--text-secondary); margin-bottom: 0; }
+
+        .post-cta { max-width: 780px; margin: 3rem auto; text-align: center; padding: 2.5rem; background: var(--bg-dark-charcoal); border: 1px solid var(--divider-color); border-radius: 20px; }
+        .post-cta p { color: var(--text-secondary); margin-bottom: 1.5rem; }
+
+        .byline-card {
+            max-width: 780px; margin: 3rem auto 5rem;
+            display: flex; align-items: center; gap: 1.5rem;
+            background: var(--bg-dark-charcoal);
+            border: 1px solid var(--divider-color);
+            border-radius: 16px;
+            padding: 1.5rem;
+        }
+        .byline-card img { width: 72px; height: 72px; border-radius: 50%; object-fit: cover; border: 2px solid var(--gold-primary); flex-shrink: 0; }
+        .byline-card-label { display: block; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gold-primary); margin-bottom: 0.35rem; }
+        .byline-card-copy h2, .byline-card-text h4 { font-size: 1.25rem; text-align: left; margin-bottom: 0.25rem; color: #ffffff; background: none; -webkit-text-fill-color: #ffffff; }
+        .byline-card-copy p, .byline-card-text p { font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.5rem; }
+        .byline-card-copy a, .byline-card-text a { color: var(--gold-primary); text-decoration: none; font-size: 0.9rem; }
+        .byline-card-copy a:hover, .byline-card-text a:hover { text-decoration: underline; }
+
+        @media (max-width: 480px) {
+            .post-hero { padding: 6.5rem 0 1.5rem; }
+            .post-tldr, .post-toc, .post-body, .post-faq, .post-cta, .byline-card { padding-left: 1.25rem; padding-right: 1.25rem; }
+            .byline-card { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar" id="home">
+        <div class="nav-container container">
+            <a class='logo' href='/'>
+                <img src="/images/optimized/logo-avatar-square.png" alt="AID HQ Logo">
+                <span>AID HQ</span>
+            </a>
+            <ul class="nav-menu">
+                <li><a class='nav-link' href='/#home'>Home</a></li>
+                <li><a class='nav-link' href='/#services'>Services</a></li>
+                <li><a class='nav-link' href='/#about'>About</a></li>
+                <li><a class='nav-link' href='/blog/'>Blog</a></li>
+                <li><a class='nav-link' href='/#contact'>Contact</a></li>
+            </ul>
+            <button class="nav-toggle" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+
+    <section class="post-hero">
+        <div class="container post-hero-inner">
+            <img class="post-hero-img" src="/assets/blog/contractor-lead-intent-map-hero.jpg" alt="Editorial photo, contractor tradesman context: Which Leads Are Worth an Instant Reply? Roofing, HVAC, and Plumbing Inquiry Intent Map">
+            <h1>Which Leads Are Worth an Instant Reply? Roofing, HVAC, and Plumbing Inquiry Intent Map</h1>
+            <p class="post-dates">Published October 26, 2026 &middot; Updated October 26, 2026</p>
+        </div>
+    </section>
+
+    <section class="section" style="padding-top:0;">
+        <div class="container">
+            <nav class="post-toc" aria-label="On this page"><p class="post-toc-label">On this page</p><ol><li><a href="#what-leads-should-contractors-respond-to-first-a-triage-guid">What Leads Should Contractors Respond to First? A Triage Guide for Roofing, HVAC, and Plumbing</a></li><li><a href="#why-speed-to-lead-still-wins-in-home-services">Why Speed-to-Lead Still Wins in Home Services</a></li><li><a href="#emergency-and-safety-leads-the-instant-reply-tier">Emergency and Safety Leads: The Instant Reply Tier</a></li><li><a href="#intent-mapping-how-to-categorize-your-incoming-leads">Intent Mapping: How to Categorize Your Incoming Leads</a></li><li><a href="#the-5-15-60-rule-a-practical-response-framework">The 5-15-60 Rule: A Practical Response Framework</a></li><li><a href="#a-worked-example-what-50-leads-look-like-in-a-busy-week">A Worked Example: What 50 Leads Look Like in a Busy Week</a></li><li><a href="#automate-the-handshake-personalize-the-conversation">Automate the Handshake, Personalize the Conversation</a></li><li><a href="#after-hours-strategy-when-emergencies-cannot-wait">After-Hours Strategy: When Emergencies Cannot Wait</a></li></ol></nav>
+
+            <div class="post-body">
+                <h2 id="what-leads-should-contractors-respond-to-first-a-triage-guid">What Leads Should Contractors Respond to First? A Triage Guide for Roofing, HVAC, and Plumbing</h2>
+<p>Not all leads are created equal. To maximize conversion, prioritize emergency and same-day repair requests for instant response, while qualifying research-stage inquiries within the hour. Speed-to-lead is critical, but context determines whether you drop everything or follow a structured workflow. The 5-15-60 rule gives your shop a practical framework: emergencies in 5 minutes, quote requests in 15, and research queries in 60.</p>
+<figure class="post-inbody-img"><img src="/assets/blog/contractor-lead-intent-map-section-1.jpg" alt="What Leads Should Contractors Respond to First A Triage Guide for Roofing, HVAC, and Plumbing: Not all leads are created equal." loading="lazy" width="960" height="540"></figure>
+
+<h2 id="why-speed-to-lead-still-wins-in-home-services">Why Speed-to-Lead Still Wins in Home Services</h2>
+<p>In the trades, the first shop to answer the phone often wins the job. Older research from the MIT-affiliated Lead Response Management Study (2007) established that lead conversion drops significantly when response times exceed five minutes. While that research is historical, recent industry data from <a href="https://www.invoca.com/resources/">Invoca</a> (2025) continues to validate that speed remains a primary driver of booking success in home services.</p>
+<figure class="post-inbody-img"><img src="/assets/blog/contractor-lead-intent-map-section-2.jpg" alt="Why Speed to Lead Still Wins in Home Services: In the trades, the first shop to answer the phone often wins the job." loading="lazy" width="960" height="540"></figure>
+
+<p>When a homeowner has a problem, they are rarely calling just one shop. They are likely cycling through <a href="https://www.google.com/business/">Google Business Profile listings</a> and calling the first three companies that look reliable. If you wait an hour to call back, you are not just missing a lead: you are handing that customer to your competitor who answered in sixty seconds.</p>
+<p>The data backs this up. According to call analytics data from Invoca (2025), contractors who respond to inbound calls within the first minute see meaningfully higher booking rates than those who take longer. The same pattern holds across roofing, HVAC, and plumbing: speed signals competence, and homeowners reward it with their business. For a deeper dive on the numbers behind this, see <a href="/blog/a3-the-5-minute-rule-why-speed-to-lead-beats-market/">The 5-Minute Rule: Why Speed-to-Lead Beats Marketing Spend</a>.</p>
+<h2 id="emergency-and-safety-leads-the-instant-reply-tier">Emergency and Safety Leads: The Instant Reply Tier</h2>
+<p>Some inquiries require an immediate, human-led response. These are the leads that keep the lights on and build your reputation for reliability. You should treat these as high-priority, instant-reply events:</p>
+<ul>
+<li><strong>HVAC:</strong> No heat in winter or no cooling during a heatwave.</li>
+<li><strong>Plumbing:</strong> Burst pipes, active leaks, or suspected gas smells.</li>
+<li><strong>Roofing:</strong> Active interior leaks during a storm or significant structural damage.</li>
+<li><strong>General:</strong> Any request explicitly stating the homeowner needs someone on-site today.</li>
+</ul>
+<p>These customers are in distress. They are not looking for the cheapest price; they are looking for the fastest relief. According to 2025 data from Housecall Pro, emergency and same-day repair requests convert at the highest rates when the contractor responds within the first five minutes. After that window, the homeowner has usually already booked with the next shop on their list.</p>
+<p>The key distinction here is pain level. A homeowner with water pouring through their ceiling is making a decision in minutes, not hours. A homeowner asking about a roof replacement for next spring is making a decision over weeks. Your response time should match their urgency, not your inbox order.</p>
+<p>A pattern that shows up consistently in roofing and HVAC shops that track lead intent: emergency and same-day calls often make up fewer than 1 in 5 weekly inbound leads, yet they account for a disproportionate share of weekly revenue. The reason is straightforward. Emergency callers have already decided to hire someone today. They are not comparison shopping across five bids. They are calling until someone picks up, and whoever picks up first gets the job at a premium price point because urgency overrides price sensitivity. Research-stage leads, by contrast, might convert at a fraction of that rate because the homeowner is still gathering information and will likely talk to three or four competitors before committing.</p>
+<h2 id="intent-mapping-how-to-categorize-your-incoming-leads">Intent Mapping: How to Categorize Your Incoming Leads</h2>
+<p>Not every lead needs a phone call the second it hits your inbox. Using an intent map helps your team stay focused without burning out on low-priority research requests. The goal is to sort leads by what the homeowner is actually trying to accomplish, not just by the order they arrived.</p>
+<table>
+<thead>
+<tr>
+<th>Intent Type</th>
+<th>Examples</th>
+<th style="text-align:right">Priority</th>
+<th>Why it matters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Emergency</td>
+<td>Burst pipe, gas smell, no AC</td>
+<td style="text-align:right">Instant</td>
+<td>Highest pain, shortest decision window</td>
+</tr>
+<tr>
+<td>Same-day repair</td>
+<td>Can you come today?</td>
+<td style="text-align:right">Instant</td>
+<td>Strong purchase intent</td>
+</tr>
+<tr>
+<td>Quote request</td>
+<td>Water heater replacement</td>
+<td style="text-align:right">Fast</td>
+<td>High commercial value</td>
+</tr>
+<tr>
+<td>Research</td>
+<td>How much does a furnace cost?</td>
+<td style="text-align:right">Next hour</td>
+<td>Lower urgency</td>
+</tr>
+<tr>
+<td>Vague inquiry</td>
+<td>Need help, please call back</td>
+<td style="text-align:right">Triage first</td>
+<td>Unclear urgency, needs qualification</td>
+</tr>
+</tbody>
+</table>
+<p>A common pattern in shops that handle high call volume is that vague inquiries can turn out to be emergencies. A homeowner who leaves a message saying &quot;need help, please call back&quot; might have a flooded basement or might just want a quote for next quarter. Treat vague leads as fast-triage: send a one-question text asking whether this is an emergency or a routine request, and route accordingly.</p>
+<h2 id="the-5-15-60-rule-a-practical-response-framework">The 5-15-60 Rule: A Practical Response Framework</h2>
+<p>To keep your shop running efficiently, use the 5-15-60 rule. This framework ensures you never lose a hot lead while keeping your administrative workload manageable. It maps directly to how homeowners behave when they have a problem: the more pain they are in, the faster they book with whoever answers.</p>
+<figure class="post-inbody-img"><img src="/assets/blog/contractor-lead-intent-map-section-3.jpg" alt="The 5 15 60 Rule: A Practical Response Framework: To keep your shop running efficiently, use the 5-15-60 rule." loading="lazy" width="960" height="540"></figure>
+
+<ol>
+<li><strong>The 5-Minute Window:</strong> Reserved for emergency and same-day repair requests. If they need help now, call them now. According to Angi (2025), homeowners searching for emergency repairs typically contact three to four contractors and book with the first one that picks up.</li>
+<li><strong>The 15-Minute Window:</strong> Reserved for specific quote requests. If a homeowner has provided their address and a clear scope of work, they are ready to move. A quick text or call here confirms you are the professional they want. Fifteen minutes is fast enough to beat most competitors but gives your team room to finish the job they are on.</li>
+<li><strong>The 60-Minute Window:</strong> Reserved for research-stage leads. If someone is asking about the cost of a new roof or the difference between shingle types, they are in the shopping phase. A response within the hour is sufficient to stay top-of-mind without disrupting your field operations.</li>
+</ol>
+<p>The framework is simple on purpose. Complex triage systems fail because nobody uses them when the phone is ringing. Three buckets, three time windows, one rule: match your speed to their urgency.</p>
+<h2 id="a-worked-example-what-50-leads-look-like-in-a-busy-week">A Worked Example: What 50 Leads Look Like in a Busy Week</h2>
+<p><em>(Illustration, not a client result.)</em></p>
+<p>Consider a mid-size roofing and HVAC shop receiving 50 inbound inquiries in a typical week. Without any triage system, all 50 land in the same queue. The dispatcher works through them in order, which means a homeowner with an active leak might sit behind three price-check emails.</p>
+<p>Here is what those 50 leads look like when sorted by the 5-15-60 framework:</p>
+<table>
+<thead>
+<tr>
+<th>Tier</th>
+<th style="text-align:right">Lead Count</th>
+<th>Response Window</th>
+<th>What Happens</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Emergency / same-day</td>
+<td style="text-align:right">8</td>
+<td>5 minutes</td>
+<td>Direct call from owner or lead tech</td>
+</tr>
+<tr>
+<td>Quote request</td>
+<td style="text-align:right">17</td>
+<td>15 minutes</td>
+<td>Call or text with scheduling link</td>
+</tr>
+<tr>
+<td>Research / info</td>
+<td style="text-align:right">19</td>
+<td>60 minutes</td>
+<td>Email or text with resources and a soft ask</td>
+</tr>
+<tr>
+<td>Vague / unclear</td>
+<td style="text-align:right">6</td>
+<td>15 minutes (triage text)</td>
+<td>One-question filter, then route</td>
+</tr>
+</tbody>
+</table>
+<p>The eight emergency leads in this example are the highest-value opportunities of the week. They are also the most time-sensitive. If even two of them slip to the next day because the dispatcher was buried in research queries, that is two jobs lost to whoever picked up the phone first.</p>
+<p>Think about the routing logic. An emergency call at 7 AM on a Tuesday about a burst pipe under a kitchen sink should go straight to the on-call tech's cell phone, not into a general inbox. A quote request for a roof replacement that comes in at 2 PM should route to the dispatcher with the address and photos already attached. A research question about furnace efficiency ratings can wait for a templated email sent by the end of the day. The 5-15-60 framework is not just about speed. It is about making sure the right person handles the right lead at the right moment, so your lead tech is not answering price-check emails while an emergency caller gets voicemail.</p>
+<p>This is the core insight behind the 5-15-60 rule: lead value and lead urgency are correlated, and both decay fast. The 19 research leads in this example are worth following up on, but none of them will book today. The 8 emergency leads will book today, and most will book with the first shop that answers. Prioritizing accordingly is the difference between a shop that grows and a shop that stays flat. For more on what a missed call actually costs a roofing shop, see <a href="/blog/a1-what-a-missed-call-actually-costs-a-roofer-in-20/">What a Missed Call Actually Costs a Roofer in 2026</a>.</p>
+<h2 id="automate-the-handshake-personalize-the-conversation">Automate the Handshake, Personalize the Conversation</h2>
+<p>Trying to handle every single lead manually is a recipe for burnout. The key is to automate the initial acknowledgment so the customer knows they have been heard, then personalize the follow-up based on the intent map.</p>
+<figure class="post-inbody-img"><img src="/assets/blog/contractor-lead-intent-map-section-4.jpg" alt="Automate the Handshake, Personalize the Conversation: Trying to handle every single lead manually is a recipe for burnout." loading="lazy" width="960" height="540"></figure>
+
+<p>A common pattern in many shops is using an automated text-back to confirm receipt of a web form or missed call. This satisfies the customer's need for immediate acknowledgment. Once the automated system confirms the inquiry, your team can prioritize the callback based on the urgency tiers defined above. This allows you to maintain a human touch where it matters most, like on an active leak, without getting bogged down by generic price-check emails.</p>
+<p>The split is simple: automate the handshake, personalize the conversation. A text that says &quot;Got your message, someone from your team will reach out within 15 minutes&quot; costs nothing to send and buys real time to respond properly. For a full playbook on building this kind of speed-to-lead system, see <a href="/blog/a0-ai-speed-to-lead-for-contractors-the-2026-playbo/">AI Speed-to-Lead for Contractors: The 2026 Playbook</a>.</p>
+<h2 id="after-hours-strategy-when-emergencies-cannot-wait">After-Hours Strategy: When Emergencies Cannot Wait</h2>
+<p>The most expensive lead is the one that sits in your inbox from Friday night until Monday morning. If you are not running a 24/7 dispatch desk, you need an after-hours strategy for true emergencies.</p>
+<p>A simple voicemail is often not enough. Many successful shops now use AI-powered answering or specialized after-hours dispatch services to filter emergency calls. If a homeowner calls with a burst pipe at 9 PM, they need to reach a human or a system that can trigger an emergency dispatch. If they get a standard &quot;we are closed&quot; recording, they will simply hang up and call the next name on the list.</p>
+<p>The after-hours problem is really a triage problem in disguise. The same 5-15-60 logic applies, but the stakes are higher because no one is in the office to sort leads manually. An after-hours system should do one thing well: identify whether the call is an emergency, and if so, route it to someone who can respond. Everything else can wait for the morning queue. For a comparison of options, see <a href="/blog/a2-ai-receptionist-vs-answering-service-vs-voicemai/">AI Receptionist vs Answering Service vs Voicemail: 7 Differences That Decide Who Books the Job</a>.</p>
+<p>If your shop is ready to put this triage framework into action, the call link at the bottom of this page is the next step. Mapping your lead flow to the 5-15-60 rule takes about 30 minutes once you know which buckets your inbound calls fall into.</p>
+
+            </div>
+
+            <div class="post-faq">
+                <h2>Frequently Asked Questions</h2>
+                <div class="faq-item"><h3>Does responding to a lead in under 5 minutes actually increase conversion rates?</h3><p>Yes. Older research from the MIT-affiliated Lead Response Management Study (2007) established that lead conversion drops sharply after five minutes, and recent 2025 data from Invoca corroborates that faster response times correlate with higher booking rates. Homeowners value the speed of the response as a proxy for the speed of the service.</p></div><div class="faq-item"><h3>How should I handle vague leads that do not specify the problem?</h3><p>Treat these as high-priority triage. Send a quick, templated text asking, "Is this an emergency or a repair request?" This one-question filter allows you to identify if the lead needs an instant call or if it can wait for a scheduled slot.</p></div><div class="faq-item"><h3>What is the best way to handle emergency leads that come in after business hours?</h3><p>Use an AI-powered receptionist or a dedicated after-hours service. The goal is to ensure the customer feels heard and knows that help is on the way, rather than leaving them to wonder if you will ever call back.</p></div><div class="faq-item"><h3>Should I treat a request for a new roof estimate the same as an active roof leak?</h3><p>No. An active leak is an emergency that requires an instant response to prevent property damage. A request for a new roof estimate is a high-value sales opportunity that can be scheduled for a professional consultation within the 15-minute window.</p></div><div class="faq-item"><h3>How can I automate my lead response without losing the personal touch?</h3><p>Use automation for the "handshake" (confirming receipt) and humans for the "conversation" (diagnosing the problem). Automate the initial text-back so the customer knows you are coming, then follow up with a personal call to address their specific needs.</p></div>
+            </div>
+
+            <div class="post-cta">
+                <p>Want this running on your own business? AID Marketing Agency builds the AI speed-to-lead systems in this post for contractors and local service businesses.</p>
+                <a href="/#contact?utm_source=blog&amp;utm_medium=cta" class="btn btn-primary">Book a Call</a>
+            </div>
+
+            <div class="byline-card"><img src="/assets/headshots/ryan-casual-rooftop.jpg" alt="Ryan McNally"><div class="byline-card-copy"><span class="byline-card-label">About the author</span><h2>Ryan McNally</h2><p>Ryan McNally has spent a decade-plus in the trades (home inspection, roofing, flooring) and builds the AI systems he sells: missed-call recovery, voice quoting, speed-to-lead automation. Charlotte, NC. Twice named his company's top new account manager.</p><a href="/about-ryan">More about Ryan</a></div></div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>AID HQ</h3>
+                    <p>AI voice receptionists, missed-call recovery, and automated lead follow-up for contractors and trades businesses.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Company</h3>
+                    <div class="footer-links">
+                        <a href="/#about">About Us</a>
+                        <a href="/about-ryan">About Ryan</a>
+                        <a href="/blog/">Blog</a>
+                        <a href="/#contact">Contact</a>
+                        <a href='/privacy-policy'>Privacy Policy</a>
+                        <a href='/terms-of-service'>Terms of Service</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Connect</h3>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/aidmarketingagency" class="social-link" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M14 13.5h2.5l1-4H14v-2c0-1.03 0-2 2-2h1.5V2.14c-.326-.043-1.557-.14-2.857-.14C11.928 2 10 3.657 10 6.7v2.8H7v4h3V22h4v-8.5z"/></svg></a>
+                        <a href="https://www.linkedin.com/in/ryan-mcnally-7930421bb" class="social-link" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M6.5 21.5h-5v-13h5v13zM4 6.5C2.5 6.5 1.5 5.5 1.5 4s1-2.5 2.5-2.5c1.6 0 2.5 1 2.5 2.5S5.6 6.5 4 6.5zM21.5 21.5h-5v-6.6c0-1.7-.6-2.8-2.1-2.8-1.2 0-1.8.8-2.1 1.6-.1.3-.1.6-.1 1v6.8h-5v-13h5v2.2c.6-1 1.6-2.2 4.5-2.2 3.3 0 5.6 2.1 5.6 6.6v6.4z"/></svg></a>
+                        <a href="https://www.instagram.com/ryan_is_ridiculous/?hl=en" class="social-link" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.011 3.584-.069 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.584-.012-4.85-.07c-3.252-.148-4.771-1.691-4.919-4.919-.058-1.265-.069-1.645-.069-4.85s.011-3.584.069-4.85c.149-3.225 1.664-4.771 4.919 4.919 1.266-.057 1.644-.069 4.85-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98 1.281.059 1.689.073 4.948.073s3.667-.014 4.947-.072c4.358-.2 6.78-2.618 6.98-6.98.059-1.281.073-1.689-.073-4.948s-.014-3.667-.072-4.947c-.2-4.358-2.618-6.78-6.98-6.98-1.281-.059-1.689-.073-4.948-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.79 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.441 1.441 1.441 1.441-.645 1.441-1.441-.645-1.44-1.441-1.44z"/></svg></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 AID HQ / AID Marketing Agency LLC. All rights reserved. &nbsp;|&nbsp; <a href='/privacy-policy' style='color: inherit; text-decoration: underline;'>Privacy Policy</a> &nbsp;|&nbsp; <a href='/terms-of-service' style='color: inherit; text-decoration: underline;'>Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const navToggle = document.querySelector('.nav-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+        if (navToggle && navMenu) {
+            navToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+                navToggle.classList.toggle('active');
+            });
+        }
+    </script>
+</body>
+</html>
